@@ -12,10 +12,11 @@
 # Pad lecture numbers, e.g. lecture 2 uses "02", not "2".
 #
 # For example, the first few lecture slides should be put at:
-#   - /assets/lectures/cs188-sp23-lec01.pdf
-#   - /assets/lectures/cs188-sp23-lec02.pdf
+#   - /assets/lectures/csXXX-sp25-lec01.pdf
+#   - /assets/lectures/csXXX-sp25-lec02.pdf
 #     ...
-#   - /assets/lectures/cs188-sp23-lec25.pdf
+#   - /assets/lectures/csXXX-sp25-lec25.pdf
+# If you'd like a different prefix from csXXX-sp25-lec01, you can change this in _config.yml
 
 # To link lecture recordings on the website, fill in the
 # recordings field in the corresponding lecture below.
@@ -25,10 +26,10 @@
 # in the right folder.
 #
 # For example, the first few lecture notes should be put at:
-#   - /assets/notes/cs188-sp23-note01.pdf
-#   - /assets/notes/cs188-sp23-note02.pdf
+#   - /assets/notes/csXXX-sp25-note01.pdf
+#   - /assets/notes/csXXX-sp25-note02.pdf
 #     ...
-#   - /assets/notes/cs188-sp23-note25.pdf
+#   - /assets/notes/csXXX-sp25-note25.pdf
 
 
 #####################################

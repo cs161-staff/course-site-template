@@ -30,6 +30,7 @@ heading_links:
     url: ""
   - text: "Project"
     url: ""
+lecture_prefix: "csXXX-sp25-lec"
 
 # Theme settings
 remote_theme: just-the-docs/just-the-docs@v0.8.2
@@ -117,3 +118,6 @@ waitlist_warning: false
 
 # Set this to true if discussion times are uncertain (populates on calendar.md)
 discussions_under_construction: false
+
+# Set this to true to archive the semester
+outdated: false

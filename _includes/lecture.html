@@ -15,7 +15,7 @@ then remove class="{{ include.is_even }}" below.
   then create filenames (see lectures.yml for more on filenames).
   {%- endcomment -%}
   {%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
-  {%- assign slides_path = "/assets/lectures/csXXX-sp25-lec" | append: filenumber | append: ".pdf" -%}
+  {%- assign slides_path = "/assets/lectures/" | append: site.lecture_prefix | append: filenumber | append: ".pdf" -%}
 
   {%- comment -%}
   - Automatically check if files exist.
@@ -40,13 +40,18 @@ then remove class="{{ include.is_even }}" below.
   {{ include.number }}. {{ include.element.title }}
   {%- endif -%}
 
-  {%- if include.element.slides or include.element.recording or include.element.readings.size > 0 -%}
+  {%- if include.element.slides or slides_exists or include.element.recording or include.element.readings.size > 0 -%}
   <br>
   {%- if include.element.slides -%}
+  <a href="{{ include.element.slides }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+    {%- if include.element.recording or include.element.readings.size > 0 -%}
+    {{}} / {{}}
+    {%- endif -%}
+  {%- elsif slides_exists -%}
   <a href="{{ slides_path | relative_url }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
-  {%- if include.element.recording or include.element.readings.size > 0 -%}
-  {{}} / {{}}
-  {%- endif -%}
+    {%- if include.element.recording or include.element.readings.size > 0 -%}
+    {{}} / {{}}
+    {%- endif -%}
   {%- endif -%}
   {%- if include.element.recording -%}
   <a href="{{ include.element.recording }}" aria-label="Recording for Lecture {{ include.number }} ({{ include.element.title }})">Recording</a>
