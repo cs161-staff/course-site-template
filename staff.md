@@ -52,3 +52,23 @@ description: A listing of all the course staff members.
 {{ staffer }}
 {% endfor %}
 {% endif %}
+
+{% assign teaching_assistants = site.staffers | where: 'role', 'Reader' %}
+{% assign num_teaching_assistants = teaching_assistants | size %}
+{% if num_teaching_assistants != 0 %}
+## Readers
+
+{% for staffer in teaching_assistants %}
+{{ staffer }}
+{% endfor %}
+{% endif %}
+
+{% assign teaching_assistants = site.staffers | where: 'role', 'TI' %}
+{% assign num_teaching_assistants = teaching_assistants | size %}
+{% if num_teaching_assistants != 0 %}
+## Teaching Interns (TIs)
+
+{% for staffer in teaching_assistants %}
+{{ staffer }}
+{% endfor %}
+{% endif %}
