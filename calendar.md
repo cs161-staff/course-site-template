@@ -18,6 +18,12 @@ This schedule is tentative; additional times may be added later. The existing ti
 </p>
 {%- endif -%}
 
+{%- if site.outdated -%}
+<p class="warning">
+This website contains materials from a past semester. Information, assignments, and announcements may no longer be relevant. Please refer to the <a href="https://template.cs161.org">current semester's site</a> for up-to-date content.
+</p>
+{%- endif -%}
+
 If you would like to view this calendar ouside of the course website, please click "Open in Google Calendar" below. If you would like to add an accessible version of this calendar to your personal Google Calendar, please click "Add to your personal calendar" below.
 
 [Open in Google Calendar]({{ site.data.calendar.google_calendar_embed_link }}){: .btn .btn-outline .fs-3 } [Add to your personal calendar]({{ site.data.calendar.google_calendar_add_link }}){: .btn .btn-outline .fs-3 }

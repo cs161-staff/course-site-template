@@ -12,6 +12,12 @@ This site is under construction. All dates and policies are tentative until this
 </p>
 {%- endif -%}
 
+{%- if site.outdated -%}
+<p class="warning">
+This website contains materials from a past semester. Information, assignments, and announcements may no longer be relevant. Please refer to the <a href="https://template.cs161.org">current semester's site</a> for up-to-date content.
+</p>
+{%- endif -%}
+
 # Policies
 {:.no_toc}
 
