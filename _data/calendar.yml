@@ -6,6 +6,16 @@ google_calendar_id: None
 google_calendar_embed_link: None
 google_calendar_add_link: None
 
+# - Google Calendar events should all be prefixed "[CS101 SP25]" so that students
+#   adding it to their calendar see "[CS101 SP25] Lecture" instead of just "Lecture".
+# - But, on the website itself, students should just see "Lecture" instead of
+#   "[CS101 SP25]" in front of all the calendar events, to avoid clutter.
+# - Put the common prefix here so that the JS in calendar.html will remove the prefix
+#   when rendering the website.
+# - Note the trailing space is included here too, so that "[CS101 SP25] Lecture"
+#   becomes "Lecture", not " Lecture".
+remove_prefix: "[CS101 SP25] "
+
 # When making your calendar, please title your events as follows (this is for color coding):
 # - OH: Include "Office Hours" in the name
 # - Lecture: Include "Lecture" in the name
