@@ -1,4 +1,25 @@
-# Follow the steps on https://fullcalendar.io/docs/v4/google-calendar until "Getting Set Up" to obtain the google_calendar_id.
+# - google_api_key:
+#    - Follow the steps on https://fullcalendar.io/docs/v4/google-calendar
+#      until "Getting Set Up" to obtain the google_api_key.
+# - For the other 3 fields, you'll need to open the calendar settings:
+#   - Go to https://calendar.google.com
+#   - Click the 3 dots next to the calendar name in the left side-bar
+#   - Click "Settings and sharing"
+# - google_calendar_id: 
+#   - Go to calendar settings (see above)
+#   - Scroll to "Access permissions for events"
+#   - Click "Get shareable link"
+#   - Copy the URL with calendar/u/0?cid= in it
+# - google_calendar_embed_link:
+#   - Go to calendar settings (see above)
+#   - Scroll to "Integrate calendar"
+#   - Copy "Public URL to this calendar"
+#   - The URL you copy should have calendar/embed?src=c_ in it
+# - google_calendar_add_link:
+#   - Go to calendar settings (see above)
+#   - Scroll to "Integrate calendar"
+#   - Copy "Calendar ID"
+#   - The thing you copy should look like c_c12345@group.calendar.google.com
 
 google_api_key: None
 google_calendar_id: None
