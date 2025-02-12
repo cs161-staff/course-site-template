@@ -35,7 +35,7 @@ google_calendar_add_link: None
 #   when rendering the website.
 # - Note the trailing space is included here too, so that "[CS101 SP25] Lecture"
 #   becomes "Lecture", not " Lecture".
-remove_prefix: "[CS161 SP25] "
+remove_prefix: "[CS101 SP25] "
 
 # You can set up your own categories that are filtered and colored as you choose. Every
 # event can only be matched to one category. The order that entries are provided in below
