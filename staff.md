@@ -8,7 +8,7 @@ description: A listing of all the course staff members.
 # Staff
 {% if site.staff_email and site.staff_email != '' and site.staff_email != 'None' %}
 For logistics and administrative questions, please email <a href="mailto:{{site.staff_email}}">{{site.staff_email}}</a>.
-Access to these emails is denoted by the Staff Email Access tag. Future instructors and
+Access to these emails is denoted by the `Staff Email Access` tag. Future instructors and
 head TAs may also be able to read emails here, but we can delete emails upon request.
 
 If you have a non-course related question, you can view staff emails by pressing the button below:
