@@ -1,308 +1,218 @@
 <script>
-function loadGoogleCalendar(calendar, options, cb) {
-  const request = gapi.client.calendar.events.list({
-    calendarId: options.calendarID,
-    maxResults: 2500,
-    orderBy: "startTime",
-    singleEvents: true,
+  // Make the calendar globally acecssible so it can be
+  // updated with the theme switcher. If this is gross,
+  // it's possible to just listen for changes to the root
+  // here.
+  var calendar;
+
+  let category_cnt = 0;
+  const CALENDAR_CATEGORIES = JSON.parse(
+    `[{{ site.data.calendar.categories }}]`
+      .replaceAll("=>", ":")
+      .replaceAll("}}{", "}}, {"),
+  ).map((category) => {
+    return { id: String(category_cnt++), ...category };
   });
-  request.execute((resp) => {
-    const events = [];
-    if (resp.error) {
-      console.error(`[calendar] error loading ${options.calendarID}: ${resp.error.message}`);
-    } else {
-      for (const item of resp.items) {
-        if (item.visibility === "private") continue;
 
-        let title = item.summary;
-
-        // remove prefix (e.g. class name and sem) from every event
-        // added by peyrin Jan 2025
-        title = title.replace("{{ site.data.calendar.remove_prefix }}", "");
-
-        if (item.location) {
-          title += ` @ ${item.location}`;
-        }
-        let category = "unknown";
-        let colorcategory = "unknown";
-        if (!item.summary) {
-          console.error("error with item", item);
-        } else if ((/\bOH\b/).test(item.summary) || (/\boffice hours/i).test(item.summary)) {
-          category = "oh";
-          colorcategory = (/\binstructor\b/i).test(item.summary) ? "instructor" : "oh";
-        } else if ((/\bproject\b/i).test(item.summary) && (/\bparty\b/i).test(item.summary)) {
-          category = "party";
-          colorcategory = "party";
-        } else if ((/\b(?:dis\b|disc)/i).test(item.summary) || (/\bbridge/i).test(item.summary) || (/\bexam prep/i).test(item.summary)) {
-          category = "disc";
-          if ((/\bbridge/i).test(item.summary)) {
-            colorcategory = "bridge";
-          } else if ((/\bexam prep/i).test(item.summary)) {
-            colorcategory = "examprep";
-          } else {
-            colorcategory = "disc"
-          }
-        } else if ((/\b(?:lec\b|lecture)/i).test(item.summary)) {
-          category = "lecture";
-          colorcategory = "lecture";
-        } else if ((/\breview session/i).test(item.summary)) {
-          category = "review"
-          colorcategory = "review"
-        } else if ((/\b(?:exam|quest|midterm|mt|final)\b/i).test(item.summary)) {
-          category = "exam";
-          colorcategory = "exam";
-        }
-        const event = {
-          id: item.id,
-          calendarId: options.calendarID,
-          title,
-          body: item.description,
-          location: item.location,
-          start: item.start.dateTime,
-          end: item.end.dateTime,
-          category: "time",
-          cs161Category: category,
-          colorCategory: colorcategory,
-        };
-        if (options.addProps) {
-          const obj = options.addProps(item, event);
-          for (const [key, val] of Object.entries(obj)) {
-            if (val !== undefined) {
-              event[key] = val;
-            }
-          }
-        }
-        events.push(event);
-      }
-    }
-
-    cb(events);
-  });
-}
-
-/* global initCalendar */
-window.initCalendar = function initCalendar() {
-  if (!document.getElementById("calendarContainer")) return;
-
-  const CALENDAR_EVENT_GENERIC_BACKGROUND_COLOR = "var(--cal-event-generic-bg, #084298)";
-  const CALENDAR_EVENT_GENERIC_BORDER_COLOR = `var(--cal-event-generic-border, ${CALENDAR_EVENT_GENERIC_BACKGROUND_COLOR})`;
-  const CALENDAR_EVENT_GENERIC_COLOR = "var(--cal-event-generic-fg, #FFFFFF)";
-  const CALENDAR_HIGHLIGHT_COLOR = "var(--cal-highlight, #DD3333)";
-
-  const berkeleyTimeZoneName = "America/Los_Angeles";
-  const hourStart = 8; // in Berkeley timezone
-  const hourEnd = 22;
-
-  const currentDTF = Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: false,
-  });
-  const currentTimezoneName = currentDTF.resolvedOptions().timeZone;
-
-  const timezones = [{
-    timezoneName: currentTimezoneName,
-    displayLabel: "Local Time",
-    tooltip: "Local Time",
-  }];
-  if (currentTimezoneName !== berkeleyTimeZoneName) {
-    timezones.unshift({
-      timezoneName: berkeleyTimeZoneName,
-      displayLabel: "Berkeley",
-      tooltip: "Berkeley",
+  function loadGoogleCalendar(calendar, options, cb) {
+    const request = gapi.client.calendar.events.list({
+      calendarId: options.calendarID,
+      maxResults: 2500,
+      orderBy: "startTime",
+      singleEvents: true,
     });
-  }
-
-  const calendar = new tui.Calendar("#calendarContainer", {
-    usageStatistics: false,
-    isReadOnly: true,
-    disableClick: true,
-    disableDblClick: true,
-    useDetailPopup: true,
-
-    defaultView: window.screen.width >= 760 ? "week" : "day",
-    taskView: false,
-    scheduleView: ['time'],
-    timezone: {
-      zones: timezones,
-    },
-
-    theme: {
-      "common.border": "1px solid #abcdef",
-      "common.backgroundColor": "inherit",
-      "common.holiday.color": "inherit",
-      "common.saturday.color": "inherit",
-      "common.dayname.color": "inherit",
-      "common.today.color": CALENDAR_HIGHLIGHT_COLOR,
-
-      "month.dayname.borderLeft": "1px solid #abcdef",
-
-      "month.moreView.border": "1px solid #abcdef",
-      "month.moreView.backgroundColor": "inherit",
-
-      "week.dayname.borderTop": "1px solid #abcdef",
-      "week.dayname.borderBottom": "1px solid #abcdef",
-      "week.today.color": CALENDAR_HIGHLIGHT_COLOR,
-      "week.pastDay.color": "inherit",
-
-      "week.vpanelSplitter.border": "1px solid #abcdef",
-
-      "week.daygrid.borderRight": "1px solid #abcdef",
-
-      "week.timegridLeft.backgroundColor": "transparent", // bugged
-      "week.timegridLeft.borderRight": "2px solid #abcdef",
-      "week.timegridLeftAdditionalTimezone.backgroundColor": "inherit",
-
-      "week.timegridHorizontalLine.borderBottom": "1px solid #abcdef",
-
-      "week.timegrid.borderRight": "1px solid #abcdef",
-
-      "week.currentTime.color": CALENDAR_HIGHLIGHT_COLOR,
-
-      "week.pastTime.color": "inherit",
-
-      "week.futureTime.color": "inherit",
-
-      "week.currentTimeLinePast.border": `1px dashed ${CALENDAR_HIGHLIGHT_COLOR}`,
-      "week.currentTimeLineBullet.backgroundColor": CALENDAR_HIGHLIGHT_COLOR,
-      "week.currentTimeLineToday.border": `1px solid ${CALENDAR_HIGHLIGHT_COLOR}`,
-    },
-    template: {
-      timegridDisplayPrimaryTime(time) {
-        const suffix = time.hour >= 12 ? "PM" : "AM";
-        const hour = time.hour >= 13 ? time.hour - 12 : time.hour;
-        return `${hour} ${suffix}`;
-      },
-      timegridDisplayTime(time) {
-        return `${String(time.hour).padStart(2, "0")}:${String(time.minutes).padStart(2, "0")}`;
-      },
-    },
-    week: {
-      hourStart: hourStart,
-      hourEnd: hourEnd,
-      workweek: true,
-    },
-  });
-
-  const allEvents = [];
-  const eventFilters = {
-    categories: {
-      disc: true,
-      lecture: true,
-      oh: true,
-      review: true,
-      party: true,
-      exam: true,
-    },
-  };
-  function syncFilters() {
-    for (const [categoryName, isCategoryActive] of Object.entries(eventFilters.categories)) {
-      const elem = document.querySelector(`#calendarControls a[data-action='toggle-category-${categoryName}']`);
-      if (!elem) continue;
-      if (isCategoryActive) {
-        elem.classList.add("active");
+    request.execute((resp) => {
+      const events = [];
+      if (resp.error) {
+        console.error(
+          `[calendar] error loading ${options.calendarID}: ${resp.error.message}`,
+        );
       } else {
-        elem.classList.remove("active");
-      }
-    }
+        for (const item of resp.items) {
+          if (item.visibility === "private") continue;
 
-    const events = [];
-    for (const event of allEvents) {
-      if (eventFilters.categories[event.cs161Category]) {
-        events.push(event);
-      }
-    }
-    calendar.clear();
-    calendar.createSchedules(events);
-  }
+          let title = item.summary;
 
-  document.querySelectorAll("#calendarControls a").forEach((elem) => {
-    elem.addEventListener("click", (e) => {
-      e.preventDefault();
+          // remove prefix (e.g. class name and sem) from every event
+          // added by peyrin Jan 2025
+          title = title.replace("{{ site.data.calendar.remove_prefix }}", "");
 
-      if (elem.dataset.action.startsWith("move-")) {
-        calendar[elem.dataset.action.slice("move-".length)]();
-      } else if (elem.dataset.action.startsWith("change-view-")) {
-        calendar.changeView(elem.dataset.action.slice("change-view-".length));
-      } else if (elem.dataset.action.startsWith("toggle-category-")) {
-        const category = elem.dataset.action.slice("toggle-category-".length);
-        eventFilters.categories[category] = !eventFilters.categories[category];
-        syncFilters();
-      }
-    });
-  });
-
-  const googleAPIKey = '{{ site.data.calendar.google_api_key }}';
-  const calendarInfoArr = [
-    { id: "{{ site.data.calendar.google_calendar_id }}", name: "Events" },
-  ];
-  const spinnerElem = document.getElementById("calendarSpinner");
-
-  if (spinnerElem) {
-    spinnerElem.classList.remove("d-none");
-  }
-  let loadCount = calendarInfoArr.length;
-  function onCalendarLoad(events) {
-    for (const event of events) {
-      allEvents.push(event);
-    }
-    syncFilters();
-    loadCount -= 1;
-    if (loadCount <= 0) {
-      spinnerElem.classList.add("d-none");
-    }
-  }
-  gapi.load("client", () => {
-    gapi.client.setApiKey(googleAPIKey);
-    gapi.client.load("calendar", "v3", () => {
-      for (const { id: calendarID } of calendarInfoArr) {
-        loadGoogleCalendar(calendar, {
-          calendarID,
-          addProps(_, event) {
-            let bgColor = CALENDAR_EVENT_GENERIC_BACKGROUND_COLOR;
-            let borderColor = CALENDAR_EVENT_GENERIC_BORDER_COLOR;
-            let color = CALENDAR_EVENT_GENERIC_COLOR;
-            if (event.colorCategory) {
-              bgColor = `var(--cal-event-${event.colorCategory}-bg, ${CALENDAR_EVENT_GENERIC_BACKGROUND_COLOR})`;
-              borderColor = `var(--cal-event-${event.colorCategory}-border, var(----cal-event-generic-border, ${bgColor}))`;
-              color = `var(--cal-event-${event.colorCategory}-fg, ${CALENDAR_EVENT_GENERIC_COLOR})`;
+          let category = undefined;
+          if (!item.summary) {
+            console.error("error with item", item);
+          } else {
+            for (const potentialCategory of CALENDAR_CATEGORIES) {
+              if (potentialCategory.match) {
+                let expr = new RegExp(potentialCategory.match);
+                if (expr.test(title.toLowerCase())) {
+                  category = potentialCategory.id;
+                  break;
+                }
+              }
             }
-            return {
-              bgColor,
-              borderColor,
-              color,
-            };
-          },
-        }, onCalendarLoad);
+          }
+
+          const event = {
+            id: item.id,
+            calendarId: options.calendarID,
+            title,
+            body: item.description,
+            location: item.location ?? "",
+            start: item.start.dateTime,
+            end: item.end.dateTime,
+            category,
+            links: {
+              clone: item.htmlLink
+                ? `https://calendar.google.com/calendar/u/0/r/eventedit/copy/${item.htmlLink.split("eid=")[1]}`
+                : undefined,
+              view: item.htmlLink,
+            },
+          };
+
+          if (options.addProps) {
+            const obj = options.addProps(item, event);
+            for (const [key, val] of Object.entries(obj)) {
+              if (val !== undefined) {
+                event[key] = val;
+              }
+            }
+          }
+          events.push(event);
+        }
       }
+
+      cb(events);
     });
-  });
-
-  const calendarTable = document.getElementById("calendarTable");
-  if (calendarTable) {
-    calendarTable.classList.remove("d-none");
-
-    for (const calendarInfo of calendarInfoArr) {
-      const row = calendarTable.insertRow();
-      const nameCell = row.insertCell();
-      nameCell.innerHTML = calendarInfo.name;
-      const linkCell = row.insertCell();
-      const linkElem = document.createElement("a");
-      linkElem.href = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarInfo.id)}`;
-      linkElem.innerText = "Google Calendar";
-      linkCell.appendChild(linkElem);
-    }
   }
-};
+
+  /* global initCalendar */
+  window.initCalendar = function initCalendar() {
+    if (!document.getElementById("calendarContainer")) return;
+
+    const berkeleyTimeZoneName = "America/Los_Angeles";
+    const hourStart = 8; // in Berkeley timezone
+    const hourEnd = 22;
+
+    calendar = window.SiteCalendar.Calendar("#calendarContainer", {
+      currentMode: window.screen.width >= 760 ? "week" : "day",
+      showLocal: true,
+      defaultTimezone: berkeleyTimeZoneName,
+      defaultTimezoneName: "Berkeley",
+      startTime: hourStart,
+      endTime: hourEnd,
+      weekends: false,
+      colorScheme: window
+        .getComputedStyle(document.documentElement)
+        .getPropertyValue("color-scheme"),
+      categories: CALENDAR_CATEGORIES,
+    });
+
+    const allEvents = [];
+
+    const googleAPIKey = "{{ site.data.calendar.google_api_key }}";
+    const calendarInfoArr = [
+      {
+        id: "{{ site.data.calendar.google_calendar_id }}",
+        name: "Events",
+      },
+    ];
+
+    const buttonGroups = [
+      ...new Set(
+        CALENDAR_CATEGORIES.map((category) =>
+          category.name.toLowerCase().replaceAll(" ", "-"),
+        ),
+      ),
+    ];
+    const inactiveGroups = [];
+
+    let loadCount = calendarInfoArr.length;
+    function onCalendarLoad(events) {
+      for (const event of events) {
+        allEvents.push(event);
+      }
+      loadCount -= 1;
+      if (loadCount == 0) {
+        calendar.addEvents(allEvents);
+
+        // When we're done loading, activate our filter buttons.
+        document
+          .querySelectorAll("#calendarControls button")
+          .forEach((elem) => {
+            let action = elem.getAttribute("data-action");
+            if (action != undefined) {
+              elem.classList.add("active");
+            }
+
+            elem.addEventListener("click", (e) => {
+              e.preventDefault();
+
+              let group = elem
+                .getAttribute("data-action")
+                .replace("toggle-category-", "");
+              if (action != undefined && !inactiveGroups.includes(group)) {
+                elem.classList.remove("active");
+                inactiveGroups.push(group);
+              } else {
+                elem.classList.add("active");
+                const idx = inactiveGroups.indexOf(group);
+                inactiveGroups.splice(idx, 1);
+              }
+
+              // Update the filter, since the only way to rerun it is to
+              // update it.
+              calendar.updateFilter((event) => {
+                return (
+                  event.category == undefined ||
+                  inactiveGroups.includes(
+                    event.category.name.toLowerCase().replaceAll(" ", "-"),
+                  ) == false
+                );
+              });
+            });
+          });
+      }
+    }
+
+    gapi.load("client", () => {
+      gapi.client.setApiKey(googleAPIKey);
+      gapi.client.load("calendar", "v3", () => {
+        for (const { id: calendarID } of calendarInfoArr) {
+          loadGoogleCalendar(
+            calendar,
+            {
+              calendarID,
+            },
+            onCalendarLoad,
+          );
+        }
+      });
+    });
+
+    const calendarTable = document.getElementById("calendarTable");
+    if (calendarTable) {
+      calendarTable.classList.remove("d-none");
+
+      for (const calendarInfo of calendarInfoArr) {
+        const row = calendarTable.insertRow();
+        const nameCell = row.insertCell();
+        nameCell.innerHTML = calendarInfo.name;
+        const linkCell = row.insertCell();
+        const linkElem = document.createElement("a");
+        linkElem.href = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarInfo.id)}`;
+        linkElem.innerText = "Google Calendar";
+        linkCell.appendChild(linkElem);
+      }
+    }
+  };
 </script>
 
+<link rel="stylesheet" href="/assets/css/calendar.min.css" />
+<script defer src="/assets/js/calendar.min.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tui-calendar/1.15.1/tui-calendar.min.css" integrity="sha512-2HVjcWztZ77f2uDSP5O5qMwC6cvcO4qrSmtCgjfjdHYClvt4wXOV0mLqn3mDftYVrTJAT21G/1+afsO/bOmTkA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tui-code-snippet/1.5.2/tui-code-snippet.min.js" integrity="sha512-754Rt/J2aGw7Dt7+vvo4UFUHar2Ok+kBuMRZO16i5RU5HgOY0pqamvgzp8sSIRhPrx9OoOXyCLMBbFbRvybCfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tui-calendar/1.15.1/tui-calendar.min.js" integrity="sha512-gPrxfZOhwtiDm78fwWIygNRGG/8+3ikwiSKuM+wZj89evK95JU02yjFxIDU9OTPsqRKSp3fG/SzoYmHQWBXBIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script defer src="https://apis.google.com/js/api.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+  defer
+  src="https://apis.google.com/js/api.js"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
