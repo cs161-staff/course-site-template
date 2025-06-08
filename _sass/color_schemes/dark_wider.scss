@@ -403,3 +403,29 @@ kbd {
     box-shadow: 0 1px 0 0.5px #44434d;
   }
 }
+
+#staffButtonContainer {
+  --btn-primary: #a0cfee;
+  --btn-primary-rgb: 160, 207, 238;
+  --bs-body-bg: #27262b;
+
+  .btn-outline-primary {
+    border-color: var(--btn-primary) !important;
+    color: var(--btn-primary) !important;
+    &.disabled,
+    &:disabled {
+      background-color: unset !important;
+      color: rgba(var(--btn-primary-rgb), 0.7) !important;
+    }
+    &.active, &:active {
+      background-color: var(--btn-primary) !important;
+      border-color: var(--btn-primary) !important;
+      color: var(--bs-body-bg) !important;
+    }
+    &:hover, &:focus {
+      background-color: rgba(var(--btn-primary-rgb), 0.7) !important;
+      border-color: rgba(var(--btn-primary-rgb), 0.7) !important;
+      color: var(--bs-body-bg) !important;
+    }
+  }
+}

@@ -383,3 +383,29 @@ kbd {
     box-shadow: 0 1px 0 0.5px #e6e1e8;
   }
 }
+
+#staffEmailContainer {
+  --btn-primary: #3b18d8;
+  --btn-primary-rgb: 59, 24, 216;
+  --bs-body-bg: #ffffff;
+
+  .btn-outline-primary {
+    border-color: var(--btn-primary) !important;
+    color: var(--btn-primary) !important;
+    &.disabled, &:disabled {
+      background-color: unset !important;
+      color: rgba(var(--btn-primary-rgb), 0.7) !important;
+    }
+    &.active, &:active {
+      background-color: var(--btn-primary) !important;
+      border-color: var(--btn-primary) !important;
+      color: var(--bs-body-bg) !important;
+    }
+    &:hover,
+    &:focus {
+      background-color: rgba(var(--btn-primary-rgb), 0.7) !important;
+      border-color: rgba(var(--btn-primary-rgb), 0.7) !important;
+      color: var(--bs-body-bg) !important;
+    }
+  }
+}

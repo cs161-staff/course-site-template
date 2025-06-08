@@ -18,6 +18,7 @@ description: Course Name at School Name
 baseurl: '' # the subpath of your site, e.g. /blog
 url:
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor"]
+staff_email: 'evanbot@berkeley.edu'
 
 # Heading settings
 lecture:

@@ -16,4 +16,8 @@
   .staffer-pronouns {
     @extend .label;
   }
+
+  .staff-email {
+    display: none;
+  }
 }
