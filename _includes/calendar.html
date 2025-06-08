@@ -62,10 +62,14 @@
             end: item.end.dateTime,
             category,
             links: {
-              clone: item.htmlLink
-                ? `https://calendar.google.com/calendar/u/0/r/eventedit/copy/${item.htmlLink.split("eid=")[1]}`
-                : undefined,
-              view: item.htmlLink,
+              left: item.htmlLink ? {
+                text: "Open in Google Calendar",
+                url: item.htmlLink,
+              } : undefined,
+              right: item.htmlLink ? {
+                text: "Copy to your calendar",
+                url: `https://calendar.google.com/calendar/u/0/r/eventedit/copy/${item.htmlLink.split("eid=")[1]}`
+              } : undefined,
             },
           };
 
