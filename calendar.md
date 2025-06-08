@@ -26,13 +26,21 @@ This website contains materials from a past semester. Information, assignments, 
 </p>
 {%- endif -%}
 
-If you would like to view this calendar ouside of the course website, please click "Open in Google Calendar" below. If you would like to add an accessible version of this calendar to your personal Google Calendar, please click "Add to your personal calendar" below.
+If you would like to view this calendar ouside of the course website, please click "Open in Google Calendar" below. If you would like to add this calendar to your personal Google Calendar, please click "Add to your personal calendar" below.
 
 [Open in Google Calendar]({{ site.data.calendar.google_calendar_embed_link }}){: .btn .btn-outline .fs-3 } [Add to your personal calendar]({{ site.data.calendar.google_calendar_add_link }}){: .btn .btn-outline .fs-3 }
 
 {% include calendar.html %}
 
 <div id="calendarContainer">
+  Alongside tab navigation, the following keyboard shortcuts are available for use on this page:
+  <div id="calendarShortcuts" class="justify-content-between">
+    <span class="shortcut"><kbd aria-label="Left Arrow" title="Left Arrow" style="margin-right: 0.2em;">￩</kbd> Jump to Previous Period</span>
+    <span class="shortcut"><kbd aria-label="Right Arrow" title="Right Arrow" style="margin-right: 0.2em;">￫</kbd> Jump to Next Period</span>
+    <span class="shortcut"><kbd style="margin-right: 0.2em;">t</kbd> Jump to Today</span>
+    <span class="shortcut"><kbd style="margin-right: 0.2em;">d</kbd> Switch to Day View</span>
+    <span class="shortcut"><kbd style="margin-right: 0.2em;">w</kbd> Switch to Week View</span>
+  </div>
   <div id="calendarControls" class="btn-toolbar justify-content-between" role="toolbar" aria-label="Calendar control toolbar">
     Use the following toggles to customize your calendar view. If you'd like to hide a category of events, click on the respective button to do so. The calendar will immediately update to reflect your selection. To re-enable that category, click again.
     <span style="display: block; height: 1rem;"></span>

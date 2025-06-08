@@ -371,3 +371,35 @@ pre.highlight {
     }
   }
 }
+
+// Button outline seems to be based on the gray modified above.
+.btn-outline {
+  box-shadow: inset 0 0 0 2px #44434d !important;
+
+  &:hover {
+    box-shadow: inset 0 0 0 3px #44434d !important;
+  }
+
+  &:active {
+    box-shadow:
+      inset 0 0 0 2px #5c5962,
+      0 0 0 3px rgba(0, 0, 255, 0.25) !important;
+  }
+
+  &:focus {
+    box-shadow:
+      inset 0 0 0 2px #5c5962,
+      0 0 0 3px rgba(0, 0, 255, 0.25) !important;
+  }
+}
+
+kbd {
+  background-color: #302d36;
+  color: #ecebed;
+  border-color: #44434d;
+  box-shadow: 0 2px 0 1px #44434d;
+
+  &:hover {
+    box-shadow: 0 1px 0 0.5px #44434d;
+  }
+}
