@@ -299,3 +299,38 @@ h2.text-delta + ul a, #markdown-toc a {
 }
 
 // End 61C Calendar config
+
+// kbd styling "inspired by" https://dylanatsmith.com/wrote/styling-the-kbd-element
+// colors in wider/dark-wider
+#calendarShortcuts {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  
+  > .shortcut {
+    margin-left: 1em;
+    margin-right: 1em;
+    white-space: nowrap;
+  }
+}
+
+kbd {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-style: solid;
+  cursor: default;
+  /* font-size: 0.75em; */
+  line-height: 1;
+  min-width: 0.75rem;
+  display: inline-block;
+  text-align: center;
+  padding: 2px 5px;
+  position: relative;
+  top: -1px;
+  
+  &:hover {
+    top: 1px;
+  }
+}
+
+// end kbd styling
