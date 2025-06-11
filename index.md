@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: page
 nav_order: 0
 ---
 
@@ -9,21 +9,9 @@ nav_order: 0
 {%- assign instructor_msg = "Instructors" -%}
 {%- endif -%}
 
-{%- if site.under_construction -%}
-<p class="warning">
-This site is under construction. All dates and policies are tentative until this message goes away.
-</p>
-{%- endif -%}
-
 {%- if site.waitlist_warning -%}
 <p class="warning">
 If you're currently on the waitlist, or have any other course-related logistics questions, please take a look at our <a href="{{ site.baseurl }}/resources/faqs">Course FAQs</a> prior to contacting course staff.
-</p>
-{%- endif -%}
-
-{%- if site.outdated -%}
-<p class="warning">
-This website contains materials from a past semester. Information, assignments, and announcements may no longer be relevant. Please refer to the <a href="https://template.cs161.org">current semester's site</a> for up-to-date content.
 </p>
 {%- endif -%}
 

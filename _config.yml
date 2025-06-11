@@ -80,7 +80,7 @@ enable_announcements: true
 #######################################################
 
 # Set this to true at the start of semesters to show a warning on every page.
-under_construction: false
+under_construction: true
 
 # Set this to true to show a warning telling people on the waitlist to check FAQs.
 waitlist_warning: false
@@ -90,7 +90,13 @@ waitlist_warning: false
 discussions_under_construction: false
 
 # Set this to true to archive the semester and show a warning on every page.
-outdated: false
+outdated: true
+
+# - If you set outdated, what is the latest site URL that we should link to?
+# - Ideally this is a URL that always redirects to your current semester, e.g.
+#   https://cs161.org or https://inst.eecs.berkeley.edu/~cs188
+# - This is only used in _layouts/page.html and _layouts/project.html.
+latest_sem: "https://template.cs161.org"
 
 
 #######################################################
