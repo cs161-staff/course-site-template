@@ -40,6 +40,15 @@ baseurl: ""
 # - The full URL of your homepage.
 url: "https://template.cs161.org"
 
+# - Used in _includes/title.html
+# - Path to an image to display in the sidebar (or top bar on mobile). Leave blank to omit.
+logo: '/assets/images/logo.png'
+
+# - Used in _includes/title.html
+# - Optional text that replaces site.title at the top of the sidebar when set.
+# - If logo is set and shorthand_text is left blank, the logo will take up 100% of the space.
+shorthand_text: 'Course Name'
+
 # - Can be used throughout the website (e.g. project specs).
 # - Example: In the spec, write "Pull from the skeleton-{{ site.semester_slug }} repo."
 #   This will automatically update to "skeleton-fa24" or "skeleton-sp25" each semester.
