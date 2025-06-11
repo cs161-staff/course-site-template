@@ -68,7 +68,7 @@ This website contains materials from a past semester. Information, assignments, 
 {{ site.announcements.last }}
 
 [Past announcements](announcements.md){: .btn .btn-outline .fs-3 }
-{%- endif -%}
+{%- endif %}
 
 ## Course Calendar
 
