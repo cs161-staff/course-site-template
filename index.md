@@ -62,6 +62,14 @@ This website contains materials from a past semester. Information, assignments, 
 </span>
 {% endif -%}
 
+{%- if site.enable_announcements -%}
+## Announcements
+
+{{ site.announcements.last }}
+
+[Past announcements](announcements.md){: .btn .btn-outline .fs-3 }
+{%- endif %}
+
 ## Course Calendar
 
 [Skip to current week](#week-{{ 'now' | date: '%U' }}){: .btn .btn-outline .fs-3 }
