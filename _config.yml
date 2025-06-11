@@ -80,9 +80,6 @@ enable_announcements: true
 # - Set this to true at the start of semesters to show a warning on every page.
 under_construction: false
 
-# - Set this to true to show a warning telling people on the waitlist to check FAQs.
-waitlist_warning: false
-
 # - Set this to true in the first few weeks of the semester
 #   if discussion times are uncertain (populates on calendar.md only).
 discussions_under_construction: false

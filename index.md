@@ -9,13 +9,6 @@ nav_order: 0
 {%- assign instructor_msg = "Instructors" -%}
 {%- endif -%}
 
-{%- if site.waitlist_warning -%}
-<p class="warning">
-If you're currently on the waitlist, or have any other course-related logistics questions, please take a look at our <a href="{{ site.baseurl }}/resources/faqs">Course FAQs</a> prior to contacting course staff.
-</p>
-{%- endif -%}
-
-
 <img align="right" alt="161 lock logo" width="85px" src="{{ site.baseurl }}/assets/images/logo.png">
 
 # {{ site.title }}
