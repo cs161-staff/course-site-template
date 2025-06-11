@@ -126,15 +126,21 @@ callouts:
   warning:
     title: Warning
     color: yellow
+  info:
+    title: Info
+    color: purple
+  tip:
+    title: Tip
+    color: green
+  task:
+    title: Task
+    color: blue
+  danger: 
+    title: Danger
+    color: red
   story: # CS 161 custom config for story
     title: Story
     color: blue
-  example: # CS 161 custom config for proj2
-    title: Example
-    color: blue
-  question: # CS 161 custom config for proj2
-    title: Design Question
-    color: green
 
 
 #######################################################
