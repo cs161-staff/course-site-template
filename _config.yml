@@ -141,7 +141,7 @@ callouts:
 # If you have files that should not be built on the website, list them here.
 # Example: Your project spec has a README that's for staff editing the spec.
 # Example: You have a Python script you use to automate something in the repo.
-exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor"]
+exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor", "README.md"]
 
 # Every few years, we may need to update the JTD version to pull from upstream.
 remote_theme: just-the-docs/just-the-docs@v0.8.2
