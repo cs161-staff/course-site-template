@@ -20,6 +20,9 @@ url:
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor"]
 staff_email: 'evanbot@berkeley.edu'
 
+logo: '/assets/images/logo.png'
+shorthand_text: 'Course Name'
+
 # Heading settings
 lecture:
   time: "Date Time"
