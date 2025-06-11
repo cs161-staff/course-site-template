@@ -1,3 +1,7 @@
+#################################
+# Official Jekyll documentation #
+#################################
+
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole site, values
@@ -13,14 +17,40 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Course Name
-description: Course Name at School Name
-baseurl: '' # the subpath of your site, e.g. /blog
-url:
-exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor"]
-staff_email: 'evanbot@berkeley.edu'
 
-# Heading settings
+
+#######################################################
+# Config you may need to change once per semester     #
+#######################################################
+
+# Jekyll default variables.
+# For the title on the homepage, the name people see in the browser tab, etc.
+title: "Course Name"
+description: "Course Name at School Name"
+
+# Jekyll default variable.
+# The subpath of your site, e.g. /blog
+#
+# Example: If you build your site to inst.eecs.berkeley.edu/~cs188/sp25,
+#          then this should say "/~cs188/sp25"
+# Example: If you build your site to sp25.cs161.org,
+#          then this should say "" since there is no subpath
+baseurl: ""
+
+# Jekyll default variable.
+# The full URL of your homepage.
+url: "https://template.cs161.org"
+
+# Can be used throughout the website (e.g. project specs).
+#
+# Example: In the spec, write "Pull from the skeleton-{{ site.semester_slug }} repo."
+# This will automatically update to "skeleton-fa24" or "skeleton-sp25" each semester.
+semester_slug: sp25
+semester_full: Spring 2025
+
+# Updates the top line of the homepage.
+# Example: "Instructor: EvanBot / Lecture: Date Time, Location [Zoom, Playlist]"
+# Note: Instructor is pulled from the _staffers folder.
 lecture:
   time: "Date Time"
   location:
@@ -31,14 +61,44 @@ heading_links:
     url: ""
   - text: "Playlist"
     url: ""
+
+# More documentation in _data/lectures.yml. Used in _includes/lecture.yml.
+# If your lecture slides are Google Slides links, ignore this.
+# If your lecture slides are PDFs in this repo, update this.
 lecture_prefix: "csXXX-sp25-lec"
 
-# Theme settings
-remote_theme: just-the-docs/just-the-docs@v0.8.2
-color_scheme: light
-search_enabled: true
-heading_anchors: true
-permalink: pretty
+# Used on staff.md to show students the staff email.
+staff_email: "evanbot@berkeley.edu"
+
+# Use this to show/hide the "announcements" feature on the homepage.
+# Add your weekly announcements in the _announcements folder.
+enable_announcements: true
+
+
+#######################################################
+# Config to show/hide warnings on pages               #
+#######################################################
+
+# Set this to true at the start of semesters to show a warning on every page.
+under_construction: false
+
+# Set this to true to show a warning telling people on the waitlist to check FAQs.
+waitlist_warning: false
+
+# Set this to true in the first few weeks of the semester
+# if discussion times are uncertain (populates on calendar.md only).
+discussions_under_construction: false
+
+# Set this to true to archive the semester and show a warning on every page.
+outdated: false
+
+
+#######################################################
+# Config for external links in the top-right corner   #
+#######################################################
+
+# Leave "Dark Mode" unchanged. It uses Javascript to toggle dark mode.
+
 aux_links:
   Dark Mode:
     - '#'
@@ -48,6 +108,49 @@ aux_links:
     - 'https://oh.cs161.org'
   Source Code on GitHub:
     - 'https://github.com/cs161-staff/course-site-template'
+
+
+#######################################################
+# Config to show colored callout blocks on pages      #
+#######################################################
+
+# See official JTD for documentation:
+# https://just-the-docs.com/docs/ui-components/callouts/
+# https://just-the-docs.com/docs/configuration/#callouts
+
+callouts:
+  warning:
+    title: Warning
+    color: yellow
+  story: # CS 161 custom config for story
+    title: Story
+    color: blue
+  example: # CS 161 custom config for proj2
+    title: Example
+    color: blue
+  question: # CS 161 custom config for proj2
+    title: Design Question
+    color: green
+
+
+#######################################################
+# Config you will probably never need to change,      #
+# unless you are rebuilding the website               #
+#######################################################
+
+# If you have files that should not be built on the website, list them here.
+# Example: Your project spec has a README that's for staff editing the spec.
+# Example: You have a Python script you use to automate something in the repo.
+exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor"]
+
+# Every few years, we may need to update the JTD version to pull from upstream.
+remote_theme: just-the-docs/just-the-docs@v0.8.2
+
+color_scheme: wider
+search_enabled: true
+heading_anchors: true
+enable_copy_code_button: true
+permalink: pretty
 footer_content:
 
 # Collections for website data
@@ -90,38 +193,3 @@ compress_html:
 
 plugins:
   - jekyll-seo-tag
-
-color_scheme: wider
-
-callouts:
-  warning:
-    title: Warning
-    color: yellow
-  story: # CS 161 custom config for story
-    title: Story
-    color: blue
-  example: # CS 161 custom config for proj2
-    title: Example
-    color: blue
-  question: # CS 161 custom config for proj2
-    title: Design Question
-    color: green
-
-# For copy button on code
-enable_copy_code_button: true
-
-# To use the "announcements" feature
-enable_announcements: true
-
-# CS 188 custom config variable
-# Set this to true at the start of semesters to show a warning on the homepage
-under_construction: false
-
-# Set this to true to show a warning telling people on the waitlist to check FAQs
-waitlist_warning: false
-
-# Set this to true if discussion times are uncertain (populates on calendar.md)
-discussions_under_construction: false
-
-# Set this to true to archive the semester
-outdated: false
