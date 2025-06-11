@@ -8,21 +8,9 @@ nav_order: 1
 
 {% assign button_groups = site.data.calendar.categories | map: "name" | uniq %}
 
-{%- if site.under_construction -%}
-<p class="warning">
-This site is under construction. All dates and policies are tentative until this message goes away.
-</p>
-{%- endif -%}
-
 {%- if site.discussions_under_construction -%}
 <p class="warning">
 This schedule is tentative; additional times may be added later. The existing times shouldn’t change though (pending a couple of room bookings).
-</p>
-{%- endif -%}
-
-{%- if site.outdated -%}
-<p class="warning">
-This website contains materials from a past semester. Information, assignments, and announcements may no longer be relevant. Please refer to the <a href="https://template.cs161.org">current semester's site</a> for up-to-date content.
 </p>
 {%- endif -%}
 
