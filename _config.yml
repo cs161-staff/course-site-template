@@ -23,34 +23,32 @@
 # Config you may need to change once per semester     #
 #######################################################
 
-# Jekyll default variables.
-# For the title on the homepage, the name people see in the browser tab, etc.
+# - Jekyll default variables.
+# - For the title on the homepage, the name people see in the browser tab, etc.
 title: "Course Name"
 description: "Course Name at School Name"
 
-# Jekyll default variable.
-# The subpath of your site, e.g. /blog
-#
-# Example: If you build your site to inst.eecs.berkeley.edu/~cs188/sp25,
-#          then this should say "/~cs188/sp25"
-# Example: If you build your site to sp25.cs161.org,
-#          then this should say "" since there is no subpath
+# - Jekyll default variable.
+# - The subpath of your site, e.g. /blog
+# - Example: If you build your site to inst.eecs.berkeley.edu/~cs188/sp25,
+#   then this should say "/~cs188/sp25"
+# - Example: If you build your site to sp25.cs161.org,
+#   then this should say "" since there is no subpath
 baseurl: ""
 
-# Jekyll default variable.
-# The full URL of your homepage.
+# - Jekyll default variable.
+# - The full URL of your homepage.
 url: "https://template.cs161.org"
 
-# Can be used throughout the website (e.g. project specs).
-#
-# Example: In the spec, write "Pull from the skeleton-{{ site.semester_slug }} repo."
-# This will automatically update to "skeleton-fa24" or "skeleton-sp25" each semester.
+# - Can be used throughout the website (e.g. project specs).
+# - Example: In the spec, write "Pull from the skeleton-{{ site.semester_slug }} repo."
+#   This will automatically update to "skeleton-fa24" or "skeleton-sp25" each semester.
 semester_slug: sp25
 semester_full: Spring 2025
 
-# Updates the top line of the homepage.
-# Example: "Instructor: EvanBot / Lecture: Date Time, Location [Zoom, Playlist]"
-# Note: Instructor is pulled from the _staffers folder.
+# - Updates the top line of the homepage, i.e. the one that says
+#   "Instructor: EvanBot / Lecture: Date Time, Location [Zoom, Playlist]"
+# - Note: Instructor is pulled from the _staffers folder.
 lecture:
   time: "Date Time"
   location:
@@ -62,16 +60,16 @@ heading_links:
   - text: "Playlist"
     url: ""
 
-# More documentation in _data/lectures.yml. Used in _includes/lecture.yml.
-# If your lecture slides are Google Slides links, ignore this.
-# If your lecture slides are PDFs in this repo, update this.
+# - More documentation in _data/lectures.yml. Used in _includes/lecture.yml.
+# - If your lecture slides are Google Slides links, ignore this.
+# - If your lecture slides are PDFs in this repo, update this.
 lecture_prefix: "csXXX-sp25-lec"
 
-# Used on staff.md to show students the staff email.
+# - Used on staff.md to show students the staff email.
 staff_email: "evanbot@berkeley.edu"
 
-# Use this to show/hide the "announcements" feature on the homepage.
-# Add your weekly announcements in the _announcements folder.
+# - Use this to show/hide the "announcements" feature on the homepage.
+# - Add your weekly announcements in the _announcements folder.
 enable_announcements: true
 
 
@@ -79,17 +77,17 @@ enable_announcements: true
 # Config to show/hide warnings on pages               #
 #######################################################
 
-# Set this to true at the start of semesters to show a warning on every page.
+# - Set this to true at the start of semesters to show a warning on every page.
 under_construction: false
 
-# Set this to true to show a warning telling people on the waitlist to check FAQs.
+# - Set this to true to show a warning telling people on the waitlist to check FAQs.
 waitlist_warning: false
 
-# Set this to true in the first few weeks of the semester
-# if discussion times are uncertain (populates on calendar.md only).
+# - Set this to true in the first few weeks of the semester
+#   if discussion times are uncertain (populates on calendar.md only).
 discussions_under_construction: false
 
-# Set this to true to archive the semester and show a warning on every page.
+# - Set this to true to archive the semester and show a warning on every page.
 outdated: false
 
 # - If you set outdated, what is the latest site URL that we should link to?
@@ -103,7 +101,7 @@ latest_sem: "https://template.cs161.org"
 # Config for external links in the top-right corner   #
 #######################################################
 
-# Leave "Dark Mode" unchanged. It uses Javascript to toggle dark mode.
+# - Leave "Dark Mode" unchanged. It uses Javascript to toggle dark mode.
 
 aux_links:
   Dark Mode:
@@ -120,9 +118,9 @@ aux_links:
 # Config to show colored callout blocks on pages      #
 #######################################################
 
-# See official JTD for documentation:
-# https://just-the-docs.com/docs/ui-components/callouts/
-# https://just-the-docs.com/docs/configuration/#callouts
+# - See official JTD for documentation:
+# - https://just-the-docs.com/docs/ui-components/callouts/
+# - https://just-the-docs.com/docs/configuration/#callouts
 
 callouts:
   warning:
@@ -144,12 +142,12 @@ callouts:
 # unless you are rebuilding the website               #
 #######################################################
 
-# If you have files that should not be built on the website, list them here.
-# Example: Your project spec has a README that's for staff editing the spec.
-# Example: You have a Python script you use to automate something in the repo.
+# - If you have files that should not be built on the website, list them here.
+# - Example: Your project spec has a README that's for staff editing the spec.
+# - Example: You have a Python script you use to automate something in the repo.
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor", "README.md"]
 
-# Every few years, we may need to update the JTD version to pull from upstream.
+# - Every few years, we may need to update the JTD version to pull from upstream.
 remote_theme: just-the-docs/just-the-docs@v0.8.2
 
 color_scheme: wider
