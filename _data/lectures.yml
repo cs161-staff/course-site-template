@@ -12,11 +12,12 @@
 # Pad lecture numbers, e.g. lecture 2 uses "02", not "2".
 #
 # For example, the first few lecture slides should be put at:
-#   - /assets/lectures/csXXX-sp25-lec01.pdf
-#   - /assets/lectures/csXXX-sp25-lec02.pdf
+#   - /assets/lectures/cs101-sp25-lec01.pdf
+#   - /assets/lectures/cs101-sp25-lec02.pdf
 #     ...
-#   - /assets/lectures/csXXX-sp25-lec25.pdf
-# If you'd like a different prefix from csXXX-sp25-lec01, you can change this in _config.yml
+#   - /assets/lectures/cs101-sp25-lec25.pdf
+# If you'd like a different filepath or prefix (in the example, it's
+# /assets/lectures/cs161-sp25-lec in the example), change "lecture_prefix" below.
 
 # To link lecture recordings on the website, fill in the
 # recordings field in the corresponding lecture below.
@@ -26,10 +27,10 @@
 # in the right folder.
 #
 # For example, the first few lecture notes should be put at:
-#   - /assets/notes/csXXX-sp25-note01.pdf
-#   - /assets/notes/csXXX-sp25-note02.pdf
+#   - /assets/notes/cs101-sp25-note01.pdf
+#   - /assets/notes/cs101-sp25-note02.pdf
 #     ...
-#   - /assets/notes/csXXX-sp25-note25.pdf
+#   - /assets/notes/cs101-sp25-note25.pdf
 
 
 #####################################
@@ -49,6 +50,11 @@
 # on a date with a lecture, add the date to the extra_days field
 # in syllabus.yml (more documentation there). Then, to fill in your
 # new box, add an element in the array where the box would appear.
+
+# - You should not need to change these unless you're rebuilding the website.
+# - If your lecture slides are Google Slides links, ignore this.
+# - If your lecture slides are PDFs in this repo, update this.
+lecture_prefix: "/assets/lectures/cs101-sp25-lec"
 
 lectures:
   - title: "Introduction and Security Principles"

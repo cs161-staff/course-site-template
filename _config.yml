@@ -69,11 +69,6 @@ heading_links:
   - text: "Playlist"
     url: ""
 
-# - More documentation in _data/lectures.yml. Used in _includes/lecture.yml.
-# - If your lecture slides are Google Slides links, ignore this.
-# - If your lecture slides are PDFs in this repo, update this.
-lecture_prefix: "csXXX-sp25-lec"
-
 # - Used on staff.md to show students the staff email.
 staff_email: "evanbot@berkeley.edu"
 
