@@ -7,9 +7,7 @@
 
   let category_cnt = 0;
   const CALENDAR_CATEGORIES = JSON.parse(
-    `[{{ site.data.calendar.categories }}]`
-      .replaceAll("=>", ":")
-      .replaceAll("}}{", "}}, {"),
+    `[{{ site.data.calendar.categories }}]`.replaceAll('=>', ':').replaceAll('}}{', '}}, {')
   ).map((category) => {
     return { id: String(category_cnt++), ...category };
   });
@@ -18,28 +16,26 @@
     const request = gapi.client.calendar.events.list({
       calendarId: options.calendarID,
       maxResults: 2500,
-      orderBy: "startTime",
+      orderBy: 'startTime',
       singleEvents: true,
     });
     request.execute((resp) => {
       const events = [];
       if (resp.error) {
-        console.error(
-          `[calendar] error loading ${options.calendarID}: ${resp.error.message}`,
-        );
+        console.error(`[calendar] error loading ${options.calendarID}: ${resp.error.message}`);
       } else {
         for (const item of resp.items) {
-          if (item.visibility === "private") continue;
+          if (item.visibility === 'private') continue;
 
           let title = item.summary;
 
           // remove prefix (e.g. class name and sem) from every event
           // added by peyrin Jan 2025
-          title = title.replace("{{ site.data.calendar.remove_prefix }}", "");
+          title = title.replace('{{ site.data.calendar.remove_prefix }}', '');
 
           let category = undefined;
           if (!item.summary) {
-            console.error("error with item", item);
+            console.error('error with item', item);
           } else {
             for (const potentialCategory of CALENDAR_CATEGORIES) {
               if (potentialCategory.match) {
@@ -57,19 +53,23 @@
             calendarId: options.calendarID,
             title,
             body: item.description,
-            location: item.location ?? "",
+            location: item.location ?? '',
             start: item.start.dateTime,
             end: item.end.dateTime,
             category,
             links: {
-              left: item.htmlLink ? {
-                text: "Open in Google Calendar",
-                url: item.htmlLink,
-              } : undefined,
-              right: item.htmlLink ? {
-                text: "Copy to your calendar",
-                url: `https://calendar.google.com/calendar/u/0/r/eventedit/copy/${item.htmlLink.split("eid=")[1]}`
-              } : undefined,
+              left: item.htmlLink
+                ? {
+                    text: 'Open in Google Calendar',
+                    url: item.htmlLink,
+                  }
+                : undefined,
+              right: item.htmlLink
+                ? {
+                    text: 'Copy to your calendar',
+                    url: `https://calendar.google.com/calendar/u/0/r/eventedit/copy/${item.htmlLink.split('eid=')[1]}`,
+                  }
+                : undefined,
             },
           };
 
@@ -91,42 +91,36 @@
 
   /* global initCalendar */
   window.initCalendar = function initCalendar() {
-    if (!document.getElementById("calendarContainer")) return;
+    if (!document.getElementById('calendarContainer')) return;
 
-    const berkeleyTimeZoneName = "America/Los_Angeles";
+    const berkeleyTimeZoneName = 'America/Los_Angeles';
     const hourStart = 8; // in Berkeley timezone
     const hourEnd = 22;
 
-    calendar = window.SiteCalendar.Calendar("#calendarContainer", {
-      currentMode: window.screen.width >= 760 ? "week" : "day",
+    calendar = window.SiteCalendar.Calendar('#calendarContainer', {
+      currentMode: window.screen.width >= 760 ? 'week' : 'day',
       showLocal: true,
       defaultTimezone: berkeleyTimeZoneName,
-      defaultTimezoneName: "Berkeley",
+      defaultTimezoneName: 'Berkeley',
       startTime: hourStart,
       endTime: hourEnd,
       weekends: false,
-      colorScheme: window
-        .getComputedStyle(document.documentElement)
-        .getPropertyValue("color-scheme"),
+      colorScheme: window.getComputedStyle(document.documentElement).getPropertyValue('color-scheme'),
       categories: CALENDAR_CATEGORIES,
     });
 
     const allEvents = [];
 
-    const googleAPIKey = "{{ site.data.calendar.google_api_key }}";
+    const googleAPIKey = '{{ site.data.calendar.google_api_key }}';
     const calendarInfoArr = [
       {
-        id: "{{ site.data.calendar.google_calendar_id }}",
-        name: "Events",
+        id: '{{ site.data.calendar.google_calendar_id }}',
+        name: 'Events',
       },
     ];
 
     const buttonGroups = [
-      ...new Set(
-        CALENDAR_CATEGORIES.map((category) =>
-          category.name.toLowerCase().replaceAll(" ", "-"),
-        ),
-      ),
+      ...new Set(CALENDAR_CATEGORIES.map((category) => category.name.toLowerCase().replaceAll(' ', '-'))),
     ];
     const inactiveGroups = [];
 
@@ -140,78 +134,72 @@
         calendar.addEvents(allEvents);
 
         // When we're done loading, activate our filter buttons.
-        document
-          .querySelectorAll("#calendarControls button")
-          .forEach((elem) => {
-            let action = elem.getAttribute("data-action");
-            if (action != undefined) {
-              elem.classList.add("active");
+        document.querySelectorAll('#calendarControls button').forEach((elem) => {
+          let action = elem.getAttribute('data-action');
+          if (action != undefined) {
+            elem.classList.add('active');
+          }
+
+          elem.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            let group = elem.getAttribute('data-action').replace('toggle-category-', '');
+            if (action != undefined && !inactiveGroups.includes(group)) {
+              elem.classList.remove('active');
+              inactiveGroups.push(group);
+            } else {
+              elem.classList.add('active');
+              const idx = inactiveGroups.indexOf(group);
+              inactiveGroups.splice(idx, 1);
             }
 
-            elem.addEventListener("click", (e) => {
-              e.preventDefault();
-
-              let group = elem
-                .getAttribute("data-action")
-                .replace("toggle-category-", "");
-              if (action != undefined && !inactiveGroups.includes(group)) {
-                elem.classList.remove("active");
-                inactiveGroups.push(group);
-              } else {
-                elem.classList.add("active");
-                const idx = inactiveGroups.indexOf(group);
-                inactiveGroups.splice(idx, 1);
-              }
-
-              // Update the filter, since the only way to rerun it is to
-              // update it.
-              calendar.updateFilter((event) => {
-                return (
-                  event.category == undefined ||
-                  inactiveGroups.includes(
-                    event.category.name.toLowerCase().replaceAll(" ", "-"),
-                  ) == false
-                );
-              });
+            // Update the filter, since the only way to rerun it is to
+            // update it.
+            calendar.updateFilter((event) => {
+              return (
+                event.category == undefined ||
+                inactiveGroups.includes(event.category.name.toLowerCase().replaceAll(' ', '-')) == false
+              );
             });
           });
+        });
       }
     }
 
-    gapi.load("client", () => {
+    gapi.load('client', () => {
       gapi.client.setApiKey(googleAPIKey);
-      gapi.client.load("calendar", "v3", () => {
+      gapi.client.load('calendar', 'v3', () => {
         for (const { id: calendarID } of calendarInfoArr) {
           loadGoogleCalendar(
             calendar,
             {
               calendarID,
             },
-            onCalendarLoad,
+            onCalendarLoad
           );
         }
       });
     });
 
-    const calendarTable = document.getElementById("calendarTable");
+    const calendarTable = document.getElementById('calendarTable');
     if (calendarTable) {
-      calendarTable.classList.remove("d-none");
+      calendarTable.classList.remove('d-none');
 
       for (const calendarInfo of calendarInfoArr) {
         const row = calendarTable.insertRow();
         const nameCell = row.insertCell();
         nameCell.innerHTML = calendarInfo.name;
         const linkCell = row.insertCell();
-        const linkElem = document.createElement("a");
+        const linkElem = document.createElement('a');
         linkElem.href = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarInfo.id)}`;
-        linkElem.innerText = "Google Calendar";
+        linkElem.innerText = 'Google Calendar';
         linkCell.appendChild(linkElem);
       }
     }
   };
 </script>
 
-<link rel="stylesheet" href="{{ '/assets/calendar/calendar.min.css' | relative_url }}" />
+<link rel="stylesheet" href="{{ '/assets/calendar/calendar.min.css' | relative_url }}">
 <script defer src="{{ '/assets/calendar/calendar.min.js' | relative_url }}"></script>
 
 <script

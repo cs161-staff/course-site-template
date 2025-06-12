@@ -1,19 +1,58 @@
+.role {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+// Set the number of columns by changing the divisor
+// Default = 1. 2 works, more than 2 is not recommended.
+.staffer {
+  flex-basis: 100%;
+
+  @media only screen and (min-width: 750px) {
+    flex-basis: calc(100% / 1);
+  }
+}
+
 .staffer {
   display: flex;
-  margin: $sp-4;
+  padding: $sp-4;
+
+  .staffer-header {
+    display: flex;
+    flex-direction: row;
+  }
 
   .staffer-image {
     border-radius: 50%;
-    height: 100px;
+    height: 120px;
+    width: 120px;
+    background-size: cover;
+    background-position: center;
     margin-right: $sp-4;
   }
 
-  p,
+  .staffer-name,
+  p {
+    margin: $sp-1 !important;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
   .staffer-name {
     margin: $sp-1 !important;
   }
 
+  .mr-05 {
+    margin-right: 0.5rem !important;
+  }
+
   .staffer-pronouns {
+    margin-left: 0 !important;
+    margin-right: 0.5rem !important;
+    font-weight: 700;
     @extend .label;
   }
 

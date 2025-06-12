@@ -21,37 +21,42 @@ If you have a non-course related question, you can view staff emails by pressing
 ## Instructors
 
 {% assign instructors = site.staffers | where: 'role', 'Instructor' %}
+<div class="role">
 {% for staffer in instructors %}
 {{ staffer }}
 {% endfor %}
+</div>
 
 {% assign teaching_assistants = site.staffers | where: 'role', 'Head TA' %}
 {% assign num_teaching_assistants = teaching_assistants | size %}
 {% if num_teaching_assistants != 0 %}
 ## Head TAs
 
+<div class="role">
 {% for staffer in teaching_assistants %}
 {{ staffer }}
 {% endfor %}
+</div>
 {% endif %}
 
-{% assign teaching_assistants = site.staffers | where: 'role', 'TA with role' %}
-{% assign num_teaching_assistants = teaching_assistants | size %}
-{% if num_teaching_assistants != 0 %}
-## TAs
-
-{% for staffer in teaching_assistants %}
-{{ staffer }}
-{% endfor %}
-{% endif %}
+{% assign role_teaching_assistants = site.staffers | where: 'role', 'TA with role' %}
+{% assign num_role_teaching_assistants = teaching_assistants | size %}
 
 {% assign teaching_assistants = site.staffers | where: 'role', 'TA' %}
 {% assign num_teaching_assistants = teaching_assistants | size %}
-{% if num_teaching_assistants != 0 %}
+
+{% if num_role_teaching_assistants != 0 or num_teaching_assistants != 0 %}
+## TAs
+
+<div class="role">
+{% for staffer in role_teaching_assistants %}
+{{ staffer }}
+{% endfor %}
 
 {% for staffer in teaching_assistants %}
 {{ staffer }}
 {% endfor %}
+</div>
 {% endif %}
 
 {% assign teaching_assistants = site.staffers | where: 'role', 'Tutor' %}
@@ -59,9 +64,11 @@ If you have a non-course related question, you can view staff emails by pressing
 {% if num_teaching_assistants != 0 %}
 ## Tutors
 
+<div class="role">
 {% for staffer in teaching_assistants %}
 {{ staffer }}
 {% endfor %}
+</div>
 {% endif %}
 
 {% assign teaching_assistants = site.staffers | where: 'role', 'Reader' %}
@@ -69,9 +76,11 @@ If you have a non-course related question, you can view staff emails by pressing
 {% if num_teaching_assistants != 0 %}
 ## Readers
 
+<div class="role">
 {% for staffer in teaching_assistants %}
 {{ staffer }}
 {% endfor %}
+</div>
 {% endif %}
 
 {% assign teaching_assistants = site.staffers | where: 'role', 'TI' %}
@@ -79,9 +88,11 @@ If you have a non-course related question, you can view staff emails by pressing
 {% if num_teaching_assistants != 0 %}
 ## Teaching Interns (TIs)
 
+<div class="role">
 {% for staffer in teaching_assistants %}
 {{ staffer }}
 {% endfor %}
+</div>
 {% endif %}
 
 {% if site.staff_email and site.staff_email != '' and site.staff_email != 'None' %}

@@ -17,4 +17,6 @@
   {% elsif _ampm == 'PM' and _hours != 12 %}
     {% assign _hours = _hours | plus: 12 %}
   {% endif %}
-{% endcapture %}{% assign _minutes_workspace = '' %}{{ _hours | times: 60 | plus: _minutes }}
+{% endcapture -%}
+{%- assign _minutes_workspace = '' -%}
+{{- _hours | times: 60 | plus: _minutes }}
