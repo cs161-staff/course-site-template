@@ -1,20 +1,56 @@
+{%- comment -%}
+- This code renders one project box on the syllabus.
+- See projects.yml for how to feed information into this template.
+{%- endcomment -%}
+
 <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}"> 
+
+{%- comment -%}
+  - If title exists in projects.yml, show title.
+    This overrides the automatic numbering.
+  - If no title exists, write "Project 3", where the number comes from
+    automatic numbering in syllabus.html.
+{%- endcomment -%}
+{%- capture project_title -%}
+  {%- if include.element.title and include.element.title != "" -%}
+    {{ include.element.title }}
+  {%- else -%}
+    Project {{ include.number }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%}
+  - If link exists AND relesaed is true, get the link from projects.yml and
+    wrap it around project_title (as computed in the block above).
+  - Else, just return project_title unlinked.
+{%- endcomment -%}
+{%- capture project_linked_title -%}
+  {%- if include.element.link and include.element.link != "" and include.element.released -%}
+    <a href="{{ include.element.link | relative_url }}">{{ project_title }}</a>
+  {%- else -%}
+    {{ project_title }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%}
+  - Get due date from projects.yml.
+{%- endcomment -%}
+{%- capture project_due -%}
+  {%- if include.element.due and include.element.due != "" -%}
+    (due {{ include.element.due | date: "%a %b %d" }})
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%}
+  - If "nonumber: true", render the title in projects.yml and nothing else.
+  - Else, render the title and due date.
+{%- endcomment -%}
 {%- if include.element.nonumber -%}
   {{ include.element.title }}
 {%- else -%}
-  {%- if include.element.link -%}
-  <a href="{{ include.element.link | relative_url }}">{{ include.element.title }}</a>
-  {%- else -%}
-  {{ include.element.title }}
-  {%- endif -%}
-  {%- if include.element.due -%}
+  {{ project_linked_title }}
   <br>
-  (due {{ include.element.due | date: "%a %b %d" }})
-  {%- endif -%}
-  {%- elsif include.element.due -%}
-  Project {{ include.number }} {{ include.element.title }}
-  <br>
-  (due {{ include.element.due | date: "%a %b %d" }})
+  {{ project_due }}
 {%- endif -%}
 
 {%- comment -%}

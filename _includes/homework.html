@@ -4,10 +4,11 @@
 {%- endcomment -%}
 
 {%- comment -%}
-If you don't want homework boxes to alternate colors per week,
-then remove class="{{ include.is_even }}" below.
+If you want homework boxes to alternate colors per week,
+then change the class tag below to say:
+class="{{ include.is_even }} {{ include.element.classes | join ' ' }}"
 {%- endcomment -%}
-<td rowspan="{{ include.rowspan }}">
+<td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
   {%- comment -%}
   - TODO: Currently using nonumber to figure out when not to display links. Is there a cleaner way?
   - TODO: Currently using "due" to figure out whether to display HW. Is there a cleaner way?

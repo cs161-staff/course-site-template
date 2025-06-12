@@ -41,3 +41,5 @@ homeworks:
     due: "9/6"
     rowspan: 3
     extra: "[Slides](https://www.google.com)"
+    classes:
+      - proj1 # adds the purple background
