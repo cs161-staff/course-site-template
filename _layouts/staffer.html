@@ -1,7 +1,4 @@
-{% assign dsp_text = 'DSP Data Access' %}
-{% assign spa_text = 'Staff Email Access' %}
-
-<div class="staffer">
+<div class="staffer cols-{{ site.data.staff.staff_columns | default : 1 }}">
   {% if page.photo and page.photo != empty %}
     <img class="staffer-image" src="{{ site.baseurl }}/assets/staff/{{ page.photo }}" alt="">
   {% else %}
@@ -19,18 +16,18 @@
       {%- if page.pronouns -%}
         <span class="staffer-pronouns">{{ page.pronouns }}</span>
       {%- endif -%}
-      {% for tag in page.tags %}
-        <span class="staffer-pronouns">{{ tag }}</span>
-      {% endfor %}
       {%- if page.extra -%}
         <span class="staffer-pronouns">{{ page.extra }}</span>
       {%- endif -%}
       {%- if page.dspdata -%}
-        <span class="staffer-pronouns">{{ dsp_text }}</span>
+        <span class="staffer-pronouns">{{ site.data.staff.dsp_text }}</span>
       {%- endif -%}
       {%- if page.spaaccess -%}
-        <span class="staffer-pronouns">{{ spa_text }}</span>
+        <span class="staffer-pronouns">{{ site.data.staff.spa_text }}</span>
       {%- endif -%}
+      {%- for tag in page.tags -%}
+        <span class="staffer-pronouns">{{ tag }}</span>
+      {%- endfor -%}
     </div>
     {% if page.email %}
       <p>
@@ -38,7 +35,7 @@
       </p>
     {% endif %}
     {% if page.section %}
-      <p class="staffer-meta">Quiz Section: {{ page.section | markdownify | strip_html }}</p>
+      <p class="staffer-meta">Section: {{ page.section | markdownify | strip_html }}</p>
     {% endif %}
     {% if page['office-hours'] %}
       <p class="staffer-meta">Office Hours: {{ page['office-hours'] | markdownify | strip_html }}</p>

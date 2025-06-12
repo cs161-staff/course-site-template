@@ -4,13 +4,17 @@
   margin-bottom: 1.5rem;
 }
 
-// Set the number of columns by changing the divisor
-// Default = 1. 2 works, more than 2 is not recommended.
-.staffer {
+.cols-1 {
+  flex-basis: 100%;
+}
+
+// To add additional columns, copy this and replace 2 with the number of columns you want.
+// Note that this is not recommended, since things will get cramped on smaller screens.
+.cols-2 {
   flex-basis: 100%;
 
   @media only screen and (min-width: 750px) {
-    flex-basis: calc(100% / 1);
+    flex-basis: calc(100% / 2);
   }
 }
 
