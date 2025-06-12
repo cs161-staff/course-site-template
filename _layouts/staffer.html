@@ -22,7 +22,8 @@
       {% for tag in page.tags %}
         <span class="staffer-pronouns">{{ tag }}</span>
       {% endfor %}
-      {%- if page.Vlead -%}
+      {%- if page.extra -%}
+        <span class="staffer-pronouns">{{ page.extra }}</span>
       {%- endif -%}
       {%- if page.dspdata -%}
         <span class="staffer-pronouns">{{ dsp_text }}</span>

@@ -27,8 +27,7 @@
     border-radius: 50%;
     height: 120px;
     width: 120px;
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 1;
     margin-right: $sp-4;
   }
 

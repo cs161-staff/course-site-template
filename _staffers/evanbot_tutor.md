@@ -9,3 +9,5 @@ dspdata: False
 ---
 
 Likes pancakes. Dislikes C code.
+
+`bot will see you all in office hours!`
