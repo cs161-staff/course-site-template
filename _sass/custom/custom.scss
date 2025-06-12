@@ -21,6 +21,12 @@ table {
   td.border-hack {
     border-left:1px solid $border-color;
   }
+
+  // Center "week" column, used in syllabus.html only
+  td.week-cell {
+    text-align: center; 
+    vertical-align: middle;
+  }
 }
 
 // Button copying
