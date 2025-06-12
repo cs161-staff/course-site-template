@@ -58,7 +58,7 @@ lecture_prefix: "/assets/lectures/cs101-sp25-lec"
 
 lectures:
   - title: "Introduction and Security Principles"
-    slides: "https://docs.google.com/presentation/d/181vxju6EWpYj3j7RBlIqMizM125CjEUp4aJbNAopavo"
+    slides: ""
     recording: "https://youtu.be/aQ6HUxLEz2s"
     readings:
       - textbook: '1'

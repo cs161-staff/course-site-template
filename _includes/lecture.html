@@ -51,11 +51,22 @@
 
 {%- comment -%}
   - Render slides.
+  - If lectures.yml has slides link, prioritize using that.
+  - Else, if lectures.yml has no slides link but we find a slides PDF
+    in the automatically-built filepath, fall back on using that.
+  - If neither exists, don't render slides.
 {%- endcomment -%}
+{%- assign render_slides = false -%}
 {%- capture slides -%}
-<a href="{{ include.element.slides }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+{%- if include.element.slides and include.element.slides != "" -%}
+  {%- assign render_slides = true -%}
+  <a href="{{ include.element.slides }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+{%- elsif slides_exists -%}
+  {%- assign render_slides = true -%}
+  <a href="{{ slides_path | relative_url }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+{%- endif -%}
 {%- endcapture -%}
-{%- if include.element.slides != nil -%}
+{%- if render_slides -%}
   {% assign links_array = links_array | push: slides %}
 {%- endif -%}
 
@@ -65,7 +76,7 @@
 {%- capture video -%}
 <a href="{{ include.element.video }}" aria-label="Video for Lecture {{ include.number }} ({{ include.element.title }})">Video</a>
 {%- endcapture -%}
-{%- if include.element.video != nil -%}
+{%- if include.element.video and include.element.video != "" -%}
   {% assign links_array = links_array | push: video %}
 {%- endif -%}
 
@@ -75,7 +86,7 @@
 {%- capture recording -%}
 <a href="{{ include.element.recording }}" aria-label="Recording for Lecture {{ include.number }} ({{ include.element.title }})">Recording</a>
 {%- endcapture -%}
-{%- if include.element.recording != nil -%}
+{%- if include.element.recording and include.element.recording != "" -%}
   {% assign links_array = links_array | push: recording %}
 {%- endif -%}
 
@@ -85,7 +96,7 @@
 {%- capture quiz -%}
 <a href="{{ include.element.quiz }}" aria-label="Quiz for Lecture {{ include.number }} ({{ include.element.title }})">Quiz</a>
 {%- endcapture -%}
-{%- if include.element.quiz != nil -%}
+{%- if include.element.quiz and include.element.quiz != "" -%}
   {% assign links_array = links_array | push: quiz %}
 {%- endif -%}
 
