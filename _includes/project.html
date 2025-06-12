@@ -1,8 +1,15 @@
 {%- comment -%}
 - This code renders one project box on the syllabus.
 - See projects.yml for how to feed information into this template.
+- Note: For simplicity, homeworks.html, labs.html, and projects.html are built identically.
+  Additional columns should be able to use the same template as well.
 {%- endcomment -%}
 
+{%- comment -%}
+  If you want project boxes to alternate colors per week,
+  then change the class tag below to say:
+  class="{{ include.is_even }} {{ include.element.classes | join ' ' }}"
+{%- endcomment -%}
 <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}"> 
 
 {%- comment -%}
@@ -11,7 +18,7 @@
   - If no title exists, write "Project 3", where the number comes from
     automatic numbering in syllabus.html.
 {%- endcomment -%}
-{%- capture project_title -%}
+{%- capture assignment_title -%}
   {%- if include.element.title and include.element.title != "" -%}
     {{ include.element.title }}
   {%- else -%}
@@ -20,22 +27,22 @@
 {%- endcapture -%}
 
 {%- comment -%}
-  - If link exists AND relesaed is true, get the link from projects.yml and
-    wrap it around project_title (as computed in the block above).
-  - Else, just return project_title unlinked.
+  - If link exists AND released is true, get the link from projects.yml and
+    wrap it around assignment_title (as computed in the block above).
+  - Else, just return assignment_title unlinked.
 {%- endcomment -%}
-{%- capture project_linked_title -%}
+{%- capture assignment_linked_title -%}
   {%- if include.element.link and include.element.link != "" and include.element.released -%}
-    <a href="{{ include.element.link | relative_url }}">{{ project_title }}</a>
+    <a href="{{ include.element.link | relative_url }}">{{ assignment_title }}</a>
   {%- else -%}
-    {{ project_title }}
+    {{ assignment_title }}
   {%- endif -%}
 {%- endcapture -%}
 
 {%- comment -%}
   - Get due date from projects.yml.
 {%- endcomment -%}
-{%- capture project_due -%}
+{%- capture assignment_due -%}
   {%- if include.element.due and include.element.due != "" -%}
     (due {{ include.element.due | date: "%a %b %d" }})
   {%- endif -%}
@@ -48,10 +55,23 @@
 {%- if include.element.nonumber -%}
   {{ include.element.title }}
 {%- else -%}
-  {{ project_linked_title }}
+  {{ assignment_linked_title }}
   <br>
-  {{ project_due }}
+  {{ assignment_due }}
 {%- endif -%}
+
+{%- comment -%}
+  - Render links to specific parts.
+{%- endcomment -%}
+{%- if include.element.parts and include.element.parts.size > 0 -%}
+<br><br>
+{%- endif -%}
+{%- for part in include.element.parts -%}
+  <a href="{{ part.link }}">{{ part.name }}</a>
+  {% if forloop.last == false %}
+    {{}} / {{}}
+  {% endif %}
+{%- endfor -%}
 
 {%- comment -%}
   - Add any extra content.

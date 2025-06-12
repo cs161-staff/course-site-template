@@ -69,13 +69,13 @@ lectures:
     slides: ""
     recording: "https://youtu.be/aQ6HUxLEz2s"
     readings:
-      - textbook: '1'
+      - name: 'Ch. 1'
         link: https://textbook.cs161.org/principles/principles.html
   - title: "x86 Assembly and Call Stack"
     slides: "https://docs.google.com/presentation/d/1zZqwlHwgJIls3CVyObU5_wricDPyDozyrYqO6rbtzQM"
     recording: "https://youtu.be/KQvzzdoJiss"
     readings:
-      - textbook: '2'
+      - name: 'Ch. 2'
         link: https://textbook.cs161.org/memory-safety/x86.html
       - name: x86/GDB Cheat Sheet
         link: "https://assets.cs161.org/proj1/cheatsheet.pdf"
@@ -83,7 +83,7 @@ lectures:
     slides: "https://docs.google.com/presentation/d/1UAJHUv1Ryhdp6N9CAAXinqaID-RGO_Ec2qL2o_Tqlhs"
     recording: "https://youtu.be/0LdBx7huYpg"
     readings:
-      - textbook: '3'
+      - name: 'Ch. 3'
         link: https://textbook.cs161.org/memory-safety/vulnerabilities.html
     classes:
       - proj1 # adds the purple background

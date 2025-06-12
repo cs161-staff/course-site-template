@@ -122,15 +122,11 @@
 {%- comment -%}
   - Render readings.
   - If you would like readings to appear elsewhere, change this.
+  - The character inside the "forloop.last" if-case is the delimiter.
+    Here, it's a slash, but you can change it to a slash or something else.
 {%- endcomment -%}
 {%- for reading in include.element.readings -%}
-  <a href="{{ reading.link }}">
-    {%- if reading.textbook -%}
-      Ch. {{ reading.textbook }}
-    {%- else -%}
-      {{ reading.name }}
-    {%- endif -%}
-  </a>
+  <a href="{{ reading.link }}">{{ reading.name }}</a>
   {% if forloop.last == false %}
     {{}} / {{}}
   {% endif %}

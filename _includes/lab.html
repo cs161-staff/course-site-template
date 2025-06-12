@@ -1,19 +1,20 @@
 {%- comment -%}
-- This code renders one homework box on the syllabus.
-- See homeworks.yml for how to feed information into this template.
+- This code renders one lab box on the syllabus.
+- See labs.yml for how to feed information into this template.
 - Note: For simplicity, homeworks.html, labs.html, and projects.html are built identically.
   Additional columns should be able to use the same template as well.
+- Note: By default, this is not used in t
 {%- endcomment -%}
 
 {%- comment -%}
-  If you want homework boxes to alternate colors per week,
+  If you want lab boxes to alternate colors per week,
   then change the class tag below to say:
   class="{{ include.is_even }} {{ include.element.classes | join ' ' }}"
 {%- endcomment -%}
 <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}"> 
 
 {%- comment -%}
-  - If title exists in homeworks.yml, show title.
+  - If title exists in labs.yml, show title.
     This overrides the automatic numbering.
   - If no title exists, write "Project 3", where the number comes from
     automatic numbering in syllabus.html.
@@ -27,7 +28,7 @@
 {%- endcapture -%}
 
 {%- comment -%}
-  - If link exists AND released is true, get the link from homeworks.yml and
+  - If link exists AND released is true, get the link from labs.yml and
     wrap it around assignment_title (as computed in the block above).
   - Else, just return assignment_title unlinked.
 {%- endcomment -%}
@@ -40,7 +41,7 @@
 {%- endcapture -%}
 
 {%- comment -%}
-  - Get due date from homeworks.yml.
+  - Get due date from labs.yml.
 {%- endcomment -%}
 {%- capture assignment_due -%}
   {%- if include.element.due and include.element.due != "" -%}
@@ -49,7 +50,7 @@
 {%- endcapture -%}
 
 {%- comment -%}
-  - If "nonumber: true", render the title in homeworks.yml and nothing else.
+  - If "nonumber: true", render the title in labs.yml and nothing else.
   - Else, render the title and due date.
 {%- endcomment -%}
 {%- if include.element.nonumber -%}
