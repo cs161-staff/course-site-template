@@ -40,3 +40,4 @@ homeworks:
   - hw_link: "https://TODO"
     due: "9/6"
     rowspan: 3
+    extra: "[Slides](https://www.google.com)"

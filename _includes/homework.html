@@ -19,14 +19,22 @@ then remove class="{{ include.is_even }}" below.
   HW{{ include.number }}
   {%- if include.element.due -%}
     <br>
-    (due {{ include.element.due | date: "%m/%d" }})
+    (due {{ include.element.due | date: "%a %b %d" }})
   {%- endif -%}
   {%- else -%}
   <a href="{{ include.element.hw_link }}">HW{{ include.number }} {{ include.element.title }}</a>
   {%- if include.element.due -%}
     <br>
-    (due {{ include.element.due | date: "%m/%d" }})
+    (due {{ include.element.due | date: "%a %b %d" }})
   {%- endif -%}
   {%- endif -%}
   {%- endif -%}
+
+{%- comment -%}
+  - Add any extra content.
+{%- endcomment -%}
+{%- if include.element.extra -%}
+  <br>
+  {{ include.element.extra | markdownify }}
+{%- endif -%}
 </td>

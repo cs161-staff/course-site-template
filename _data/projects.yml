@@ -25,5 +25,6 @@ projects:
     released: True
     rowspan: 3
     due: "09/06"
+    extra: "[Slides](https://www.google.com)"
     classes:
       - proj1 # adds the purple background

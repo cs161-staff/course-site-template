@@ -9,11 +9,19 @@
   {%- endif -%}
   {%- if include.element.due -%}
   <br>
-  (due {{ include.element.due | date: "%m/%d" }})
+  (due {{ include.element.due | date: "%a %b %d" }})
   {%- endif -%}
   {%- elsif include.element.due -%}
   Project {{ include.number }} {{ include.element.title }}
   <br>
-  (due {{ include.element.due | date: "%m/%d" }})
+  (due {{ include.element.due | date: "%a %b %d" }})
+{%- endif -%}
+
+{%- comment -%}
+  - Add any extra content.
+{%- endcomment -%}
+{%- if include.element.extra -%}
+  <br>
+  {{ include.element.extra | markdownify }}
 {%- endif -%}
 </td>
