@@ -51,6 +51,14 @@
 # in syllabus.yml (more documentation there). Then, to fill in your
 # new box, add an element in the array where the box would appear.
 
+# To highlight the cell in a special color, add "classes", and we have
+# some pre-defined colors like "schedule-purple" and "schedule-green".
+# Example:
+# - title: "My Purple Leture"
+#   slides: "https://www.google.com"
+#   classes:
+#     - schedule-purple
+
 # - You should not need to change these unless you're rebuilding the website.
 # - If your lecture slides are Google Slides links, ignore this.
 # - If your lecture slides are PDFs in this repo, update this.
@@ -77,4 +85,6 @@ lectures:
     readings:
       - textbook: '3'
         link: https://textbook.cs161.org/memory-safety/vulnerabilities.html
+    classes:
+      - proj1 # adds the purple background
   - title: "Extra Lecture (Example)"

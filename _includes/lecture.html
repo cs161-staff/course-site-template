@@ -7,7 +7,7 @@
   If you don't want lecture boxes to alternate colors per week,
   then remove class="{{ include.is_even }}" below.
 {%- endcomment -%}
-<td class="{{ include.is_even }} {{ include.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+<td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
 
 {%- comment -%}
   - Build filenames automatically from the lecture number.
