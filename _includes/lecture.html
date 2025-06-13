@@ -4,10 +4,14 @@
 {%- endcomment -%}
 
 {%- comment -%}
-  If you don't want lecture boxes to alternate colors per week,
-  then remove class="{{ include.is_even }}" below.
+  - Use syllabus.yml to toggle whether lecture boxes alternate colors
+    per week.
 {%- endcomment -%}
-<td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- if site.data.syllabus.lecture_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
 
 {%- comment -%}
   - Build filenames automatically from the lecture number.

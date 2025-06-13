@@ -4,10 +4,14 @@
 {%- endcomment -%}
 
 {%- comment -%}
-  If you don't want discussion boxes to alternate colors per week,
-  then remove class="{{ include.is_even }}" below.
+  - Use syllabus.yml to toggle whether discussion boxes alternate colors
+    per week.
 {%- endcomment -%}
-<td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- if site.data.syllabus.discussion_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
 
 {%- comment -%}
   Render title with or without number, depending on the "nonumber" attribute.

@@ -63,6 +63,18 @@ default_lab_rowspan: '4'
 # never use the default (always manually specifying the rowspan).
 default_project_rowspan: '1'
 
+# Do you want cells to automatically alternate colors each week?
+# Usually the answer is yes/true if the cell appears with a regular fixed
+# rowspan, e.g. weekly discussions, weekly homeworks.
+# Usually the answer if no/false if cells appear irregularly, e.g. projects
+# with long durations that span multiple weeks.
+lecture_alternate_color: true
+readings_alternate_color: true
+discussion_alternate_color: true
+homework_alternate_color: false
+lab_alternate_color: true
+project_alternate_color: false
+
 
 #######################################################
 # Config you will probably never need to change,      #

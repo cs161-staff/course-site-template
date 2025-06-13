@@ -72,7 +72,7 @@ homeworks:
       - name: "Part B"
         link: "/proj1/part-b"
     extra: "[Special PDF](https://www.google.com)"
-    rowspan: 3
+    rowspan: 1
     classes:
       - proj1 # adds the purple background
   - nonumber: true

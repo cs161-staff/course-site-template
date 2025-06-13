@@ -9,10 +9,19 @@
 {%- endcomment -%}
 
 {%- comment -%}
+  - Use syllabus.yml to toggle whether readings boxes alternate colors
+    per week.
+{%- endcomment -%}
+{%- if site.data.syllabus.readings_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
+
+{%- comment -%}
 - The character inside the "forloop.last" if-case is the delimiter.
   Here, it's a linebreak, but you can change it to a slash or something else.
 {%- endcomment -%}
-<td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}">
 {%- for reading in include.element.readings -%}
   <a href="{{ reading.link }}">{{ reading.name }}</a>
   {% if forloop.last == false %}

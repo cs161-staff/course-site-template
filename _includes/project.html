@@ -6,11 +6,14 @@
 {%- endcomment -%}
 
 {%- comment -%}
-  If you want project boxes to alternate colors per week,
-  then change the class tag below to say:
-  class="{{ include.is_even }} {{ include.element.classes | join ' ' }}"
+  - Use syllabus.yml to toggle whether project boxes alternate colors
+    per week.
 {%- endcomment -%}
-<td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}"> 
+{%- if site.data.syllabus.project_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
 
 {%- comment -%}
   - If title exists in projects.yml, show title.
