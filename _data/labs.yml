@@ -14,7 +14,7 @@
 #####################################
 
 # Each element in the array corresponds to one box on the website.
-# This includes boxes that are blank or don't have a assignment.
+# This includes boxes that are blank or don't have an assignment.
 
 # The website automatically numbers each element in the array.
 # To skip numbering (e.g. for a blank box), add "nonumber: True" as an attribute.

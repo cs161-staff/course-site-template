@@ -67,7 +67,8 @@
 #   We predefined colors like schedule-purple, schedule-green, etc.,
 #   and you can add your own in _sass/color_schemes if you want.
 
-# - You should not need to change these unless you're rebuilding the website.
+# - Every semester, you have to change the path to reflect the latest semester.
+# - You should not need to change the rest of these unless you're rebuilding the website.
 # - Slugs and path are used to build filenames.
 # - Names are used to display on the website, e.g. "Exam Prep: Worksheet"
 discussion_filename_bases:
