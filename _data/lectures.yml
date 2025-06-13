@@ -86,5 +86,5 @@ lectures:
       - name: 'Ch. 3'
         link: https://textbook.cs161.org/memory-safety/vulnerabilities.html
     classes:
-      - proj1 # adds the purple background
+      - schedule-green
   - title: "Extra Lecture (Example)"

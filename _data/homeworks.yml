@@ -74,5 +74,5 @@ homeworks:
     extra: "[Special PDF](https://www.google.com)"
     rowspan: 1
     classes:
-      - proj1 # adds the purple background
+      - schedule-blue
   - nonumber: true
