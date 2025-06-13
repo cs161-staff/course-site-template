@@ -3,7 +3,9 @@
 - See labs.yml for how to feed information into this template.
 - Note: For simplicity, homeworks.html, labs.html, and projects.html are built identically.
   Additional columns should be able to use the same template as well.
-- Note: By default, this is not used in t
+- Note: By default, this file is not used in CS161's course-site-template repo.
+  However, if you want an extra column on the website (for lab or anything else),
+  then go to syllabus.html and uncomment out some things.
 {%- endcomment -%}
 
 {%- comment -%}
@@ -68,7 +70,7 @@
 <br><br>
 {%- endif -%}
 {%- for part in include.element.parts -%}
-  <a href="{{ part.link }}">{{ part.name }}</a>
+  <a href="{{ part.link }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
   {% if forloop.last == false %}
     {{}} / {{}}
   {% endif %}

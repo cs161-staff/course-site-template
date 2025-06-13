@@ -32,6 +32,12 @@
 # - parts:    An array of names/links to parts. These appear below the main title/link,
 #             with parts separated by slashes.
 # - extra:    Write any arbitrary markdown in here if you want to add to the box.
+#             **Warning**: You should only use this sparingly for one-off links, e.g. an extra
+#             PDF that only appears in one cell. **Do not** use this for recurring links like
+#             adding "Slides" to every assignment - that should go in "parts" instead.
+#             "parts" has built-in aria-label tags to help distinguish recurring links like
+#             "Slides" in every cell, but "extra" does not have these tags, so each "extra"
+#             that you add should be distinct from all the others.
 # - rowspan:  How many rows this assignment should take up on the syllabus grid.
 # - classes:  You can add an array of classes here to change the color of the box or otherwise
 #             format the box. Common colors like "schedule-purple" or "schedule-green"
@@ -50,7 +56,7 @@
 #       link: "/hw2/part-a"
 #     - name: "Part B"
 #       link: "/hw2/part-b"
-#   extra: "[Slides](https://www.google.com)"
+#   extra: "[Special PDF](https://www.google.com)"
 #   rowspan: 3
 #   classes:
 #     - schedule-purple
@@ -65,7 +71,7 @@ homeworks:
         link: "/proj1/part-a"
       - name: "Part B"
         link: "/proj1/part-b"
-    extra: "[Slides](https://www.google.com)"
+    extra: "[Special PDF](https://www.google.com)"
     rowspan: 3
     classes:
       - proj1 # adds the purple background

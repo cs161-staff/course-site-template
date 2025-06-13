@@ -67,7 +67,7 @@
 <br><br>
 {%- endif -%}
 {%- for part in include.element.parts -%}
-  <a href="{{ part.link }}">{{ part.name }}</a>
+  <a href="{{ part.link }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
   {% if forloop.last == false %}
     {{}} / {{}}
   {% endif %}
