@@ -2,10 +2,11 @@
 # Instructions for updating website #
 #####################################
 
-# To add a project to the website:
-# 1. Upload any necessary files to /assets/projects.
-# 2. Put the project spec in the projects folder (if not already there).
-# 3. In this file, uncomment the "link" attribute to display a link to the spec.
+# To add an assignment to the website:
+# 1. Upload any necessary files (e.g. starter code) to the assets folder.
+# 2. Put the assignment spec in /labs or /projects or /homeworks (if not already there).
+# 3. In this file, set "released: true" and add a "link" attribute to
+#    display a link to the spec.
 
 
 #####################################
@@ -13,17 +14,64 @@
 #####################################
 
 # Each element in the array corresponds to one box on the website.
-# This includes boxes that are blank or don't have a homework.
+# This includes boxes that are blank or don't have an assignment.
 
 # The website automatically numbers each element in the array.
-# To skip numbering (e.g. for a blank box), add
-# "nonumber: True" as an attribute.
+# To skip numbering (e.g. for a blank box), add "nonumber: True" as an attribute.
+
+# The fields available in each array element that you can use:
+# - title:    The text displayed in the box.
+#             If blank, uses auto-numbering and displays "Project 1", "Project 2", etc.
+#             If not blank, overrides auto-numbering and displays your title. This means
+#             your title must do the numbering yourself (e.g. "Project 1A: Deques").
+# - link:     Link to the assignment spec.
+# - released: Whether the assignment is released yet.
+#             Your title links to your link iff "released: true" AND "link" is not blank.
+#             This can also be used to show a "not released yet" warning on the top of the spec.
+# - due:      If not blank, shows this date on the grid (regardless of release status).
+# - parts:    An array of names/links to parts. These appear below the main title/link,
+#             with parts separated by slashes.
+# - extra:    Write any arbitrary markdown in here if you want to add to the box.
+#             **Warning**: You should only use this sparingly for one-off links, e.g. an extra
+#             PDF that only appears in one cell. **Do not** use this for recurring links like
+#             adding "Slides" to every assignment - that should go in "parts" instead.
+#             "parts" has built-in aria-label tags to help distinguish recurring links like
+#             "Slides" in every cell, but "extra" does not have these tags, so each "extra"
+#             that you add should be distinct from all the others.
+# - rowspan:  How many rows this assignment should take up on the syllabus grid.
+# - classes:  You can add an array of classes here to change the color of the box or otherwise
+#             format the box. Common colors like "schedule-purple" or "schedule-green"
+#             are built-in for you, and you can add your own in _sass/custom/custom.scss if you want.
+# - nonumber: If true, displays the title and nothing else.
+#             Also ensures the auto-numbering will not increment from this box.
+
+# Example usage of all of the above:
+#
+# - title: "Project 1: Deques"
+#   link: "/proj1/"
+#   released: true
+#   due: "09/06"
+#   parts:
+#     - name: "Part A"
+#       link: "/proj1/part-a"
+#     - name: "Part B"
+#       link: "/proj1/part-b"
+#   extra: "[Special PDF](https://www.google.com)"
+#   rowspan: 3
+#   classes:
+#     - schedule-purple
 
 projects:
   - title: "Project 1"
     link: "/proj1/"
-    released: True
-    rowspan: 3
+    released: true
     due: "09/06"
+    parts:
+      - name: "Slides"
+        link: "https://www.google.com"
+    extra: "[Special PDF](https://www.google.com)"
+    rowspan: 3
     classes:
-      - proj1 # adds the purple background
+      - schedule-yellow # adds the purple background
+  - nonumber: true
+  

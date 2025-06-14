@@ -21,6 +21,12 @@ table {
   td.border-hack {
     border-left:1px solid $border-color;
   }
+
+  // Center "week" column, used in syllabus.html only
+  td.week-cell {
+    text-align: center; 
+    vertical-align: middle;
+  }
 }
 
 // Button copying
@@ -182,15 +188,21 @@ iframe {
 
 // End UCB header fixes
 
-// Color scheme for projects
-td.proj1 {
-  background-color: rgba($purple-000, 0.1) !important
+// Color scheme for syllabus cells
+td.schedule-purple {
+  background-color: rgba($purple-000, 0.15) !important;
 }
-td.proj2 {
-  background-color: rgba($blue-000, 0.15) !important
+td.schedule-blue {
+  background-color: rgba($blue-000, 0.15) !important;
 }
-td.proj3 {
-  background-color: rgba($green-000, 0.15) !important
+td.schedule-green {
+  background-color: rgba($green-000, 0.15) !important;
+}
+td.schedule-red {
+  background-color: rgba($red-000, 0.15) !important;
+}
+td.schedule-yellow {
+  background-color: rgba($yellow-300, 0.13) !important;
 }
 
 .nav-list .nav-list-item .nav-list-link {

@@ -21,9 +21,9 @@
 
 # The fields available in each array element that you can use:
 # - title:    The text displayed in the box.
-#             If blank, uses auto-numbering and displays "Project 1", "Project 2", etc.
+#             If blank, uses auto-numbering and displays "Lab 1", "Lab 2", etc.
 #             If not blank, overrides auto-numbering and displays your title. This means
-#             your title must do the numbering yourself (e.g. "Project 1A: Deques").
+#             your title must do the numbering yourself (e.g. "Lab 1A: Deques").
 # - link:     Link to the assignment spec.
 # - released: Whether the assignment is released yet.
 #             Your title links to your link iff "released: true" AND "link" is not blank.
@@ -47,23 +47,21 @@
 
 # Example usage of all of the above:
 #
-# - title: "HW2: Percolation"
-#   link: "/hw2/"
+# - title: "Lab 1: Deques"
+#   link: "/proj1/"
 #   released: true
 #   due: "09/06"
 #   parts:
-#     - name: "Part A"
-#       link: "/hw2/part-a"
-#     - name: "Part B"
-#       link: "/hw2/part-b"
+#     - name: "Slides"
+#       link: "https://docs.google.com"
 #   extra: "[Special PDF](https://www.google.com)"
 #   rowspan: 3
 #   classes:
 #     - schedule-purple
 
-homeworks:
-  - title: "HW1"
-    link: "https://www.gradescope.com"
+labs:
+  - title: "Lab 1"
+    link: "/proj1/"
     released: true
     due: "09/06"
     parts:
@@ -72,7 +70,7 @@ homeworks:
       - name: "Part B"
         link: "/proj1/part-b"
     extra: "[Special PDF](https://www.google.com)"
-    rowspan: 1
+    rowspan: 3
     classes:
-      - schedule-blue
+      - proj1 # adds the purple background
   - nonumber: true
