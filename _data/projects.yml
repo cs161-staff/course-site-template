@@ -41,7 +41,7 @@
 # - rowspan:  How many rows this assignment should take up on the syllabus grid.
 # - classes:  You can add an array of classes here to change the color of the box or otherwise
 #             format the box. Common colors like "schedule-purple" or "schedule-green"
-#             are built-in for you.
+#             are built-in for you, and you can add your own in _sass/custom/custom.scss if you want.
 # - nonumber: If true, displays the title and nothing else.
 #             Also ensures the auto-numbering will not increment from this box.
 
@@ -72,5 +72,6 @@ projects:
     extra: "[Special PDF](https://www.google.com)"
     rowspan: 3
     classes:
-      - proj1 # adds the purple background
+      - schedule-yellow # adds the purple background
   - nonumber: true
+  

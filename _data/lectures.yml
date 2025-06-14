@@ -53,6 +53,7 @@
 
 # To highlight the cell in a special color, add "classes", and we have
 # some pre-defined colors like "schedule-purple" and "schedule-green".
+# You can add your own colors in _sass/custom/custom.scss if you want.
 # Example:
 # - title: "My Purple Leture"
 #   slides: "https://www.google.com"
@@ -87,4 +88,6 @@ lectures:
         link: https://textbook.cs161.org/memory-safety/vulnerabilities.html
     classes:
       - schedule-green
-  - title: "Extra Lecture (Example)"
+  - title: "Extra Lecture (Example) [OPTIONAL]"
+    classes:
+      - schedule-red

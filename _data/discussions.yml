@@ -64,8 +64,8 @@
 #   Videos show iff "show_videos: true" AND video link exists in discussions.yml.
 #   Slides show iff "show_slides: true" AND slide link exists in discussions.yml.
 # - "classes" is an array passed to discussion.html to format the cell.
-#   We predefined colors like schedule-purple, schedule-green, etc.,
-#   and you can add your own in _sass/color_schemes if you want.
+#   We predefined colors like schedule-purple, schedule-green, etc. in 
+#   and you can add your own in _sass/custom/custom.scss if you want.
 
 # - Every semester, you have to change the path to reflect the latest semester.
 # - You should not need to change the rest of these unless you're rebuilding the website.
