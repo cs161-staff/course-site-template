@@ -1,9 +1,9 @@
 <script>
   (function () {
-    var navList = document.querySelector(".aux-nav-list");
+    var navList = document.querySelector('.aux-nav-list');
     if (!navList || !navList.firstElementChild) return;
     var darkToggle = navList.firstElementChild;
-    darkToggle.addEventListener("click", (e) => {
+    darkToggle.addEventListener('click', (e) => {
       e.preventDefault();
       toggleDark();
     });
@@ -14,16 +14,16 @@
 <script>
   // Tries to mirror the HTML TOC
   tocbot.init({
-    tocSelector: ".js-toc",
-    contentSelector: ".main-content",
-    headingSelector: "h2, h3",
-    ignoreSelector: ".no_toc",
+    tocSelector: '.js-toc',
+    contentSelector: '.main-content',
+    headingSelector: 'h2, h3',
+    ignoreSelector: '.no_toc',
     hasInnerContainers: true,
-    linkClass: "nav-list-link",
-    activeLinkClass: "active",
-    listClass: "nav-list",
-    listItemClass: "nav-list-item",
-    activeListItemClass: "active",
+    linkClass: 'nav-list-link',
+    activeLinkClass: 'active',
+    listClass: 'nav-list',
+    listItemClass: 'nav-list-item',
+    activeListItemClass: 'active',
     collapseDepth: 3,
     scrollSmooth: false,
   });

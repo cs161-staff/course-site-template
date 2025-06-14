@@ -1,13 +1,14 @@
 ---
 name: EvanBot
 pronouns: any/all
-role: Instructor
+role: TA
 email: evanbot@berkeley.edu
 photo: evanbot.jpg
-spaaccess: True
-dspdata: True
+extra: Exam Lead
+spaaccess: False
+dspdata: False
 ---
 
 Likes pancakes. Dislikes C code.
 
-`bot has been teaching this course since spring 2020! who is peyrin?`
+`bot is excited to write exams!`
