@@ -1,6 +1,9 @@
 {%- comment -%}
   - This code renders one discussion box on the syllabus.
   - See discussions.yml for how to feed information into this template.
+  - include.element is a Liquid object (like a dictionary) representing one
+  entry of discussions.yml. You can access specific fields of this object with
+  syntax like include.element.title or include.element.classes.
 {%- endcomment -%}
 
 {%- comment -%}
