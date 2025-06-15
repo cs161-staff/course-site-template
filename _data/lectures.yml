@@ -98,12 +98,14 @@ lectures:
     classes:
       - schedule-red
   - title: "Mitigating Memory Safety Vulnerabilities"
+    video: "https://youtube.com/playlist?list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm"
     slides: "https://docs.google.com/presentation/d/1ZONpx6qlqR2GyIF2nL3zjuDiOVknApgFOVwMHagmskI"
     recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_clJKxwAxzStm4ctkNDXvt"
     readings:
       - name: "Ch. 4"
         link: "https://textbook.cs161.org/memory-safety/mitigations.html"
   - title: "Intro to Cryptography"
+    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
     slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
     recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
     readings:
