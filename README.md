@@ -17,7 +17,7 @@ Then, you can copy over any relevant files from your previous semester's repo in
 ### Not Recommended: From Previous Semester
 
 > [!WARNING]  
-> This method may involve resolving complicated merge conflicts. If you do not have a good understanding of Git, we recommend using the method above.
+> This method requires you to update the template by hand. 
 
 If you instead choose to copy the previous semester's repo, then you'll need to take any updates to this template repo, and *manually copy those updates into your own repo*.
 - Clone the previous semester's repo
@@ -80,7 +80,95 @@ To keep the repo clean, **please tag your commit messages** by adding an assignm
 
 ### Custom domain deploy
 
-TODO - use Github Actions to deploy to a custom URL like https://sp25.cs161.org.
+> [!NOTE]
+> Before you can proceed with this step, make sure to [verify your domain in GitHub](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#about-custom-domain-configuration). This amounts to adding a `CNAME` record aliasing the subdomain you want to your `.github.io` domain.
+
+To deploy from the GitHub repository to a domain using Github Pages, the first step is to open your repository and navigate to `Settings > Pages`. In the "Source" dropdown, select `Github Actions`. From there, you just have to type the domain that you verified (IE: `sp25.cs161.org`) into the "Custom Domain" box, and press save.
+
+After you have done this, the site will be built and published at the domain you entered the next time that you push to main. If you want the current commit to be built, go to the `Actions` tab, click on `Deploy Jekyll site to Pages` in the sidebar, and press `Run Workflow`.
+
+**Guides for Common DNS Providers**
+> [!TIP]
+> If you are setting up your course website for the first time, we recommend using [Cloudflare](https://www.cloudflare.com/) as your DNS provider. If you do not have a domain and do not mind being locked into Cloudflare DNS, [Cloudflare sells domains at-cost](https://www.cloudflare.com/products/registrar/) as well.
+
+In order to keep this process as easy as possible, we have documented how to add a `CNAME` record using some common DNS providers. If your DNS provider is not documented, feel free to PR and add it below.
+
+<details>
+  <summary>Cloudflare</summary>
+
+
+  **Navigating To Your DNS Dashboard**
+  1. [Log in to your cloudflare account](https://dash.cloudflare.com/login). From your dashboard, click on the domain that you wish to edit.
+  2. On the sidebar, click `DNS`.
+
+  **Adding a Record**
+  1. Navigate to your DNS Dashboard with the above steps.
+  2. Press `Add Record`.
+  3. Enter the desired Type, Name, and Content. For everything in this guide, you can ignore `TTL`.
+  4. Decide whether to leave [Proxying](https://developers.cloudflare.com/dns/proxy-status/#proxied-records) on, if applicable.
+  5. Add a note describing what the record is for if it is not clear.
+  6. Press `Save`.
+
+  **First-Time Setup**
+  
+  First, we will verify your domain with GitHub. This prevents third parties from hosting anything using your site:
+  1. In GitHub, navigate to `Organization Settings > Pages`.
+  2. Press `Add a Domain` and enter your domain (e.g. `cs161.org`)
+  3. Add a DNS Record with Type `TXT`. Copy the `Name` and `Content` from the GitHub page.
+
+  Next, we will set up your domain for GitHub Pages.
+  1. Navigate to [this page](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain).
+  2. For each IPv4 address in Step 5 on the above page, add a DNS Record with Type `A`. Set the Name field to `@` and the Content field to the IPv4 address.
+  3. For each IPv6 address in Step 5 on the above page, add a DNS Record with Type `AAAA`. Set the Name field to `@` and the Content field to the IPv6 address.
+  4. Add a DNS Record with Type `CNAME` and Name `www`. Set the Target to your domain (e.g. `cs161.org`).
+  5. Our recommended way to use your root domain is to set up a [Site Redirect](https://github.com/cs161-staff/site-redirect-template) to your current semester.
+  5. To set up your semester-specific page, continue to the section below.
+  
+
+  **Continuing Setup**
+  1. Navigate to your DNS Dashboard with the above steps.
+  2. Add a DNS Record with Type `CNAME`. Set the Name to the domain you'd like to use and the Target to your `.github.io` domain. This will work with either Proxy setting, so whether you use Proxying is up to preference. If you already have previous semesters, it is likely a good idea to mirror what has been done in the past.
+  3. Proceed to GitHub to deploy.
+</details>
+
+<details>
+  <summary>Google DNS</summary>
+
+
+  **Navigating To Your DNS Dashboard**
+  1. Sign into Google with your Course SPA (or the Google Account that owns your DNS).
+  2. Click [here](https://console.cloud.google.com/net-services/dns/zones) to access your DNS Zones page.
+  3. In the top left, make sure the correct resource is selected. We recommend naming your resource something obvious, e.g. `cs161-www`.
+  4. From your dashboard, click on the domain that you wish to edit.
+
+  **Adding a Record**
+  1. Navigate to your DNS Dashboard with the above steps.
+  2. Press `Add Standard`.
+  3. Enter the desired DNS Name, Resources Record Type, Content. Whenever you select a Resources Record Type, the specific content changes to reflect the expected value of that record.
+  4. For everything in this guide, you can ignore `TTL`.
+  5. Press `Create`.
+
+  **First-Time Setup**
+  
+  First, we will verify your domain with GitHub. This prevents third parties from hosting anything using your site:
+  1. In GitHub, navigate to `Organization Settings > Pages`.
+  2. Press `Add a Domain` and enter your domain (e.g. `cs161.org`)
+  3. Add a DNS Record with Resource Record Type `TXT`. Set the `DNS Name` field to the `hostname` from the Github page. Set the `TXT data 1` field to the `value` from the GitHub page.
+
+  Next, we will set up your domain for GitHub Pages.
+  1. Navigate to [this page](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain).
+  2. Add a DNS Record with Resource Record Type `A`. Leave the DNS Name field empty. Copy each IPv4 address in Step 5 on the above page, and add each one as a separate IPv4 address (using the `Add Item` button).
+  3. Add a DNS Record with Resource Record Type `AAAA`. Leave the DNS Name field empty. Copy each IPv6 address in Step 5 on the above page, and add each one as a separate IPv6 address (using the `Add Item` button).
+  4. Add a DNS Record with Resource Record Type `CNAME` and DNS Name `www`. Set Canonical Name 1 to your domain (e.g. `cs161.org`).
+  5. Our recommended way to use your root domain is to set up a [Site Redirect](https://github.com/cs161-staff/site-redirect-template) to your current semester.
+  5. To set up your semester-specific page, continue to the section below.
+  
+
+  **Continuing Setup**
+  1. Navigate to your DNS Dashboard with the above steps.
+  2. Add a DNS Record with Resource Record Type `CNAME`. Set the DNS Name to the domain you'd like to use and Canonical Name 1 to your `.github.io` domain.
+  3. Proceed to GitHub to deploy.
+</details>
 
 
 ### inst.eecs deploy
