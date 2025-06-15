@@ -142,19 +142,19 @@
   - Videos show iff "show_videos: true" AND video link exists in discussions.yml.
 {%- endcomment -%}
 {%- if include.element.show_videos -%}
-  {%- if include.element.regular_video and include.element.regular_video != '' -%}
+  {%- if include.element.regular_video and include.element.regular_video != empty -%}
     {%- capture regular_video_link -%}
       <a href="{{ include.element.regular_video | relative_url }}" aria-label="Video for Discussion {{ include.number }} ({{ include.element.title }})">Video</a>
     {%- endcapture -%}
     {%- assign regular_links = regular_links | push: regular_video_link -%}
   {%- endif -%}
-  {%- if include.element.examprep_video and include.element.examprep_video != '' -%}
+  {%- if include.element.examprep_video and include.element.examprep_video != empty -%}
     {%- capture examprep_video_link -%}
       <a href="{{ include.element.examprep_video | relative_url }}" aria-label="Video for Exam Prep {{ include.number }} ({{ include.element.title }})">Video</a>
     {%- endcapture -%}
     {%- assign examprep_links = examprep_links | push: examprep_video_link -%}
   {%- endif -%}
-  {%- if include.element.bridge_video and include.element.bridge_video != '' -%}
+  {%- if include.element.bridge_video and include.element.bridge_video != empty -%}
     {%- capture bridge_video_link -%}
       <a href="{{ include.element.bridge_video | relative_url }}" aria-label="Video for Bridge {{ include.number }} ({{ include.element.title }})">Video</a>
     {%- endcapture -%}

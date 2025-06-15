@@ -15,7 +15,7 @@ nav_order: 0
 
 {% if instructors.size != 0 %}
 <span style="white-space: nowrap;">
-    <strong>{{instructor_msg}}</strong>: {{ instructors | join: ", " }}{%- if site.lecture.time != "" %} / {%- endif -%}
+    <strong>{{instructor_msg}}</strong>: {{ instructors | join: ", " }}{%- if site.lecture.time != empty %} / {%- endif -%}
 </span>
 {% endif -%}
 {%- if site.lecture.time != empty -%}

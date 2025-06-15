@@ -185,7 +185,7 @@
               <td class="{{ is_even }} week-cell" rowspan="{{ week.size }}" id="week-{{ week.name }}">
                 {{ week_number }}
                 {%- if week_extra_element.released -%}
-                  {%- if week_extra_element.link and week_extra_element.link != '' -%}
+                  {%- if week_extra_element.link and week_extra_element.link != empty -%}
                     <br>
                     <a
                       href="{{ week_extra_element.link }}"
@@ -193,7 +193,7 @@
                     >
                       {{- week_extra_element.name -}}
                     </a>
-                  {%- elsif week_extra_element.name and week_extra_element.name != '' -%}
+                  {%- elsif week_extra_element.name and week_extra_element.name != empty -%}
                     <br>
                     {{ week_extra_element.name }}
                   {%- endif -%}
