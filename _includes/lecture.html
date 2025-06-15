@@ -62,7 +62,7 @@
 {%- endcomment -%}
 {%- assign render_slides = false -%}
 {%- capture slides -%}
-{%- if include.element.slides and include.element.slides != "" -%}
+{%- if include.element.slides and include.element.slides != empty -%}
   {%- assign render_slides = true -%}
   <a href="{{ include.element.slides }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
 {%- elsif slides_exists -%}
@@ -80,7 +80,7 @@
 {%- capture video -%}
 <a href="{{ include.element.video }}" aria-label="Video for Lecture {{ include.number }} ({{ include.element.title }})">Video</a>
 {%- endcapture -%}
-{%- if include.element.video and include.element.video != "" -%}
+{%- if include.element.video and include.element.video != empty -%}
   {% assign links_array = links_array | push: video %}
 {%- endif -%}
 
@@ -90,7 +90,7 @@
 {%- capture recording -%}
 <a href="{{ include.element.recording }}" aria-label="Recording for Lecture {{ include.number }} ({{ include.element.title }})">Recording</a>
 {%- endcapture -%}
-{%- if include.element.recording and include.element.recording != "" -%}
+{%- if include.element.recording and include.element.recording != empty -%}
   {% assign links_array = links_array | push: recording %}
 {%- endif -%}
 
@@ -100,7 +100,7 @@
 {%- capture quiz -%}
 <a href="{{ include.element.quiz }}" aria-label="Quiz for Lecture {{ include.number }} ({{ include.element.title }})">Quiz</a>
 {%- endcapture -%}
-{%- if include.element.quiz and include.element.quiz != "" -%}
+{%- if include.element.quiz and include.element.quiz != empty -%}
   {% assign links_array = links_array | push: quiz %}
 {%- endif -%}
 

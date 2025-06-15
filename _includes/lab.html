@@ -25,7 +25,7 @@
     automatic numbering in syllabus.html.
 {%- endcomment -%}
 {%- capture assignment_title -%}
-  {%- if include.element.title and include.element.title != "" -%}
+  {%- if include.element.title and include.element.title != empty -%}
     {{ include.element.title }}
   {%- else -%}
     HW{{ include.number }}
@@ -38,7 +38,7 @@
   - Else, just return assignment_title unlinked.
 {%- endcomment -%}
 {%- capture assignment_linked_title -%}
-  {%- if include.element.link and include.element.link != "" and include.element.released -%}
+  {%- if include.element.link and include.element.link != empty and include.element.released -%}
     <a href="{{ include.element.link | relative_url }}">{{ assignment_title }}</a>
   {%- else -%}
     {{ assignment_title }}
@@ -49,7 +49,7 @@
   - Get due date from labs.yml.
 {%- endcomment -%}
 {%- capture assignment_due -%}
-  {%- if include.element.due and include.element.due != "" -%}
+  {%- if include.element.due and include.element.due != empty -%}
     (due {{ include.element.due | date: "%a %b %d" }})
   {%- endif -%}
 {%- endcapture -%}
@@ -68,12 +68,17 @@
 
 {%- comment -%}
   - Render links to specific parts.
+  - For each part: Link renders iff link exists AND released is true.
 {%- endcomment -%}
 {%- if include.element.parts and include.element.parts.size > 0 -%}
 <br><br>
 {%- endif -%}
 {%- for part in include.element.parts -%}
-  <a href="{{ part.link }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
+  {%- if include.element.released and part.link and part.link != empty -%}
+    <a href="{{ part.link }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
+  {%- else -%}
+    {{ part.name }}
+  {%- endif -%}
   {% if forloop.last == false %}
     {{}} / {{}}
   {% endif %}
