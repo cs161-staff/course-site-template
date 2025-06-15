@@ -4,6 +4,6 @@ week: 2
 date: 2025-01-27
 ---
 
-- Project 0 is due on Friday, February 7.
+- Project 1A is due on Wednesday, January 29.
 - Discussions and office hours begin this week.
 - EvanBot likes cookies.
