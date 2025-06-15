@@ -257,6 +257,10 @@ labs:
 - In `_includes/syllabus.html`, the second half of the file has mostly-identical codeblocks for rendering each column (e.g. look for "Render the homework column."). Reorder these codeblocks to match your desired order.
 
 
+**Change the discussion types?** (e.g. add a third type of discussion)
+- TODO
+
+
 **Change the way lectures/discussions are rendered?**
 - All the code for rendering a single lecture box and a single discussion box are in `_includes/lecture.html` and `_includes/discussion.html`, so you should only need to modify those two files.
 

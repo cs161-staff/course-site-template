@@ -2,8 +2,11 @@
 # Instructions for updating website #
 #####################################
 
-# To upload lecture slides to the website, just put the PDF
-# in assets/lectures using the filename convention above.
+# To upload Google Slides (or other externally-linked) lecture slides
+# to the website, use the "slides" field of each array entry below.
+
+# To upload PDF lecture slides to the website, just put the PDF
+# in assets/lectures using the filename convention below.
 #
 # The link to the slides will automatically appear once you
 # put the PDF with the right filename in the right folder.
@@ -17,20 +20,13 @@
 #     ...
 #   - /assets/lectures/cs101-sp25-lec25.pdf
 # If you'd like a different filepath or prefix (in the example, it's
-# /assets/lectures/cs161-sp25-lec in the example), change "lecture_prefix" below.
+# /assets/lectures/cs161-sp25-lec), change "lecture_prefix" below.
+
+# You can use a mix of Google Slides and PDFs. The "slides" link takes priority,
+# and if the link is empty, then the repo looks for a PDF instead.
 
 # To link lecture recordings on the website, fill in the
 # recordings field in the corresponding lecture below.
-
-# Lecture notes are similarly formatted, and links also
-# automatically appear when you put the PDF in the right filename
-# in the right folder.
-#
-# For example, the first few lecture notes should be put at:
-#   - /assets/notes/cs101-sp25-note01.pdf
-#   - /assets/notes/cs101-sp25-note02.pdf
-#     ...
-#   - /assets/notes/cs101-sp25-note25.pdf
 
 
 #####################################
@@ -67,27 +63,49 @@ lecture_prefix: "/assets/lectures/cs101-sp25-lec"
 
 lectures:
   - title: "Introduction and Security Principles"
-    slides: ""
-    recording: "https://youtu.be/aQ6HUxLEz2s"
+    slides: "https://docs.google.com/presentation/d/18fP58xbaJQAKTzf3p1pW06lSWkT0umdlQCQuRwzsIhQ"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9eGdDJv1UIYuMs0oYJ5DCa"
     readings:
-      - name: 'Ch. 1'
-        link: https://textbook.cs161.org/principles/principles.html
+      - name: "Ch. 1"
+        link: "https://textbook.cs161.org/principles/principles.html"
   - title: "x86 Assembly and Call Stack"
-    slides: "https://docs.google.com/presentation/d/1zZqwlHwgJIls3CVyObU5_wricDPyDozyrYqO6rbtzQM"
-    recording: "https://youtu.be/KQvzzdoJiss"
+    slides: "" # example of lecture slides automatically linking to a PDF file instead of Google Slides
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_R0dlFGLnAxOEJtWXahfdN"
     readings:
-      - name: 'Ch. 2'
-        link: https://textbook.cs161.org/memory-safety/x86.html
-      - name: x86/GDB Cheat Sheet
+      - name: "Ch. 2"
+        link: "https://textbook.cs161.org/memory-safety/x86.html"
+      - name: "x86/GDB Cheat Sheet"
         link: "https://assets.cs161.org/proj1/cheatsheet.pdf"
+    rowspan: "2"
   - title: "Memory Safety Vulnerabilities"
-    slides: "https://docs.google.com/presentation/d/1UAJHUv1Ryhdp6N9CAAXinqaID-RGO_Ec2qL2o_Tqlhs"
-    recording: "https://youtu.be/0LdBx7huYpg"
+    slides: "https://docs.google.com/presentation/d/1M_oyCC1OE5oZPh7Qiwp8X2IIlWa6AAvel3ST0ndFgts"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9NcOVQ3z0tKo7_5uJpUajl"
     readings:
-      - name: 'Ch. 3'
-        link: https://textbook.cs161.org/memory-safety/vulnerabilities.html
-    classes:
-      - schedule-green
-  - title: "Extra Lecture (Example) [OPTIONAL]"
+      - name: "Ch. 3"
+        link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+  - title: "Holiday (No Lecture)"
+    nonumber: true # skips assigning a number to this box
+  - title: "Memory Safety Vulnerabilities 2"
+    slides: "https://docs.google.com/presentation/d/140pgaTQT-7HgqP9Y7NLHXIlFeJHNInLauVaqFn455yI"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX-g5R_j2HkJBohgyIkppSCl"
+    readings:
+      - name: "Ch. 3"
+        link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+  - title: "Midterm (7–9pm)"
+    nonumber: true # skips assigning a number to this box
+  - title: "Optional Lecture"
+    slides: "https://docs.google.com/presentation/d/1gYzYu-T0ymaVcH87-mlCPc7qnRmWacHpKebCentDjoM"
     classes:
       - schedule-red
+  - title: "Mitigating Memory Safety Vulnerabilities"
+    slides: "https://docs.google.com/presentation/d/1ZONpx6qlqR2GyIF2nL3zjuDiOVknApgFOVwMHagmskI"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_clJKxwAxzStm4ctkNDXvt"
+    readings:
+      - name: "Ch. 4"
+        link: "https://textbook.cs161.org/memory-safety/mitigations.html"
+  - title: "Intro to Cryptography"
+    slides: "https://docs.google.com/presentation/d/1CnAthtm-3sjX8d3rJiedRVVAmFIyj_4z4kQ2gNg7074"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_1xFvNccJVTpadyTgErwbD"
+    readings:
+      - name: "Ch. 5"
+        link: "https://textbook.cs161.org/crypto/intro.html"

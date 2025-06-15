@@ -56,18 +56,18 @@ semester_slug: sp25
 semester_full: Spring 2025
 
 # - Updates the top line of the homepage, i.e. the one that says
-#   "Instructor: EvanBot / Lecture: Date Time, Location [Zoom, Playlist]"
+#   "Instructor: EvanBot / Lecture: TuTh, 12:30–2:00 PM, Wheeler 150 [Zoom, Playlist]"
 # - Note: Instructor is pulled from the _staffers folder.
 lecture:
-  time: "Date Time"
+  time: "TuTh, 12:30–2:00 PM"
   location:
-      name: "Location"
+      name: "Wheeler 150"
       link: ""
 heading_links:
   - text: "Zoom"
-    url: ""
+    url: "https://berkeley.zoom.us"
   - text: "Playlist"
-    url: ""
+    url: "https://www.youtube.com/playlist?list=PLp8QV47qJEg4fg0UAZzU2FeuZrs6XMjkK"
 
 # - Used on staff.md to show students the staff email.
 staff_email: "evanbot@berkeley.edu"
