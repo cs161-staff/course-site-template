@@ -391,7 +391,11 @@ labs:
 
 
 **Change the discussion types?** (e.g. add a third type of discussion)
-- TODO
+- By default, we support up to 3 types of discussions. Each type can link to worksheet, solutions, videos, and slides, and there's no inherent difference between the types (they share the same rendering code).
+- In `_data/discussions.yml`, update `discussion_filename_bases` with the names of your discussion types.
+- It's okay if the variables don't match, e.g. `bridge_name: Mega-Discussion` is fine. The variables don't render onto the website. If the variable names really bother you, carefully change the variable names in both `_data/discussions.yml` and `_includes/discussion.html`.
+- See `_data/discussions.yml` for instructions on how to render each type of discussion.
+- If you want more than 3 types, or you want to change what gets rendered (e.g. make it say "Recording" instead of "Video"), see the question below this.
 
 
 **Change the way lectures/discussions are rendered?**

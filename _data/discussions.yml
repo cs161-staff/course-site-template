@@ -69,6 +69,26 @@
 #   We predefined colors like schedule-purple, schedule-green, etc. in 
 #   and you can add your own in _sass/custom/custom.scss if you want.
 
+# Example usage of all the features:
+#
+# - title: "Welcome"
+#   nonumber: false
+#   show_worksheet: true
+#   show_sols: true
+#   show_videos: true
+#   show_slides: true
+#   regular_video: "https://youtube.com/1"
+#   examprep_video: "https://youtube.com/2"
+#   bridge_video: "https://youtube.com/3"
+#   regular_slides: "https://slides.google.com/1"
+#   examprep_slides: "https://slides.google.com/2"
+#   bridge_slides: "https://slides.google.com/3"
+#   extra: |
+#     [61C Review Video](https://www.youtube.com/watch?v=WVhKJqCqwyE)
+#   rowspan: 3
+#   classes:
+#     - schedule-purple
+
 # - Every semester, you have to change the path to reflect the latest semester.
 # - You should not need to change the rest of these unless you're rebuilding the website.
 # - Slugs and path are used to build filenames.
