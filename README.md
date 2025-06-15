@@ -220,9 +220,10 @@ This section some possible changes you might want to perform, and how to impleme
 - If you aren't already using the Labs column, the easiest way to add a new column is to repurpose the Labs column for your purposes.
 - First, follow the two steps above (in the "Add a new assignments column") section. This enables the Labs column and renames the column header.
 - Now, in `labs.yml` (which also doesn't need to be renamed), you can add data to feed into your new column, even if that data isn't an assignment.
-- For example, you can use `extra` to put arbitrary Markdown in each cell, use `nonumber` to disable auto-numbering the cells, and use `rowspan` to control the size of each cell:
+- For example, you can use `extra` to put arbitrary Markdown in each cell, use `nonumber` to disable auto-numbering the cells, and use `rowspan` to control the size of each cell. See example below.
+- Warning: If you're using `extra` in every cell, you should make sure that the text in each cell is somewhat distinct, for accessibility reasons. (e.g. don't make every link say "Slides")
 
-  ```
+```
 labs:
   - nonumber: true
     extra: |
@@ -238,9 +239,7 @@ labs:
     extra: |
       [How to brownies](https://www.example4.com)
     rowspan: 1
-  ```
-
-- Warning: If you're using `extra` in every cell, you should make sure that the text in each cell is somewhat distinct, for accessibility reasons. (e.g. don't make every link say "Slides")
+```
 
 
 **Add a new column for something else? (harder)** (e.g. adding both a Labs and a Vitamins column)
