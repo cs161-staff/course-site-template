@@ -6,6 +6,13 @@ parent: Project 1
 has_right_toc: true
 ---
 
+{% if site.data.proj1_assignment.released != true %}
+  <p class="warning">
+    This spec is in an unreleased state. This warning message will go away once it's been fully updated for the current
+    semester.
+  </p>
+{% endif %}
+
 # Deliverables
 
 Your submission for this project involves a checkpoint autograder submission (for Q1-4), a final autograder submission (for all questions), and a final write-up. If you worked with a partner, remember to add your partner to all of your Gradescope submissions!
@@ -29,7 +36,7 @@ The following utilizes `_data/projects.yml` to see whether the assignment should
 
 ## Autograder Submission
 
-{% if site.data.projects.projects[0].released %}
+{% if site.data.proj1_assignment.released %}
 
 **Deliverable**: Please submit your final autograder .zip file to the [Autograder]({{ site.data.proj1_assignment.gradescope.autograder }}) assignment.
 
@@ -43,7 +50,7 @@ Generate your final autograder .zip file using the above Local Setup or Instruct
 
 ## Write-up Submission
 
-{% if site.data.projects.projects[0].released %}
+{% if site.data.proj1_assignment.released %}
 
 **Deliverable**: Please submit your write-up to the [Write-up]({{ site.data.proj1_assignment.gradescope.writeup }}) assignment.
 
