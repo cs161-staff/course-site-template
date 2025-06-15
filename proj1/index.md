@@ -6,7 +6,7 @@ nav_exclude: false # set to false when project released
 has_children: true
 ---
 
-{% if site.data.proj1_assignment.released != true %}
+{% if site.data.proj1_assignment.unreleased_warning %}
   <p class="warning">
     This spec is in an unreleased state. This warning message will go away once it's been fully updated for the current
     semester.
