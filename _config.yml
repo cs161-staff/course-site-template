@@ -164,13 +164,15 @@ enable_copy_code_button: true
 permalink: pretty
 footer_content:
 
-# Collections for website data
+# Formally define the collections that we use.
+# https://jekyllrb.com/docs/collections/
 collections:
   staffers:
-  modules:
-  schedules:
   announcements:
 # Default layouts for each collection type
+# Sets the default layout for every markdown file in _staffers/ to 'staffer'
+# and the default subpath for images in _staffers/ to '/assets/staff/'
+# https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
   - scope:
       path: ''
@@ -178,29 +180,6 @@ defaults:
     values:
       layout: staffer
       subpath: '/assets/staff/'
-  - scope:
-      path: ''
-      type: modules
-    values:
-      layout: module
-  - scope:
-      path: ''
-      type: schedules
-    values:
-      layout: schedule
-  - scope:
-      path: ''
-      type: announcements
-    values:
-      layout: announcement
-
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  startings: []
-  blanklines: false
-  profile: false
 
 plugins:
   - jekyll-seo-tag
