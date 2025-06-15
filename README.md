@@ -323,6 +323,22 @@ Another example of data is in `_data/faqs.yml`, which lists next-semester dates 
 If you want to change the layout of the syllabus (the big table on the homepage), you will need to manually edit some more obscure files.
 
 
+### New Pages
+
+When making a new Markdown page (e.g. a new project spec), you can use [Jekyll front matter](https://jekyllrb.com/docs/front-matter/) to configure the page.
+
+We suggest using `layout: page` for all your pages. We currently don't support other layouts.
+
+Just the Docs has many built-in front matter features you can use:
+- [Ordering Pages](https://just-the-docs.com/docs/navigation/main/order/)
+- [Excluding Pages](https://just-the-docs.com/docs/navigation/main/exclude/)
+- [Page Levels](https://just-the-docs.com/docs/navigation/main/levels/)
+
+Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are relevant to this repo.
+
+The only custom front matter feature we have in this repo is `has_right_toc: true`, which toggles a table of contents on the right side of the page.
+
+
 ### Syllabus Files
 
 Files used to build the syllabus (each file has more documentation):
