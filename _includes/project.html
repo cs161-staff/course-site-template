@@ -33,12 +33,12 @@
 {%- endcapture -%}
 
 {%- comment -%}
-  - If link exists AND released is true, get the link from projects.yml and
+  - If link exists AND show_links is true, get the link from projects.yml and
     wrap it around assignment_title (as computed in the block above).
   - Else, just return assignment_title unlinked.
 {%- endcomment -%}
 {%- capture assignment_linked_title -%}
-  {%- if include.element.link and include.element.link != empty and include.element.released -%}
+  {%- if include.element.link and include.element.link != empty and include.element.show_links -%}
     <a href="{{ include.element.link | relative_url }}">{{ assignment_title }}</a>
   {%- else -%}
     {{ assignment_title }}
@@ -68,13 +68,13 @@
 
 {%- comment -%}
   - Render links to specific parts.
-  - For each part: Link renders iff link exists AND released is true.
+  - For each part: Link renders iff link exists AND show_links is true.
 {%- endcomment -%}
 {%- if include.element.parts and include.element.parts.size > 0 -%}
 <br><br>
 {%- endif -%}
 {%- for part in include.element.parts -%}
-  {%- if include.element.released and part.link and part.link != empty -%}
+  {%- if include.element.show_links and part.link and part.link != empty -%}
     <a href="{{ part.link }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
   {%- else -%}
     {{ part.name }}

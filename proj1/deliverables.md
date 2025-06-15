@@ -1,11 +1,17 @@
 ---
-layout: project
-project_index: 0
+layout: page
 title: Deliverables
 nav_order: 100
 parent: Project 1
 has_right_toc: true
 ---
+
+{% if site.data.proj1_assignment.unreleased_warning %}
+  <p class="warning">
+    This spec is in an unreleased state. This warning message will go away once it's been fully updated for the current
+    semester.
+  </p>
+{% endif %}
 
 # Deliverables
 
@@ -30,13 +36,13 @@ The following utilizes `_data/projects.yml` to see whether the assignment should
 
 ## Autograder Submission
 
-{% if site.data.projects.projects[0].released %}
+{% if site.data.proj1_assignment.unreleased_warning %}
 
-**Deliverable**: Please submit your final autograder .zip file to the [Autograder]({{ site.data.proj1_assignment.gradescope.autograder }}) assignment.
+**Deliverable**: Please submit your final autograder .zip file to the Autograder assignment, which will be released on Gradescope.
 
 {% else %}
 
-**Deliverable**: Please submit your final autograder .zip file to the Autograder assignment, which will be released on Gradescope.
+**Deliverable**: Please submit your final autograder .zip file to the [Autograder]({{ site.data.proj1_assignment.gradescope.autograder }}) assignment.
 
 {% endif %}
 
@@ -44,13 +50,13 @@ Generate your final autograder .zip file using the above Local Setup or Instruct
 
 ## Write-up Submission
 
-{% if site.data.projects.projects[0].released %}
+{% if site.data.proj1_assignment.unreleased_warning %}
 
-**Deliverable**: Please submit your write-up to the [Write-up]({{ site.data.proj1_assignment.gradescope.writeup }}) assignment.
+**Deliverable**: Please submit your write-up to the Write-up assignment, which will be released on Gradescope.
 
 {% else %}
 
-**Deliverable**: Please submit your write-up to the Write-up assignment, which will be released on Gradescope.
+**Deliverable**: Please submit your write-up to the [Write-up]({{ site.data.proj1_assignment.gradescope.writeup }}) assignment.
 
 {% endif %}
 
