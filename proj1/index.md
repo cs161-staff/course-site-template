@@ -1,6 +1,5 @@
 ---
-layout: project
-project_index: 0 # utilize the index from _data/projects.yml (if not yet released, a warning with populate that the spec is unreleased)
+layout: page
 title: Project 1
 nav_order: 5
 nav_exclude: false # set to false when project released

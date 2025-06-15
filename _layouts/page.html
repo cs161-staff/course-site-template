@@ -14,4 +14,17 @@ layout: default
   </p>
 {%- endif -%}
 
+{% capture content %}
 {{ content }}
+{% endcapture %}
+
+{%- if page.has_right_toc -%}
+<div class="content-container">
+    <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
+      {% include toc.html html=content sanitize=true item_class="nav-list-item" anchor_class="nav-list-link" h_min=1 h_max=3 %}
+    </nav>
+  <div class="content">{{ content }}</div>
+</div>
+{%- else -%}
+{{ content }}
+{%- endif -%}

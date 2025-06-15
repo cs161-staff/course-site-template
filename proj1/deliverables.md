@@ -1,6 +1,5 @@
 ---
-layout: project
-project_index: 0
+layout: page
 title: Deliverables
 nav_order: 100
 parent: Project 1
