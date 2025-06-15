@@ -16,6 +16,9 @@ Then, you can copy over any relevant files from your previous semester's repo in
 
 ### Not Recommended: From Previous Semester
 
+> [!WARNING]  
+> This method may involve resolving complicated merge conflicts. If you do not have a good understanding of Git, we recommend using the method above.
+
 If you instead choose to copy the previous semester's repo, then you'll need to take any updates to this template repo, and *manually copy those updates into your own repo*.
 - Clone the previous semester's repo
 - Rename the folder (e.g. from `fa24-website` to `sp25-website`)
@@ -56,10 +59,14 @@ Anybody updating the website should have [Jekyll installed](https://jekyllrb.com
 
 After installation, `cd` into the website repo and run `bundle exec jekyll serve` to build the website locally. The local website will automatically re-build every time you edit files.
 
-You should *always build locally* and check before pushing any changes. Don't be that person who pushes broken code to production.
-
 
 ### Pushing updates
+
+> [!IMPORTANT]
+> You should *always build locally* and check before pushing any changes. Don't be that person who pushes broken code to production.
+
+> [!IMPORTANT]
+> You should always [use pull requests](https://github.blog/developer-skills/github/beginners-guide-to-github-creating-a-pull-request/#creating-your-pull-request) for non-trivial updates. Don't push potentially-breaking changes directly to main.
 
 To update the website, just push to this repo, and the website will automatically build and update in around a minute.
 
@@ -69,8 +76,6 @@ To keep the repo clean, **please tag your commit messages** by adding an assignm
 - `[disc02] release`
 - `[hw02] add electronic hw`
 - `[proj1] fix typo in spec`
-
-You should always [use pull requests](https://github.blog/developer-skills/github/beginners-guide-to-github-creating-a-pull-request/#creating-your-pull-request) for non-trivial updates. Don't push potentially-breaking changes directly to main.
 
 
 ### Custom domain deploy
@@ -85,22 +90,25 @@ For UC Berkeley classes only: Refer to this [GitHub gist](https://gist.github.co
 
 ### Scheduling assignment release
 
-TODO update this
+For assignment releases, we recommend the GitHub workflow, [gr2m/merge-schedule-action](https://github.com/gr2m/merge-schedule-action). The configuration that they provide in the "Usage" section of their documentation is what we recommend. Make sure to update your timezone to reflect the timezone you are teaching the course in.
 
-If you've made a PR for an assignment release, and would like to schedule that PR to merge, feel free to utilize the workflow here in `.github/workflows/merge-schedule.yml`.
+The workflow activates when a PR is made or edited, and checks if the last line includes the `/schedule` command. If so, it will attempt to merge the PR at the time specified after the command. The command accepts:
+ - A date in YYYY-MM-DD format (2025-06-15), which will merge at midnight in the timezone you specify.
+ - A timezone-sensitive `ISO 8601` date string (2025-06-15T09:00:00.000Z)
+ - Nothing, which will merge the next time the cron job is ran.
 
-This has a cron job set up, which runs each hour. If you set the comment on the PR in GitHub to be `/schedule YYYY-MM-DDT07:00:00.000Z`, this will release on `YYYY-MM-DD` at 7AM UTC, which is midnight in Pacific time. Feel free to customize as desired.
-
+For example, to schedule a PR to merge on June 16th at midnight in your specified timezone, the last line of a PR should be `/schedule 2025-06-16`. The workflow will add a comment to your PR confirming that it is scheduled.
 
 ## Start of Semester Setup
 
 ### Configuration
 
+> [!NOTE]
+> If you've used this template before, you can check your previous semester's config and syllabus files to see how they were filled out last time.
+
 Go to `_config.yml` and follow instructions in that file to update all relevant fields. (Note: You will need to re-run `bundle exec jekyll serve` every time you update this file.)
 
 Next, go to `_data/syllabus.yml` and follow instructions in that file to update all relevant fields.
-
-Note: If you've used this template before, you can check your previous semester's config and syllabus files to see how they were filled out last time.
 
 
 ### Calendar
@@ -144,17 +152,49 @@ The documentation (and some extra configuration) lives in `_data/staff.yml`.
 
 **Compressing staff images**: Please don't put enormous 4096x4096 staff images in the website repo and force staff/students to load those every time.
 
-Run every staff image through this bash script to make them a reasonable size.
+> [!WARNING]
+> Skipping this step may lead to substantially longer load times, and a much larger Git repository.
 
-Do this before committing them into the repo (otherwise the large image just ends up in the Git history and defeats the point).
+Our recommended way to compress images is with the script below, which relies on [ImageMagick](https://imagemagick.org/), a command-line image manipulation program which supports Windows, MacOS, and Linux. It automatically resizes each image, and saves them as a `.webp`. If you do not wish to use ImageMagick, the same thing can be accomplished manually using [GIMP](https://gimp.org), Photoshop, or any other image editor.
 
-```
-shopt -s nullglob
-for i in *.{png,PNG,gif,GIF,heic,HEIC}; do convert "$i" "${i%.*}.jpg"; done
-for i in *.{JPG,jpeg,JPEG,jfif,JFIF}; do mv "$i" "${i%.*}.jpg"; done
-mogrify -resize '512x512^>' -gravity center -crop '512x512+0+0' -strip *.jpg
-shopt -u nullglob
-```
+There is a different script for each common shell. If you do not know which shell you are using, you can type `echo $0` into your terminal to find out.
+
+Do this before committing them into the repo (otherwise the large image just ends up in the Git history and defeats the point). Make sure to remove the old files, since the command does not do this for you.
+
+<details open>
+  <summary>BASH Script</summary>
+
+  ```shell
+  shopt -s nullglob
+  for i in *.{png,PNG,gif,GIF,heic,HEIC,jpg,JPG,jpeg,JPEG,jfif,JFIF}; do magick "$i" "${i%.*}.webp"; done
+  for i in *.{WEBP}; do mv "$i" "${i%.*}.webp"; done
+  mogrify -resize '512x512^>' -gravity center -crop '512x512+0+0' -strip *.webp
+  shopt -u nullglob
+  ```
+</details>
+
+<details>
+  <summary>ZSH Script</summary>
+
+  ```shell
+  setopt CSH_NULL_GLOB
+  for i in *.{png,PNG,gif,GIF,heic,HEIC,jpg,JPG,jpeg,JPEG,jfif,JFIF}; do convert "$i" "${i%.*}.webp"; done
+  for i in *.{WEBP}; do mv "$i" "${i%.*}.webp"; done
+  mogrify -resize '512x512^>' -gravity center -crop '512x512+0+0' -strip *.webp
+  setopt NOMATCH
+  ```
+</details>
+
+<details>
+  <summary>Other</summary>
+
+  If you are using a shell like `fish` which does not support complicated globbing, your best bet is just to break into bash temporarily.
+  ```shell
+  bash -O nullglob -c "for i in *.{png,PNG,gif,GIF,heic,HEIC,jpg,JPG,jpeg,JPEG,jfif,JFIF}; do convert '$i' '${i%.*}.webp'; done"
+  bash -O nullglob -c "for i in *.{WEBP}; do mv '$i' '${i%.*}.webp'; done"
+  mogrify -resize '512x512^>' -gravity center -crop '512x512+0+0' -strip *.webp
+  ```
+</details>
 
 
 ## Updates Throughout Semester
@@ -189,9 +229,10 @@ Another example of data is in `_data/faqs.yml`, which lists next-semester dates 
 
 ## Customization
 
-If you want to change the layout of the syllabus (the big table on the homepage), you will need to manually edit some more obscure files.
+> [!WARNING]  
+> Some competency in Jekyll and HTML required for this step. We don't recommend attempting this unless you know what you're doing.
 
-Warning: Some competency in Jekyll and HTML required for this step. We don't recommend attempting this unless you know what you're doing.
+If you want to change the layout of the syllabus (the big table on the homepage), you will need to manually edit some more obscure files.
 
 
 ### Syllabus Files
@@ -217,11 +258,12 @@ This section some possible changes you might want to perform, and how to impleme
 - In `_includes/syllabus.html`, you can rename the header you just uncommented - right now it's Labs but it can be whatever else. The other variables can still be called lab, e.g. "lab_element", and they won't show up on the website, so it's probably easiest to leave them unchanged.
 
 **Add a new column for something else? (easier)** (e.g. a second readings column)
+> [!CAUTION]
+> If you're using `extra` in every cell, you should make sure that the text in each cell is distinct, for accessibility reasons. (e.g. don't make every link say "Slides")
 - If you aren't already using the Labs column, the easiest way to add a new column is to repurpose the Labs column for your purposes.
 - First, follow the two steps above (in the "Add a new assignments column") section. This enables the Labs column and renames the column header.
 - Now, in `labs.yml` (which also doesn't need to be renamed), you can add data to feed into your new column, even if that data isn't an assignment.
 - For example, you can use `extra` to put arbitrary Markdown in each cell, use `nonumber` to disable auto-numbering the cells, and use `rowspan` to control the size of each cell. See example below.
-- Warning: If you're using `extra` in every cell, you should make sure that the text in each cell is somewhat distinct, for accessibility reasons. (e.g. don't make every link say "Slides")
 
 ```
 labs:
@@ -243,8 +285,11 @@ labs:
 
 
 **Add a new column for something else? (harder)** (e.g. adding both a Labs and a Vitamins column)
-- Warning: You should be manually validating WCAG AA accessibility of your new code. If you're not sure how to do these steps, try the easier approach above.
-- Warning: Adding too many columns will make the table hard to read, especially on smaller screens (e.g. mobile).
+> [!CAUTION]
+> You should be manually validating WCAG AA accessibility of your new code. If you're not sure how to do these steps, try the easier approach above.
+
+> [!WARNING]
+> Adding too many columns will make the table hard to read, especially on smaller screens (e.g. mobile).
 - In `_includes/syllabus.html`, add a new header near the top of the file.
 - In `_includes/syllabus.html`, below the headers, initialize new counters, e.g. `vitamin_index`, `vitamin_rowspan`, `vitamin_number`, `default_vitamin_number`.
 - In `_includes/syllabus.html`, the second half of the file has mostly-identical codeblocks for rendering each column (e.g. look for "Render the homework column."). Copy-paste this codeblock for the new column in the appropriate place (e.g. if your column is between Homework and Project, then your new codeblock should be between the homework-rendering and project-rendering codeblocks).
