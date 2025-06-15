@@ -4,5 +4,5 @@ week: 1
 date: 2025-01-20
 ---
 
-- The first lecture is on Wednesday, January 22.
+- The first lecture is on Thursday, January 23.
 - Please get your pancake orders submitted before breakfast.
