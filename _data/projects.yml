@@ -65,16 +65,42 @@
 #     - schedule-purple
 
 projects:
-  - title: "Project 1"
-    link: "/proj1/"
-    show_links: true
-    due: "09/06"
+  - title: "Project 1A"
+    link: "/proj1/deliverables"
+    released: true
+    due: "2025/01/29"
+    # "parts" can also be used for other recurring text in the boxes, like slides.
     parts:
       - name: "Slides"
-        link: "https://www.google.com"
-    extra: "[Special PDF](https://www.google.com)"
-    rowspan: 3
+        link: "https://docs.google.com/presentation/d/1RM9EOWqfaNzy9FP-Ud22fS3xz7xIQDFBXQe0jrEN5rQ"
+    rowspan: "2"
     classes:
-      - schedule-yellow # adds the purple background
+      - schedule-yellow # adds the yellow background
   - nonumber: true
+    rowspan: "1"
+  - title: "Project 1B"
+    link: "/proj1"
+    released: true
+    due: "2025/02/12"
+    parts:
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1kwgVU2BIG5BOvkKF1JWrXf62zJnzIki5UrTTCzMeVs4"
+    rowspan: "4"
+    classes:
+      - schedule-blue # adds the blue background
+  - title: "Project 2"
+    link: "/proj2"
+    released: true
+    due: "2025/02/19"
+    parts:
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1bn1QHK7nLbirGsEKct5UTf2vp2k7NOTaMSuu9lZW0yU"
+    # "extra" should be for one-off links. For recurring links, use "parts" instead.
+    extra: |
+      [Extra link](https://www.google.com)
+    rowspan: "2"
+    classes:
+      - schedule-green # adds the green background
+  - nonumber: true # blank box in Week 5
+    rowspan: "2"
   

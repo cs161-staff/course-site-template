@@ -1,6 +1,9 @@
 {%- comment -%}
 - This code renders one lab box on the syllabus.
 - See labs.yml for how to feed information into this template.
+- include.element is a Liquid object (like a dictionary) representing one
+  entry of labs.yml. You can access specific fields of this object with
+  syntax like include.element.title or include.element.classes.
 - Note: For simplicity, homeworks.html, labs.html, and projects.html are built identically.
   Additional columns should be able to use the same template as well.
 - Note: By default, this file is not used in CS161's course-site-template repo.

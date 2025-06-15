@@ -1,6 +1,9 @@
 {%- comment -%}
   - This code renders one discussion box on the syllabus.
   - See discussions.yml for how to feed information into this template.
+  - include.element is a Liquid object (like a dictionary) representing one
+  entry of discussions.yml. You can access specific fields of this object with
+  syntax like include.element.title or include.element.classes.
 {%- endcomment -%}
 
 {%- comment -%}
@@ -96,19 +99,19 @@
 {%- if include.element.show_worksheet -%}
   {%- if regular_exists -%}
     {%- capture regular_worksheet_link -%}
-      <a href="{{ filename_regular | relative_url }}" aria-label="Worksheet for Discussion {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+      <a href="{{ filename_regular | relative_url }}" aria-label="Worksheet for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Worksheet</a>
     {%- endcapture -%}
     {%- assign regular_links = regular_links | push: regular_worksheet_link -%}
   {%- endif -%}
   {%- if examprep_exists -%}
     {%- capture examprep_worksheet_link -%}
-      <a href="{{ filename_examprep | relative_url }}" aria-label="Worksheet for Exam Prep {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+      <a href="{{ filename_examprep | relative_url }}" aria-label="Worksheet for {{ bases.examprep_name }} {{ include.number }} ({{ include.element.title }})">Worksheet</a>
     {%- endcapture -%}
     {%- assign examprep_links = examprep_links | push: examprep_worksheet_link -%}
   {%- endif -%}
   {%- if bridge_exists -%}
     {%- capture bridge_worksheet_link -%}
-      <a href="{{ filename_bridge | relative_url }}" aria-label="Worksheet for Bridge {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+      <a href="{{ filename_bridge | relative_url }}" aria-label="Worksheet for {{ bases.bridge_name }} {{ include.number }} ({{ include.element.title }})">Worksheet</a>
     {%- endcapture -%}
     {%- assign bridge_links = bridge_links | push: bridge_worksheet_link -%}
   {%- endif -%}
@@ -120,19 +123,19 @@
 {%- if include.element.show_sols -%}
   {%- if regular_sols_exists -%}
     {%- capture regular_sols_link -%}
-      <a href="{{ filename_regular_sols | relative_url }}" aria-label="Solutions for Discussion {{ include.number }} ({{ include.element.title }})">Solutions</a>
+      <a href="{{ filename_regular_sols | relative_url }}" aria-label="Solutions for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Solutions</a>
     {%- endcapture -%}
     {%- assign regular_links = regular_links | push: regular_sols_link -%}
   {%- endif -%}
   {%- if examprep_sols_exists -%}
     {%- capture examprep_sols_link -%}
-      <a href="{{ filename_examprep_sols | relative_url }}" aria-label="Solutions for Exam Prep {{ include.number }} ({{ include.element.title }})">Solutions</a>
+      <a href="{{ filename_examprep_sols | relative_url }}" aria-label="Solutions for {{ bases.examprep_name }} {{ include.number }} ({{ include.element.title }})">Solutions</a>
     {%- endcapture -%}
     {%- assign examprep_links = examprep_links | push: examprep_sols_link -%}
   {%- endif -%}
   {%- if bridge_sols_exists -%}
     {%- capture bridge_sols_link -%}
-      <a href="{{ filename_bridge_sols | relative_url }}" aria-label="Solutions for Bridge {{ include.number }} ({{ include.element.title }})">Solutions</a>
+      <a href="{{ filename_bridge_sols | relative_url }}" aria-label="Solutions for {{ bases.bridge_name }} {{ include.number }} ({{ include.element.title }})">Solutions</a>
     {%- endcapture -%}
     {%- assign bridge_links = bridge_links | push: bridge_sols_link -%}
   {%- endif -%}
@@ -144,19 +147,19 @@
 {%- if include.element.show_videos -%}
   {%- if include.element.regular_video and include.element.regular_video != empty -%}
     {%- capture regular_video_link -%}
-      <a href="{{ include.element.regular_video | relative_url }}" aria-label="Video for Discussion {{ include.number }} ({{ include.element.title }})">Video</a>
+      <a href="{{ include.element.regular_video | relative_url }}" aria-label="Video for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Video</a>
     {%- endcapture -%}
     {%- assign regular_links = regular_links | push: regular_video_link -%}
   {%- endif -%}
   {%- if include.element.examprep_video and include.element.examprep_video != empty -%}
     {%- capture examprep_video_link -%}
-      <a href="{{ include.element.examprep_video | relative_url }}" aria-label="Video for Exam Prep {{ include.number }} ({{ include.element.title }})">Video</a>
+      <a href="{{ include.element.examprep_video | relative_url }}" aria-label="Video for {{ bases.examprep_name }} {{ include.number }} ({{ include.element.title }})">Video</a>
     {%- endcapture -%}
     {%- assign examprep_links = examprep_links | push: examprep_video_link -%}
   {%- endif -%}
   {%- if include.element.bridge_video and include.element.bridge_video != empty -%}
     {%- capture bridge_video_link -%}
-      <a href="{{ include.element.bridge_video | relative_url }}" aria-label="Video for Bridge {{ include.number }} ({{ include.element.title }})">Video</a>
+      <a href="{{ include.element.bridge_video | relative_url }}" aria-label="Video for {{ bases.bridge_name }} {{ include.number }} ({{ include.element.title }})">Video</a>
     {%- endcapture -%}
     {%- assign bridge_links = bridge_links | push: bridge_video_link -%}
   {%- endif -%}
@@ -166,21 +169,21 @@
   - Slides show iff "show_slides: true" AND slide link exists in discussions.yml.
 {%- endcomment -%}
 {%- if include.element.show_slides -%}
-  {%- if include.element.regular_slides -%}
+  {%- if include.element.regular_slides and include.element.regular_slides != '' -%}
     {%- capture regular_slides_link -%}
-      <a href="{{ include.element.regular_slides | relative_url }}" aria-label="Slides for Discussion {{ include.number }} ({{ include.element.title }})">Slides</a>
+      <a href="{{ include.element.regular_slides | relative_url }}" aria-label="Slides for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Slides</a>
     {%- endcapture -%}
     {%- assign regular_links = regular_links | push: regular_slides_link -%}
   {%- endif -%}
-  {%- if include.element.examprep_slides -%}
+  {%- if include.element.examprep_slides and include.element.examprep_slides != '' -%}
     {%- capture examprep_slides_link -%}
-      <a href="{{ include.element.examprep_slides | relative_url }}" aria-label="Slides for Exam Prep {{ include.number }} ({{ include.element.title }})">Slides</a>
+      <a href="{{ include.element.examprep_slides | relative_url }}" aria-label="Slides for {{ bases.examprep_name }} {{ include.number }} ({{ include.element.title }})">Slides</a>
     {%- endcapture -%}
     {%- assign examprep_links = examprep_links | push: examprep_slides_link -%}
   {%- endif -%}
-  {%- if include.element.bridge_slides -%}
+  {%- if include.element.bridge_slides and include.element.bridge_slides != '' -%}
     {%- capture bridge_slides_link -%}
-      <a href="{{ include.element.bridge_slides | relative_url }}" aria-label="Slides for Bridge {{ include.number }} ({{ include.element.title }})">Slides</a>
+      <a href="{{ include.element.bridge_slides | relative_url }}" aria-label="Slides for {{ bases.bridge_name }} {{ include.number }} ({{ include.element.title }})">Slides</a>
     {%- endcapture -%}
     {%- assign bridge_links = bridge_links | push: bridge_slides_link -%}
   {%- endif -%}

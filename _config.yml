@@ -56,18 +56,18 @@ semester_slug: sp25
 semester_full: Spring 2025
 
 # - Updates the top line of the homepage, i.e. the one that says
-#   "Instructor: EvanBot / Lecture: Date Time, Location [Zoom, Playlist]"
+#   "Instructor: EvanBot / Lecture: TuTh, 12:30–2:00 PM, Wheeler 150 [Zoom, Playlist]"
 # - Note: Instructor is pulled from the _staffers folder.
 lecture:
-  time: "Date Time"
+  time: "TuTh, 12:30–2:00 PM"
   location:
-      name: "Location"
+      name: "Wheeler 150"
       link: ""
 heading_links:
   - text: "Zoom"
-    url: ""
+    url: "https://berkeley.zoom.us"
   - text: "Playlist"
-    url: ""
+    url: "https://www.youtube.com/playlist?list=PLp8QV47qJEg4fg0UAZzU2FeuZrs6XMjkK"
 
 # - Used on staff.md to show students the staff email.
 staff_email: "evanbot@berkeley.edu"
@@ -155,7 +155,7 @@ callouts:
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor", "README.md"]
 
 # - Every few years, we may need to update the JTD version to pull from upstream.
-remote_theme: just-the-docs/just-the-docs@v0.8.2
+theme: just-the-docs
 
 color_scheme: wider
 search_enabled: true
@@ -204,3 +204,10 @@ compress_html:
 
 plugins:
   - jekyll-seo-tag
+
+# This part is to silence sass deprecating warnings, remove after JTD fixes this upstream.
+# https://github.com/just-the-docs/just-the-docs/pull/1548
+# and https://github.com/jekyll/jekyll/issues/9686
+sass:
+  quiet_deps: true
+  silence_deprecations: ['import'] # https://github.com/just-the-docs/just-the-docs/issues/1607

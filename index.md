@@ -48,7 +48,7 @@ nav_order: 0
 
 {{ site.announcements.last }}
 
-[Past announcements](announcements.md){: .btn .btn-outline .fs-3 }
+[Past announcements](announcements){: .btn .btn-outline .fs-3 }
 {%- endif %}
 
 ## Course Calendar
