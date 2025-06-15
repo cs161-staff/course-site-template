@@ -204,10 +204,8 @@ compress_html:
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-relative-links
 
-# This part is to silent sass deprecating warnings
-# remove after they fix it 
+# This part is to silence sass deprecating warnings, remove after JTD fixes this upstream.
 # https://github.com/just-the-docs/just-the-docs/pull/1548
 # and https://github.com/jekyll/jekyll/issues/9686
 sass:
