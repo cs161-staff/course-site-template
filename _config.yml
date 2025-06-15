@@ -155,7 +155,7 @@ callouts:
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor", "README.md"]
 
 # - Every few years, we may need to update the JTD version to pull from upstream.
-remote_theme: just-the-docs/just-the-docs@v0.8.2
+theme: just-the-docs
 
 color_scheme: wider
 search_enabled: true
@@ -204,3 +204,4 @@ compress_html:
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-relative-links
