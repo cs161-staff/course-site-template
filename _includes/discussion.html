@@ -169,19 +169,19 @@
   - Slides show iff "show_slides: true" AND slide link exists in discussions.yml.
 {%- endcomment -%}
 {%- if include.element.show_slides -%}
-  {%- if include.element.regular_slides -%}
+  {%- if include.element.regular_slides and include.element.regular_slides != '' -%}
     {%- capture regular_slides_link -%}
       <a href="{{ include.element.regular_slides | relative_url }}" aria-label="Slides for Discussion {{ include.number }} ({{ include.element.title }})">Slides</a>
     {%- endcapture -%}
     {%- assign regular_links = regular_links | push: regular_slides_link -%}
   {%- endif -%}
-  {%- if include.element.examprep_slides -%}
+  {%- if include.element.examprep_slides and include.element.examprep_slides != '' -%}
     {%- capture examprep_slides_link -%}
       <a href="{{ include.element.examprep_slides | relative_url }}" aria-label="Slides for Exam Prep {{ include.number }} ({{ include.element.title }})">Slides</a>
     {%- endcapture -%}
     {%- assign examprep_links = examprep_links | push: examprep_slides_link -%}
   {%- endif -%}
-  {%- if include.element.bridge_slides -%}
+  {%- if include.element.bridge_slides and include.element.bridge_slides != '' -%}
     {%- capture bridge_slides_link -%}
       <a href="{{ include.element.bridge_slides | relative_url }}" aria-label="Slides for Bridge {{ include.number }} ({{ include.element.title }})">Slides</a>
     {%- endcapture -%}
