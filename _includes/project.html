@@ -65,12 +65,17 @@
 
 {%- comment -%}
   - Render links to specific parts.
+  - For each part: Link renders iff link exists AND released is true.
 {%- endcomment -%}
 {%- if include.element.parts and include.element.parts.size > 0 -%}
 <br><br>
 {%- endif -%}
 {%- for part in include.element.parts -%}
-  <a href="{{ part.link }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
+  {%- if include.element.released and part.link and part.link != '' -%}
+    <a href="{{ part.link }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
+  {%- else -%}
+    {{ part.name }}
+  {%- endif -%}
   {% if forloop.last == false %}
     {{}} / {{}}
   {% endif %}
