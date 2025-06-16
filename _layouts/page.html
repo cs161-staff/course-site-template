@@ -17,8 +17,10 @@ layout: default
 {%- comment -%}
   - If hide_content is true for the current page OR any of the current page's ancestors,
     then render a message and do not render any content.
+    In other words: If ANY ancestor has "hide_content: true", the page will not render.
   - If hide_content is a non-true value (i.e. anything but true) for the current page AND
     for all of the current page's ancestors, then render the content as usual.
+    In other words: ALL ancestors must have "hide_content: false" for the content to render.
   - check_ancestors.html is a cursed file that outputs a variable "ancestor_has_hide_content",
     which is a Boolean that tells us whether or not any of the current page's ancestors has
     hide_content set to true.

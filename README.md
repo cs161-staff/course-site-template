@@ -325,10 +325,13 @@ We have some custom front matter variables in this template:
 - The Right TOC does not look good with deeply nested headings, so try to avoid going beyond `###` or `####`.
 
 **`hide_content`**:
-- When `hide_content: true`, we render the message "This page has not been released yet" and we do not render the contents of the page.
-- When `hide_content` is any other value, we render the page's content as usual.
-- This can be useful if, for example, you have a project spec that exists in your repo, but you don't want students to find the spec on the website yet.
-- Edit `_layouts/page.html` if you want to change what the message says.
+- When `hide_content: true` is set on the current page or ANY of the current page's ancestors, we render the message "This page has not been released yet" and we do not render the contents of the page.
+- When `hide_content` is a non-true value (anything but `true`) on the current page and ALL of the current page's ancestors, we render the page's content as usual.
+- In other words, `hide_content` values are inherited from parent to child. If a parent has `hide_content: true`, all of its children, grandchildren, etc. will also not be rendered, regardless of their `hide_content` values. The only way for a page to render is if the page itself and all ancestors do not have `hide_content: true`.
+- See "Page Levels" above for what we mean by a page's ancestors.
+- This can be useful if, for example, you have a project spec that exists in your repo, but you don't want students to find the spec on the website yet. Also, if your projects are organized into parent/child pages, then hiding the parent page will also hide all children page.
+- Edit `_layouts/page.html` if you want to change what the message says, or if you want to change this behavior.
+- Disclaimer: This feature involves some cursed code in `_includes/check_ancestors.html`, and may not always work as intended.
 
 
 ### Templating
