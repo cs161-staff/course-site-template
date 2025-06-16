@@ -3,7 +3,8 @@
   - This is a very cursed file.
   - In this file, we look up all ancestor pages of the current page. Then, we look in
     the front matter of each ancestor page to see if any ancestor page's front matter has
-    "hide_content: true".
+    "hide_content: true". We also see if any ancestor's page front matter has
+    "unreleased_warning: true".
   - For other strangers encountering this file: This file can probably be customized
     to do other things with the ancestors page. In the process of looking in the front matter
     of every ancestor page, this file also happens to generate the URLs of every ancestor
@@ -164,11 +165,14 @@ ancestors_url_list[2] = /thebaseurl/toplevelpage/child/grandchild/
     to see if we can find hide_content = true.
   - ancestor_has_hide_content = true if any of the ancestor pages has hide_content = true.
   - ancestor_has_hide_content = false if none of the ancestor pages have hide_content = true.
+  - We do the same to try and find unreleased_warning = true, and set
+    ancestor_has_unreleased_warning similarly.
   - For other strangers encountering this file: You can customize this step to do whatever
     you want with the ancestor URL array.
 {%- endcomment -%}
 
 {%- assign ancestor_has_hide_content = false -%}
+{%- assign ancestor_has_unreleased_warning = false -%}
 
 {%- comment -%}
   - This loop goes through each of the ancestor URLs, one by one.
@@ -199,13 +203,20 @@ ancestors_url_list[2] = /thebaseurl/toplevelpage/child/grandchild/
   {%- endif -%}
   
   {%- assign ancestor_page = site.pages | where: 'url', item_no_base | first -%}
+
   {%- if ancestor_page.hide_content == true -%}
     {%- assign ancestor_has_hide_content = true -%}
   {%- endif -%}
+
+  {%- if ancestor_page.unreleased_warning == true -%}
+    {%- assign ancestor_has_unreleased_warning = true -%}
+  {%- endif -%}
+
 {%- endfor -%}
 
 {%- comment -%}
-  - All done. At this point, ancestor_has_hide_content is assigned to true or false as desired.
+  - All done. At this point, ancestor_has_hide_content and ancestor_has_unreleased_warning are
+    each assigned to true or false as desired.
   - Usage: In another file (for us, it's _layouts/page.html), you can write:
 
     {%- include check_ancestors.html -%}
