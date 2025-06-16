@@ -1,0 +1,61 @@
+{%- capture ancestors_html -%}
+{%- include components/breadcrumbs.html -%}
+{%- endcapture -%}
+
+{%- capture remove_me -%}
+<nav aria-label="Breadcrumb" class="breadcrumb-nav">
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+</nav>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+<ol class="breadcrumb-nav-list">
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+</ol>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+<li class="breadcrumb-nav-list-item">
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+</li>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+<span>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- capture remove_me -%}
+</span>
+{%- endcapture -%}
+{%- assign ancestors_html = ancestors_html | remove: remove_me -%}
+
+{%- assign ancestors_html_list = ancestors_html | split: "</a>" -%}
+{%- assign ancestors_html_list = ancestors_html_list | pop -%}
+
+{%- assign ancestors_list = "" | split: "" -%}
+{%- for item in ancestors_html_list -%}
+  {%- assign item_split = item | split: '"' -%}
+  {%- assign ancestors_list = ancestors_list | push: item_split[1] -%}
+{%- endfor -%}
+
+{%- assign ancestor_has_hide_content = false -%}
+
+{%- for item in ancestors_list -%}
+  {%- assign ancestor_page = site.pages | where: 'url', item | first -%}
+  {%- if ancestor_page.hide_content == true -%}
+    {%- assign ancestor_has_hide_content = true -%}
+  {%- endif -%}
+{%- endfor -%}

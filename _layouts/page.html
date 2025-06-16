@@ -18,8 +18,9 @@ layout: default
   - If hide_content is true, then render a message and do not render any content.
   - If hide_content is any other value, render the content as usual.
 {%- endcomment -%}
+{%- include check_ancestors.html -%}
 {% capture content %}
-  {%- if page.hide_content == true -%}
+  {%- if page.hide_content == true or ancestor_has_hide_content == true -%}
     <div>This page has not been released yet.</div>
   {%- else -%}
     {{ content }}
@@ -36,7 +37,9 @@ layout: default
     <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
       {% include toc.html html=content sanitize=true item_class="nav-list-item" anchor_class="nav-list-link" h_min=1 h_max=3 %}
     </nav>
-  <div class="content">{{ content }}</div>
+  <div class="content">
+    {{ content }}
+  </div>
 </div>
 {%- else -%}
 {{ content }}
