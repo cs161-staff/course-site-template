@@ -270,7 +270,7 @@ $grey-dk-000: #4a464e;
   position: relative;
 }
 
-a,
+a:not(.nav-list-link),
 .icon,
 .nav-list .nav-list-item .nav-list-expander,
 .main-content .anchor-heading svg,
@@ -280,6 +280,16 @@ a.skip-to-main:focus,
 a.skip-to-main:active {
   color: #3b18d8 !important;
 }
+
+.content-nav > .nav-list > .nav-list-item > .nav-list-link,
+.site-nav > .nav-list > .nav-list-item > .nav-list-link {
+  color: #3b18d8 !important;
+}
+
+.nav-list-link {
+  color: $grey-dk-200 !important;
+}
+
 
 p.example {
   background: #e7f1fe !important;

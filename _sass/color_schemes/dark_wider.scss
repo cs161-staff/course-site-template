@@ -253,7 +253,7 @@ $grey-dk-000: #e6e1e8 !important;
 
 .story::before,
 .example::before,
-a,
+a:not(.nav-list-link),
 .icon,
 .nav-list .nav-list-item .nav-list-expander,
 .main-content .anchor-heading svg,
@@ -262,6 +262,15 @@ a,
 a.skip-to-main:focus,
 a.skip-to-main:active {
   color: #a0cfee !important;
+}
+
+.content-nav > .nav-list > .nav-list-item > .nav-list-link,
+.site-nav > .nav-list > .nav-list-item > .nav-list-link {
+  color: #a0cfee !important;
+}
+
+.nav-list-link {
+  color: $grey-lt-300 !important;
 }
 
 .story,

@@ -317,7 +317,28 @@ Just the Docs has many built-in front matter features you can use:
 
 Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are relevant to this repo.
 
-The only custom front matter feature we have in this repo is `has_right_toc: true`, which toggles a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled. The Right TOC does not look good with deeply nested headings, so try to avoid going beyond `###` or `####`.
+We also have some custom front matter variables in this template:
+
+**`has_right_toc`**:
+- When `has_right_toc: true`, we render a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled.
+- When `has_right_toc` is any other value, we don't render that table of contents.
+- The Right TOC does not look good with deeply nested headings, so try to avoid going beyond `###` or `####`.
+
+**`toc_min_heading`**:
+ - An optional parameter that determines the minimum depth heading to capture in the right TOC for that page
+ - Does nothing when `has_right_toc: false`
+ - When unset, defaults to the value of `toc_min_heading` in `_config.yml`
+
+**`toc_max_heading`**:
+ - An optional parameter that determines the maximum depth heading to capture in the right TOC for that page
+ - Does nothing when `has_right_toc: false`
+ - When unset, defaults to the value of `toc_max_heading` in `_config.yml`
+
+**`toc_collapse_depth`**:
+ - An optional parameter that determines the collapse depth of the right TOC for that page
+   - All headings below the collapse depth do not appear on the TOC by default, but when they are scroolled into view on the page, they uncollapse in the sidebar.
+ - Does nothing when `has_right_toc: false`
+ - When unset, defaults to the value of `toc_collapse_depth` in `_config.yml`
 
 ### Templating
 
