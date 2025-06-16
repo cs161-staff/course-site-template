@@ -184,7 +184,7 @@
               {%- assign week_extra_element = site.data.week_extra.week_extra[week_extra_index] -%}
               <td class="{{ is_even }} week-cell" rowspan="{{ week.size }}" id="week-{{ week.name }}">
                 {{ week_number }}
-                {%- if week_extra_element.released -%}
+                {%- if week_extra_element.show_extra -%}
                   {%- if week_extra_element.link and week_extra_element.link != empty -%}
                     <br>
                     <a
