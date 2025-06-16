@@ -9,15 +9,15 @@
 # Each entry in the week_extra array corresponds to one week box on the grid.
 # If you want a week with no annotation, you must explicitly add a blank array entry.
 
-# If released: true, then we follow these rendering rules:
+# If show_extra: true, then we follow these rendering rules:
 #   - If you leave both "name" and "link" blank, that week will have no extra text.
 #   - If you fill in "name" only, that week will have "name" as text.
 #   - If you fill in "name" and "link", that week will have "name" linking to "link".
 #   - Filling in "link" only is undefined (it'll just show nothing).
-# If released: false, then nothing is rendered in that week's box.
+# If show_extra: false, then nothing is rendered in that week's box.
 
 # If you don't want this feature, just leave every entry of the array blank,
-# and/or set released: false in every entry.
+# and/or set show_extra: false in every entry.
 
 # If you want more than a single name/link, you have to go modify syllabus.html.
 # Ctrl+F "week_extra_element" for the place to edit.
@@ -26,51 +26,16 @@
 week_extra:
   - name: ""
     link: ""
-    released: true
+    show_extra: true
   - name: "Survey"
     link: "https://forms.gle/FFTFQmv2UJqooukH7"
-    released: true
+    show_extra: true
   - name: ""
     link: ""
-    released: true
+    show_extra: true
   - name: "Survey"
     link: "https://forms.gle/LeAN3ud6sejxEy5z7"
-    released: true
+    show_extra: true
   - name: "Survey"
     link: "https://forms.gle/vMq7Qu8RGPQ2pDwj8"
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/xQiovC19W31f338QA"
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/c193r3KunaHoko2N9"
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/RZ6nS6Mfyvg11q2Y7"
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/Jvh43aGTC3Aa4L216"
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/Zuzbw5JhvsmzqfBp9"
-    released: true
-  - name: ""
-    link: ""
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/pkYGFC3gttsB3jGf7"
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/G11C3ci2Hk83JKgg9"
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/dB8D5zrh7Unxmu3P9"
-    released: true
-  - name: "Survey"
-    link: "https://forms.gle/DR7FCkMobo1pSrASA"
-    released: true
-  - name: ""
-    link: ""
-    released: true
-  - name: ""
-    link: ""
+    show_extra: true
