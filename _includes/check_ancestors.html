@@ -1,3 +1,4 @@
+<div>
 {%- comment -%}
   - This is a very cursed file.
   - In this file, we look up all ancestor pages of the current page. Then, we look in
@@ -170,15 +171,33 @@ ancestors_url_list[2] = /thebaseurl/toplevelpage/child/grandchild/
 {%- assign ancestor_has_hide_content = false -%}
 
 {%- comment -%}
-  - Note that each item in ancestors_url_list has the baseurl attached, e.g.
-    "/thebaseurl/toplevelpage/child/grandchild/"
-  - However, note that the url field of each page does NOT have the baseurl attached, e.g.
-    "/toplevelpage/child/grandchild/"
-  - Therefore, we need the line that takes the item from ancestors_url_list
-    and removes the baseurl, so that the item can be compared to the url field of each page.
+  - This loop goes through each of the ancestor URLs, one by one.
 {%- endcomment -%}
 {%- for item in ancestors_url_list -%}
+
+  {%- comment -%}
+    - Note that each item in ancestors_url_list has the baseurl attached, e.g.
+      "/thebaseurl/toplevelpage/child/grandchild/"
+    - However, note that the url field of each page does NOT have the baseurl attached, e.g.
+      "/toplevelpage/child/grandchild/"
+    - Therefore, we need the line that takes the item from ancestors_url_list
+      and removes the baseurl, so that the item can be compared to the url field of each page.
+  {%- endcomment -%}
   {%- assign item_no_base = item | remove: site.baseurl -%}
+
+
+  {%- comment -%}
+    - If baseurl in config.yml has a trailing slash like this: baseurl: "/thebaseurl/"
+      then the remove command above deletes the slash and leaves you with something like
+      "toplevelpage/child/grandchild/".
+    - But our goal is to compare against the url field "/toplevel/child/grandchild/",
+      so we must add the slash back.
+  {%- endcomment -%}
+  {%- assign first_letter = item_no_base | split: 0 -%}
+  {%- if first_letter != '/' -%}
+    {%- assign item_no_base = item_no_base | prepend: '/' -%}
+  {%- endif -%}
+  
   {%- assign ancestor_page = site.pages | where: 'url', item_no_base | first -%}
   {%- if ancestor_page.hide_content == true -%}
     {%- assign ancestor_has_hide_content = true -%}
@@ -201,3 +220,4 @@ ancestors_url_list[2] = /thebaseurl/toplevelpage/child/grandchild/
 
     and they will appear in the rendered HTML.
 {%- endcomment -%}
+</div>
