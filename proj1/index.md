@@ -2,8 +2,8 @@
 layout: page
 title: Project 1
 nav_order: 5
-nav_exclude: false # set to false when project released
-has_children: true
+nav_exclude: true # set to false when project released
+hide_content: false # set to false when project released
 ---
 
 {% if site.data.proj1_assignment.unreleased_warning %}

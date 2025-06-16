@@ -14,11 +14,24 @@ layout: default
   </p>
 {%- endif -%}
 
+{%- comment -%}
+  - If hide_content is true, then show a warning and do not render any content.
+  - If hide_content is any other value, render the content as usual.
+{%- endcomment -%}
 {% capture content %}
-{{ content }}
+  {%- if page.hide_content == true -%}
+    <div>This page has not been released yet.</div>
+  {%- else -%}
+    {{ content }}
+  {%- endif -%}
 {% endcapture %}
 
-{%- if page.has_right_toc -%}
+{%- comment -%}
+  - If has_right_toc is true, then render a table of contents on the right.
+    The table of contents is generated from the page's headers, and has scrollspy enabled.
+  - If has_right_toc is any other value, do not render the table of contents.
+{%- endcomment -%}
+{%- if page.has_right_toc == true -%}
 <div class="content-container">
     <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
       {% include toc.html html=content sanitize=true item_class="nav-list-item" anchor_class="nav-list-link" h_min=1 h_max=3 %}
