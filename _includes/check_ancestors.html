@@ -1,3 +1,5 @@
+<div>
+
 {%- capture ancestors_html -%}
 {%- include components/breadcrumbs.html -%}
 {%- endcapture -%}
@@ -54,8 +56,11 @@
 {%- assign ancestor_has_hide_content = false -%}
 
 {%- for item in ancestors_list -%}
-  {%- assign ancestor_page = site.pages | where: 'url', item | first -%}
+  {%- assign item_no_base = item | remove: site.baseurl -%}
+  {%- assign ancestor_page = site.pages | where: 'url', item_no_base | first -%}
   {%- if ancestor_page.hide_content == true -%}
     {%- assign ancestor_has_hide_content = true -%}
   {%- endif -%}
 {%- endfor -%}
+
+</div>
