@@ -15,8 +15,17 @@ layout: default
 {%- endif -%}
 
 {%- comment -%}
-  - If hide_content is true, then render a message and do not render any content.
-  - If hide_content is any other value, render the content as usual.
+  - If hide_content is true for the current page OR any of the current page's ancestors,
+    then render a message and do not render any content.
+  - If hide_content is a non-true value (i.e. anything but true) for the current page AND
+    for all of the current page's ancestors, then render the content as usual.
+  - check_ancestors.html is a cursed file that outputs a variable "ancestor_has_hide_content",
+    which is a Boolean that tells us whether or not any of the current page's ancestors has
+    hide_content set to true.
+  - If you want rendering to only be controlled by hide_content for the current page and not
+    any ancestors, then just delete "or ancestor_has_hide_content == true".
+  - For other customization, you can try editing check_ancestors.html though that file is
+    cursed and I do not recommend it.
 {%- endcomment -%}
 {%- include check_ancestors.html -%}
 {% capture content %}
