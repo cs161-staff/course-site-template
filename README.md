@@ -333,6 +333,15 @@ We have some custom front matter variables in this template:
 - Edit `_layouts/page.html` if you want to change what the message says, or if you want to change this behavior.
 - Disclaimer: This feature involves some cursed code in `_includes/check_ancestors.html`, and may not always work as intended.
 
+**`unreleased_warning`**:
+- Basically the same as `hide_content` above, but instead of replacing the contents with a message, this feature simply adds a warning "This page is in an unreleased state." to the top of the page.
+- When `unreleased_warning: true` is set on the current page or ANY of the current page's ancestors, we render the warning.
+- When `unreleased_warning` is a non-true value (anything but `true`) on the current page and ALL of the current page's ancestors, we don't render the warning.
+- In other words, `unreleased_warning` values are inherited from parent to child. If a parent has `unreleased_warning: true`, all of its children, grandchildren, etc. will get the warning rendered, regardless of their `unreleased_warning` values. The only way to make the warning go away is if the page itself and all ancestors do not have `unreleased_warning: true`.
+- Edit `_layouts/page.html` if you want to change what the message says, or if you want to change this behavior.
+- Disclaimer: This feature also involves some cursed code in `_includes/check_ancestors.html`, and may not always work as intended.
+- Note: `hide_content` and `unreleased_warning` are implemented independently (see `_layouts/page.html`) and it is possible to mix-and-match them. Some pages could have the warning and others could be totally hidden. You could even have a page with both set to true, so that the contents are hidden and both the hidden message and unreleased warning are rendered.
+
 
 ### Templating
 
