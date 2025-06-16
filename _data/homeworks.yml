@@ -67,7 +67,7 @@
 homeworks:
   - title: "" # blank for auto-numbering as "HW1"
     link: ""
-    released: true
+    show_links: true
     due: "2025/01/24"
     parts:
       - name: "Part A"
@@ -77,7 +77,7 @@ homeworks:
     rowspan: "1"
   - title: "" # blank for auto-numbering as "HW2"
     link: ""
-    released: true
+    show_links: true
     due: "2025/01/31"
     parts:
       - name: "Part A"
@@ -88,7 +88,7 @@ homeworks:
     nonumber: true
   - title: "" # blank for auto-numbering as "HW3"
     link: ""
-    released: false # since this is false, links don't show
+    show_links: false # since this is false, links don't show
     due: "2025/02/14"
     parts:
       - name: "Part A"
