@@ -317,7 +317,19 @@ Just the Docs has many built-in front matter features you can use:
 
 Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are relevant to this repo.
 
-The only custom front matter feature we have in this repo is `has_right_toc: true`, which toggles a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled. The Right TOC does not look good with deeply nested headings, so try to avoid going beyond `###` or `####`.
+We have some custom front matter variables in this template:
+
+**`has_right_toc`**:
+- When `has_right_toc: true`, we render a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled.
+- When `has_right_toc` is any other value, we don't render that table of contents.
+- The Right TOC does not look good with deeply nested headings, so try to avoid going beyond `###` or `####`.
+
+**`hide_content`**:
+- When `hide_content: true`, we render the message "This page has not been released yet" and we do not render the contents of the page.
+- When `hide_content` is any other value, we render the page's content as usual.
+- This can be useful if, for example, you have a project spec that exists in your repo, but you don't want students to find the spec on the website yet.
+- Edit `_layouts/page.html` if you want to change what the message says.
+
 
 ### Templating
 
