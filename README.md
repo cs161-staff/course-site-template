@@ -1,23 +1,58 @@
 # CS 161 Template Website
 
+![Your Repository's Version - 1.0](https://img.shields.io/badge/Version-1.0-blue?style=flat)
+[![The Latest Version]](https://github.com/cs161-staff/course-site-template)
+
+
 A course website template used by various large upper-division CS courses at UC Berkeley, including: [CS 161](https://cs161.org), [CS 168](https://cs168.io), [CS 188](https://inst.eecs.berkeley.edu/~cs188), [CS 61B](https://datastructur.es), and others.
 
-The template is built on Just the Docs (https://just-the-docs.com), so check out their documentation for features such as [callouts](https://just-the-docs.com/docs/configuration/#callouts), [ordering pages in the sidebar](https://just-the-docs.com/docs/navigation/main/order/), [Markdown syntax](https://just-the-docs.com/docs/index-test/), etc. 
+The template is built on Just the Docs (https://just-the-docs.com), so check out their documentation for features such as [callouts](https://just-the-docs.com/docs/configuration/#callouts), [ordering pages in the sidebar](https://just-the-docs.com/docs/navigation/main/order/), [Markdown syntax](https://just-the-docs.com/docs/index-test/), etc.
 
+The tags at the top of this document represent information about the template version. **You should not change this unless you are maintaining the template.** The left tag represents the version of the template that you cloned, and the right tag represents the latest version of the template. If your repository version does not match the latest version, you should return to the template again next semester.
+
+<!------------------>
+[The Latest Version]: https://img.shields.io/github/v/release/cs161-staff/course-site-template?sort=date&display_name=release&label=Latest
 
 ## Creating Repo
 
 ### Recommended: From Template
+> [!TIP]
+> If it is not your first semester using the template, and your `Version` matches the `Latest` in the tags above, you can safely clone from the previous semester (option 2). This will be faster than starting from scratch.
 
 We suggest [creating a new repository from this template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) every semester, since the template is being actively maintained for accessibility.
 
-Then, you can copy over any relevant files from your previous semester's repo into the newly-created template.
+There are two ways to do this. If you already use the GitHub CLI, there is a one-line command to create and clone the repository from this template. If not, we recommend using the web editor to create the repository. We have provided both methods below:
+<details open>
+  <summary>GitHub Web</summary>
+
+  * In the top left of this repo, click on `Use this Template`, then press `Create a new repository`.
+  * Select your staff organization as the Owner
+  * Name the repository `{sp/su/fa}XX-site` (replacing `{sp/su/fa}XX` with your semester and year)
+  * Make the repository private and press `Create repository`.
+  * Clone locally
+
+  Then, you can copy over any relevant files from your previous semester's repo into the newly-created template.
+</details>
+
+<details>
+  <summary>GitHub CLI</summary>
+
+  * Navigate to the folder where you would like the repo created.
+  * Run the following command:
+    ```bash
+      gh repo create {class-org}/{sp/su/fa}XX-site --private -p cs161-staff/course-site-template --clone
+    ```
+    * Make sure to replace `{class-org}` with your course's github organization name
+    * Make sure to replace `{sp/su/fa}XX` with your semester and year.
+
+  Then, you can copy over any relevant files from your previous semester's repo into the newly-created template.
+</details>
 
 
 ### Not Recommended: From Previous Semester
 
 > [!WARNING]  
-> This method requires you to update the template by hand. 
+> If `Version` is not equal to `Latest` above, this method will require you to update the template by hand, which may require a more involved understanding of Jekyll.
 
 If you instead choose to copy the previous semester's repo, then you'll need to take any updates to this template repo, and *manually copy those updates into your own repo*.
 - Clone the previous semester's repo
@@ -186,6 +221,27 @@ The workflow activates when a PR is made or edited, and checks if the last line 
  - Nothing, which will merge the next time the cron job is ran.
 
 For example, to schedule a PR to merge on June 16th at midnight in your specified timezone, the last line of a PR should be `/schedule 2025-06-16`. The workflow will add a comment to your PR confirming that it is scheduled.
+
+## Accessibility
+
+This template, as a whole, is built and tested to comply with WCAG 2.2 AA. Most default colors on the site are WCAG 2.2 AAA compliant, but we have not rigorously tested for AAA compliance. As you develop and add features to the template or to your own course website, you should make an effort to validate that your changes continue to comply with WCAG. The best way to do this is to utilize an automatic accessibility checker. We recommend using Axe Devtools ([Chrome Webstore](https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US&pli=1), [Firefox Add-Ons](https://addons.mozilla.org/en-US/firefox/addon/axe-devtools/)), and the built-in Firefox Accessibility tab.
+
+While having a complete understanding of WCAG is difficult, and utilizing automatic checking can help, here are some common pitfalls to look out for:
+* All interactive material should be keyboard accessible, and should have a unique label. This is to say, all link text and button text should be unique. Wherever it is not convenient to have the physical text that appears on the page be unique, the `aria-label` property may be used to specify a different message that is shown to accessibility devices (e.g. `Slides` may appear on the page many times, so long as each instance has a unique aria-label, such as `Slides for Lecture 1`).
+* All interactive material should be self-descriptive.
+  * It is bad practice for your markdown to look like this:
+    ```markdown
+    Sign in by filling out the Google Form [here](https://forms.google.com).
+    ```
+    Instead, you should aim to have descriptive labeling such as this:
+    ```markdown
+    Use the [Weekly Attendance Form](https://forms.google.com) to sign in.
+    ```
+* All headings should proceed in logical order (e.g. The heading that follows an `h2` should be an `h3`, or anything above an `h3` if the content is semantically not a sub-heading. The heading that directly follows an `h2` should never be an `h4`, `h5`, or `h6`).
+* All colors on the page must meet [minimum contrast guidelines](https://www.w3.org/WAI/standards-guidelines/act/rules/afw4f7/) for AA compliance and [enhanced contrast guidelines](https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/) for AAA compliance.
+* All images must have an `alt` tag set, which offers a detailed description of the image for someone who is visually impaired.
+
+If you are interested in learning more about WCAG, you can check out the [WCAG 2.2 Standard](https://www.w3.org/TR/WCAG22/).
 
 ## Start of Semester Setup
 
