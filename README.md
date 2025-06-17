@@ -320,25 +320,26 @@ Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are rel
 
 We also have some custom front matter variables in this template:
 
-**`has_right_toc`**:
-- When `has_right_toc: true`, we render a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled.
-- When `has_right_toc` is any other value, we don't render that table of contents.
+**`hide_right_toc`**:
+- By default, we render a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled.
+- When `hide_right_toc: true`, we skip rendering that right table of contents.
+- When `hide_right_toc` is any other value (e.g. blank or not in the front matter), then we render the right table of contents.
 - The Right TOC does not look good with too many headings. The third-party scrollspy that we use doesn't work well if your Right TOC is too long. If you have too many headings, consider decreasing `toc_max_heading` to hide some of them from the right TOC (see below).
 
 **`toc_min_heading`**:
  - An optional parameter that determines the minimum depth heading to capture in the right TOC for that page
- - Does nothing when `has_right_toc: false`
+ - Does nothing when `hide_right_toc: true`
  - When unset, defaults to the value of `toc_min_heading` in `_config.yml`
 
 **`toc_max_heading`**:
  - An optional parameter that determines the maximum depth heading to capture in the right TOC for that page
- - Does nothing when `has_right_toc: false`
+ - Does nothing when `hide_right_toc: true`
  - When unset, defaults to the value of `toc_max_heading` in `_config.yml`
 
 **`toc_collapse_depth`**:
  - An optional parameter that determines the collapse depth of the right TOC for that page
    - All headings below the collapse depth do not appear on the TOC by default, but when they are scroolled into view on the page, they uncollapse in the sidebar.
- - Does nothing when `has_right_toc: false`
+ - Does nothing when `hide_right_toc: true`
  - When unset, defaults to the value of `toc_collapse_depth` in `_config.yml`
  - Note: `toc_collapse_depth: 1` (showing only h1 headers) doesn't work and leads to the same behavior as `toc_collapse_depth: 2` (showing h1 and h2 headers).
 

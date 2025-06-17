@@ -28,7 +28,7 @@ layout: default
 {{ content }}
 {% endcapture %}
 
-{%- unless page.hide_right_toc -%}
+{%- unless page.hide_right_toc == true -%}
   <div class="content-container">
     <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
       {% include toc.html html=content sanitize=true class="nav-list" submenu_class="nav-list" item_class="nav-list-item" anchor_class="nav-list-link" h_min=toc_min h_max=max_heading %}
