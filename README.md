@@ -325,6 +325,24 @@ We also have some custom front matter variables in this template:
 - When `has_right_toc` is any other value, we don't render that table of contents.
 - The Right TOC does not look good with too many headings. The third-party scrollspy that we use doesn't work well if your Right TOC is too long. If you have too many headings, consider decreasing `toc_max_heading` to hide some of them from the right TOC (see below).
 
+**`hide_content`**:
+- When `hide_content: true` is set on the current page or ANY of the current page's ancestors, we render the message "This page has not been released yet" and we do not render the contents of the page.
+- When `hide_content` is a non-true value (anything but `true`) on the current page and ALL of the current page's ancestors, we render the page's content as usual.
+- In other words, `hide_content` values are inherited from parent to child. If a parent has `hide_content: true`, all of its children, grandchildren, etc. will also not be rendered, regardless of their `hide_content` values. The only way for a page to render is if the page itself and all ancestors do not have `hide_content: true`.
+- See "Page Levels" above for what we mean by a page's ancestors.
+- This can be useful if, for example, you have a project spec that exists in your repo, but you don't want students to find the spec on the website yet. Also, if your projects are organized into parent/child pages, then hiding the parent page will also hide all children page.
+- Edit `_layouts/page.html` if you want to change what the message says, or if you want to change this behavior.
+- Disclaimer: This feature involves some cursed code in `_includes/check_ancestors.html`, and may not always work as intended.
+
+**`unreleased_warning`**:
+- Basically the same as `hide_content` above, but instead of replacing the contents with a message, this feature simply adds a warning "This page is in an unreleased state." to the top of the page.
+- When `unreleased_warning: true` is set on the current page or ANY of the current page's ancestors, we render the warning.
+- When `unreleased_warning` is a non-true value (anything but `true`) on the current page and ALL of the current page's ancestors, we don't render the warning.
+- In other words, `unreleased_warning` values are inherited from parent to child. If a parent has `unreleased_warning: true`, all of its children, grandchildren, etc. will get the warning rendered, regardless of their `unreleased_warning` values. The only way to make the warning go away is if the page itself and all ancestors do not have `unreleased_warning: true`.
+- Edit `_layouts/page.html` if you want to change what the message says, or if you want to change this behavior.
+- Disclaimer: This feature also involves some cursed code in `_includes/check_ancestors.html`, and may not always work as intended.
+- Note: `hide_content` and `unreleased_warning` are implemented independently (see `_layouts/page.html`) and it is possible to mix-and-match them. Some pages could have the warning and others could be totally hidden. You could even have a page with both set to true, so that the contents are hidden and both the hidden message and unreleased warning are rendered.
+
 **`toc_min_heading`**:
  - An optional parameter that determines the minimum depth heading to capture in the right TOC for that page
  - Does nothing when `has_right_toc: false`

@@ -1,17 +1,9 @@
 ---
 layout: page
 title: Deliverables
-nav_order: 100
 parent: Project 1
 has_right_toc: true
 ---
-
-{% if site.data.proj1_assignment.unreleased_warning %}
-  <p class="warning">
-    This spec is in an unreleased state. This warning message will go away once it's been fully updated for the current
-    semester.
-  </p>
-{% endif %}
 
 # Deliverables
 
@@ -36,7 +28,7 @@ The following utilizes `_data/projects.yml` to see whether the assignment should
 
 ## Autograder Submission
 
-{% if site.data.proj1_assignment.unreleased_warning %}
+{% if site.data.proj1_assignment.gradescope.autograder == nil or site.data.proj1_assignment.gradescope.autograder == empty %}
 
 **Deliverable**: Please submit your final autograder .zip file to the Autograder assignment, which will be released on Gradescope.
 
@@ -50,7 +42,7 @@ Generate your final autograder .zip file using the above Local Setup or Instruct
 
 ## Write-up Submission
 
-{% if site.data.proj1_assignment.unreleased_warning %}
+{% if site.data.proj1_assignment.gradescope.writeup == nil or site.data.proj1_assignment.gradescope.writeup == empty %}
 
 **Deliverable**: Please submit your write-up to the Write-up assignment, which will be released on Gradescope.
 
