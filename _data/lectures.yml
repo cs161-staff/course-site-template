@@ -25,8 +25,13 @@
 # You can use a mix of Google Slides and PDFs. The "slides" link takes priority,
 # and if the link is empty, then the repo looks for a PDF instead.
 
-# To link lecture recordings on the website, fill in the
-# recordings field in the corresponding lecture below.
+# Use the "video", "recording", "quiz" links to link videos/recordings/quizzes.
+
+# Rules for linking slides/videos/recordings/quizzes/readings:
+# If your link is an external link to a different website, it should start with http://
+# or https://. For example, "https://example.com" is good, "example.com" is bad.
+# If your link is an internal link to another page on this website, you should write a
+# relative filepath starting at the root of this repo, e.g. "/assets/images/logo.png".
 
 
 #####################################

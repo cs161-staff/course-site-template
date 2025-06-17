@@ -270,9 +270,8 @@ $grey-dk-000: #4a464e;
   position: relative;
 }
 
-a,
+a:not(.nav-list-link):not(.site-title),
 .icon,
-.nav-list .nav-list-item .nav-list-expander,
 .main-content .anchor-heading svg,
 .search-input:focus + .search-label .search-icon,
 .search-result-doc .search-result-icon,
@@ -280,6 +279,18 @@ a.skip-to-main:focus,
 a.skip-to-main:active {
   color: #3b18d8 !important;
 }
+
+.content-nav > .nav-list > .nav-list-item > .nav-list-link,
+.content-nav > .nav-list > .nav-list-item > .nav-list-expander,
+.site-nav > .nav-list > .nav-list-item > .nav-list-link,
+.site-nav > .nav-list > .nav-list-item > .nav-list-expander {
+  color: #3b18d8 !important;
+}
+
+.nav-list-link, .nav-list-expander {
+  color: $grey-dk-200 !important;
+}
+
 
 p.example {
   background: #e7f1fe !important;

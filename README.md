@@ -314,14 +314,20 @@ Just the Docs has many built-in front matter features you can use:
 - [Ordering Pages](https://just-the-docs.com/docs/navigation/main/order/)
 - [Excluding Pages](https://just-the-docs.com/docs/navigation/main/exclude/)
 - [Page Levels](https://just-the-docs.com/docs/navigation/main/levels/)
+- [Toggling a list of child pages at the bottom of the page](https://just-the-docs.com/docs/navigation/children)
 
 Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are relevant to this repo.
 
+<<<<<<< HEAD
 We have some custom front matter variables in this template:
+=======
+We also have some custom front matter variables in this template:
+>>>>>>> main
 
 **`has_right_toc`**:
 - When `has_right_toc: true`, we render a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled.
 - When `has_right_toc` is any other value, we don't render that table of contents.
+<<<<<<< HEAD
 - The Right TOC does not look good with deeply nested headings, so try to avoid going beyond `###` or `####`.
 
 **`hide_content`**:
@@ -341,6 +347,69 @@ We have some custom front matter variables in this template:
 - Edit `_layouts/page.html` if you want to change what the message says, or if you want to change this behavior.
 - Disclaimer: This feature also involves some cursed code in `_includes/check_ancestors.html`, and may not always work as intended.
 - Note: `hide_content` and `unreleased_warning` are implemented independently (see `_layouts/page.html`) and it is possible to mix-and-match them. Some pages could have the warning and others could be totally hidden. You could even have a page with both set to true, so that the contents are hidden and both the hidden message and unreleased warning are rendered.
+=======
+- The Right TOC does not look good with too many headings. The third-party scrollspy that we use doesn't work well if your Right TOC is too long. If you have too many headings, consider decreasing `toc_max_heading` to hide some of them from the right TOC (see below).
+
+**`toc_min_heading`**:
+ - An optional parameter that determines the minimum depth heading to capture in the right TOC for that page
+ - Does nothing when `has_right_toc: false`
+ - When unset, defaults to the value of `toc_min_heading` in `_config.yml`
+
+**`toc_max_heading`**:
+ - An optional parameter that determines the maximum depth heading to capture in the right TOC for that page
+ - Does nothing when `has_right_toc: false`
+ - When unset, defaults to the value of `toc_max_heading` in `_config.yml`
+
+**`toc_collapse_depth`**:
+ - An optional parameter that determines the collapse depth of the right TOC for that page
+   - All headings below the collapse depth do not appear on the TOC by default, but when they are scroolled into view on the page, they uncollapse in the sidebar.
+ - Does nothing when `has_right_toc: false`
+ - When unset, defaults to the value of `toc_collapse_depth` in `_config.yml`
+ - Note: `toc_collapse_depth: 1` (showing only h1 headers) doesn't work and leads to the same behavior as `toc_collapse_depth: 2` (showing h1 and h2 headers).
+
+When writing pages, we recommend a single h1 header with the page title, and then h2-h6 headers for your content. Also, headers should be continuous, e.g. below h2, you should use h3, not h4 (then under h3, you can use h4). Using other header structures can lead to undefined TOC behavior.
+
+```markdown
+# Title of your page
+
+The h1 title of your page should be identical to the title in the front matter.
+Some minor abbreviation (e.g. "proj" vs "Project") might be okay.
+
+## Setup
+
+### Windows
+
+Blah blah blah.
+
+### Mac/Linux
+
+Blah blah blah.
+
+## Your Task
+
+Blah blah blah.
+
+#### Don't do this
+
+The header below h2 should be h3.
+
+### Do this instead
+
+And if you want more headers under the h3, then you can use h4.
+
+#### A sub-sub section
+
+Nesting too deeply may cause long TOCs (which render badly), so we discourage it.
+
+## Submission
+
+Blah blah blah.
+
+# Don't do this
+
+The only h1 header should be the title at the top of your page.
+```
+>>>>>>> main
 
 
 ### Templating
