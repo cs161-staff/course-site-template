@@ -340,6 +340,51 @@ We also have some custom front matter variables in this template:
    - All headings below the collapse depth do not appear on the TOC by default, but when they are scroolled into view on the page, they uncollapse in the sidebar.
  - Does nothing when `has_right_toc: false`
  - When unset, defaults to the value of `toc_collapse_depth` in `_config.yml`
+ - Note: `toc_collapse_depth: 1` (showing only h1 headers) doesn't work and leads to the same behavior as `toc_collapse_depth: 2` (showing h1 and h2 headers).
+
+When writing pages, we recommend a single h1 header with the page title, and then h2-h6 headers for your content. Also, headers should be continuous, e.g. below h2, you should use h3, not h4 (then under h3, you can use h4). Using other header structures can lead to undefined TOC behavior.
+
+```markdown
+# Title of your page
+
+The h1 title of your page should be identical to the title in the front matter.
+Some minor abbreviation (e.g. "proj" vs "Project") might be okay.
+
+## Setup
+
+### Windows
+
+Blah blah blah.
+
+### Mac/Linux
+
+Blah blah blah.
+
+## Your Task
+
+Blah blah blah.
+
+#### Don't do this
+
+The header below h2 should be h3.
+
+### Do this instead
+
+And if you want more headers under the h3, then you can use h4.
+
+#### A sub-sub section
+
+Nesting too deeply may cause long TOCs (which render badly), so we discourage it.
+
+## Submission
+
+Blah blah blah.
+
+# Don't do this
+
+The only h1 header should be the title at the top of your page.
+```
+
 
 ### Templating
 
