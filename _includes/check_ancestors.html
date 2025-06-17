@@ -187,19 +187,6 @@ ancestors_url_list[2] = /thebaseurl/toplevelpage/child/grandchild/
       and removes the baseurl, so that the item can be compared to the url field of each page.
   {%- endcomment -%}
   {%- assign item_no_base = item | remove: site.baseurl -%}
-
-
-  {%- comment -%}
-    - If baseurl in config.yml has a trailing slash like this: baseurl: "/thebaseurl/"
-      then the remove command above deletes the slash and leaves you with something like
-      "toplevelpage/child/grandchild/".
-    - But our goal is to compare against the url field "/toplevel/child/grandchild/",
-      so we must add the slash back.
-  {%- endcomment -%}
-  {%- assign first_letter = item_no_base | split: 0 -%}
-  {%- if first_letter != '/' -%}
-    {%- assign item_no_base = item_no_base | prepend: '/' -%}
-  {%- endif -%}
   
   {%- assign ancestor_page = site.pages | where: 'url', item_no_base | first -%}
 
