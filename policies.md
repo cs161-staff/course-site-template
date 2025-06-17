@@ -7,13 +7,6 @@ description: >-
 ---
 
 # Policies
-{:.no_toc}
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ## A policy
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam commodo elit eu sapien consectetur vestibulum. Proin mollis id nulla ac tincidunt. Mauris fringilla pharetra convallis. Nulla luctus nunc at dolor faucibus fermentum. Nunc et quam laoreet tortor semper rutrum. Duis vel dolor massa. Vestibulum dictum lectus eros, sit amet auctor nunc ornare nec. Sed porttitor lectus vitae eros bibendum, vel gravida neque venenatis. Ut vel ligula odio. Nunc eget sem eu magna sagittis eleifend. Aliquam eu leo sagittis, pulvinar neque a, viverra massa. Vivamus ligula orci, euismod nec tempor hendrerit, sagittis maximus lectus. Nulla condimentum orci ut urna fermentum tincidunt.

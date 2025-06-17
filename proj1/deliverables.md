@@ -2,7 +2,6 @@
 layout: page
 title: Deliverables
 parent: Project 1
-has_right_toc: true
 ---
 
 # Deliverables

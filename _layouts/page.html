@@ -73,22 +73,23 @@ layout: default
 
 {%- comment -%}
   - If hide_content is true (for the current page or ANY ancestor page), then override
-    any has_right_toc setting and do not render the table of contents.
+    any hide_right_toc setting and do not render the table of contents.
   - This ensures that if a page is not rendered, its table of contents isn't rendered.
   - If hide_content is not true (for the current page and ALL ancestor pages),
-    then preserve the original has_right_toc setting of the current page.
+    then preserve the original hide_right_toc setting of the current page.
 {%- endcomment -%}
-{%- assign render_right_toc = page.has_right_toc -%}
+{%- assign do_not_render_right_toc = page.hide_right_toc -%}
 {%- if page.hide_content == true or ancestor_has_hide_content == true -%}
-  {%- assign render_right_toc = false -%}
+  {%- assign do_not_render_right_toc = true -%}
 {%- endif -%}
 
 {%- comment -%}
-  - If render_right_toc is true, then render a table of contents on the right.
-    The table of contents is generated from the page's headers, and has scrollspy enabled.
-  - If render_right_toc is any other value, do not render the table of contents.
+  - If do_not_render_right_toc is any non-true value, then render a table of contents
+    on the right. The table of contents is generated from the page's headers, and has
+    scrollspy enabled.
+  - If do_not_render_right_toc is true, do not render the table of contents.
 {%- endcomment -%}
-{%- if render_right_toc == true -%}
+{%- unless do_not_render_right_toc == true -%}
   <div class="content-container">
     <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
       {% include toc.html html=content sanitize=true class="nav-list" submenu_class="nav-list" item_class="nav-list-item" anchor_class="nav-list-link" h_min=toc_min h_max=max_heading %}
@@ -99,4 +100,4 @@ layout: default
 </div>
 {%- else -%}
   {{ content }}
-{%- endif -%}
+{%- endunless -%}
