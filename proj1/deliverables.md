@@ -3,7 +3,6 @@ layout: page
 title: Deliverables
 nav_order: 100
 parent: Project 1
-has_right_toc: true
 ---
 
 {% if site.data.proj1_assignment.unreleased_warning %}

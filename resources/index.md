@@ -2,7 +2,7 @@
 layout: page
 title: Resources
 nav_order: 3
-has_children: true
+hide_right_toc: true
 has_toc: false
 ---
 

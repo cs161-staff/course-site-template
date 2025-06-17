@@ -2,6 +2,7 @@
 title: Calendar
 layout: page
 nav_order: 1
+hide_right_toc: true
 ---
 
 <h1>Calendar</h1>

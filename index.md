@@ -1,6 +1,7 @@
 ---
 layout: page
 nav_order: 0
+hide_right_toc: true
 ---
 
 {%- assign instructors = site.staffers | where: 'role', 'Instructor' | map: "name" -%}

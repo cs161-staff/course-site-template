@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Spring 2025 FAQs
 nav_order: 1
 parent: Resources
