@@ -253,7 +253,7 @@ $grey-dk-000: #e6e1e8 !important;
 
 .story::before,
 .example::before,
-a:not(.nav-list-link),
+a:not(.nav-list-link):not(.site-title),
 .icon,
 .main-content .anchor-heading svg,
 .search-input:focus + .search-label .search-icon,

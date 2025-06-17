@@ -270,7 +270,7 @@ $grey-dk-000: #4a464e;
   position: relative;
 }
 
-a:not(.nav-list-link),
+a:not(.nav-list-link):not(.site-title),
 .icon,
 .main-content .anchor-heading svg,
 .search-input:focus + .search-label .search-icon,
