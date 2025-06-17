@@ -49,16 +49,18 @@
       - If you want an additional column (e.g. readings, labs), add it here.
         We have two additional columns pre-built; just uncomment them to use.
     {%- endcomment -%}
-    <thead><tr>
-      <th style="width:{{ site.data.syllabus.week_width }}">Wk.</th>
-      <th style="width:{{ site.data.syllabus.date_width }}">Date</th>
-      <th style="width:{{ site.data.syllabus.lecture_width }}">Lecture</th>
-      {% comment %}<th style="width:{{ site.data.syllabus.readings_width }}">Readings</th>{% endcomment %}
-      <th style="width:{{ site.data.syllabus.discussion_width }}">Discussion</th>
-      {% comment %}<th style="width:{{ site.data.syllabus.labs_width }}">Labs</th>{% endcomment %}
-      <th style="width:{{ site.data.syllabus.homework_width }}">HW</th>
-      <th style="width:{{ site.data.syllabus.project_width }}">Project</th>
-    </tr></thead>
+    <thead>
+      <tr>
+        <th style="width:{{ site.data.syllabus.week_width }}">Wk.</th>
+        <th style="width:{{ site.data.syllabus.date_width }}">Date</th>
+        <th style="width:{{ site.data.syllabus.lecture_width }}">Lecture</th>
+        {% comment %}<th style="width:{{ site.data.syllabus.readings_width }}">Readings</th>{% endcomment %}
+        <th style="width:{{ site.data.syllabus.discussion_width }}">Discussion</th>
+        {% comment %}<th style="width:{{ site.data.syllabus.labs_width }}">Labs</th>{% endcomment %}
+        <th style="width:{{ site.data.syllabus.homework_width }}">HW</th>
+        <th style="width:{{ site.data.syllabus.project_width }}">Project</th>
+      </tr>
+    </thead>
 
     {%- comment -%}
       Table body.
@@ -188,7 +190,7 @@
                   {%- if week_extra_element.link and week_extra_element.link != empty -%}
                     <br>
                     <a
-                      href="{{ week_extra_element.link }}"
+                      href="{{ week_extra_element.link | relative_url }}"
                       aria-label="{{ week_extra_element.name }} for Week {{ week_number }}"
                     >
                       {{- week_extra_element.name -}}
