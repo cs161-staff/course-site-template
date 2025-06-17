@@ -318,17 +318,12 @@ Just the Docs has many built-in front matter features you can use:
 
 Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are relevant to this repo.
 
-<<<<<<< HEAD
-We have some custom front matter variables in this template:
-=======
 We also have some custom front matter variables in this template:
->>>>>>> main
 
 **`has_right_toc`**:
 - When `has_right_toc: true`, we render a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled.
 - When `has_right_toc` is any other value, we don't render that table of contents.
-<<<<<<< HEAD
-- The Right TOC does not look good with deeply nested headings, so try to avoid going beyond `###` or `####`.
+- The Right TOC does not look good with too many headings. The third-party scrollspy that we use doesn't work well if your Right TOC is too long. If you have too many headings, consider decreasing `toc_max_heading` to hide some of them from the right TOC (see below).
 
 **`hide_content`**:
 - When `hide_content: true` is set on the current page or ANY of the current page's ancestors, we render the message "This page has not been released yet" and we do not render the contents of the page.
@@ -347,8 +342,6 @@ We also have some custom front matter variables in this template:
 - Edit `_layouts/page.html` if you want to change what the message says, or if you want to change this behavior.
 - Disclaimer: This feature also involves some cursed code in `_includes/check_ancestors.html`, and may not always work as intended.
 - Note: `hide_content` and `unreleased_warning` are implemented independently (see `_layouts/page.html`) and it is possible to mix-and-match them. Some pages could have the warning and others could be totally hidden. You could even have a page with both set to true, so that the contents are hidden and both the hidden message and unreleased warning are rendered.
-=======
-- The Right TOC does not look good with too many headings. The third-party scrollspy that we use doesn't work well if your Right TOC is too long. If you have too many headings, consider decreasing `toc_max_heading` to hide some of them from the right TOC (see below).
 
 **`toc_min_heading`**:
  - An optional parameter that determines the minimum depth heading to capture in the right TOC for that page
@@ -409,7 +402,6 @@ Blah blah blah.
 
 The only h1 header should be the title at the top of your page.
 ```
->>>>>>> main
 
 
 ### Templating
