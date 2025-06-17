@@ -160,6 +160,8 @@ toc_max_heading: 6
 # In order to prevent layout creep, when JS is off, the table of contents
 # will display the minimum depth between toc_max_heading and toc_collapse_depth.
 # To show all headings, set this to 6.
+# Note: Setting this to 1 (showing only h1 headers) doesn't work and leads to
+# the same behavior as setting this to 2 (showing h1 and h2 headers).
 toc_collapse_depth: 3
 
 #######################################################
