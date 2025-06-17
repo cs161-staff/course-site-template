@@ -1,3 +1,18 @@
+{% assign headingSelector = '' %}
+
+{% comment %} Set min/max/depth to the page-specific value and fallback to the value set in config.yml {% endcomment %}
+{% assign toc_depth = page.toc_collapse_depth | default: site.toc_collapse_depth %}
+{% assign toc_min = page.toc_min_heading | default: site.toc_min_heading %}
+{% assign toc_max = page.toc_max_heading | default: site.toc_max_heading %}
+
+{% comment %} Convert min/max to a string of the form "h1, h2, h3" {% endcomment %}
+{% for heading in (toc_min..toc_max) %}
+  {% assign headingSelector = headingSelector | append: 'h' | append: heading %}
+  {% if forloop.last == false %}
+    {% assign headingSelector = headingSelector | append: ',' %}
+  {% endif %}
+{% endfor %}
+
 <script>
   (function () {
     var navList = document.querySelector('.aux-nav-list');
@@ -15,8 +30,8 @@
   // Tries to mirror the HTML TOC
   tocbot.init({
     tocSelector: '.js-toc',
-    contentSelector: '.main-content',
-    headingSelector: 'h2, h3',
+    contentSelector: '.content',
+    headingSelector: '{{ headingSelector }}',
     ignoreSelector: '.no_toc',
     hasInnerContainers: true,
     linkClass: 'nav-list-link',
@@ -24,7 +39,7 @@
     listClass: 'nav-list',
     listItemClass: 'nav-list-item',
     activeListItemClass: 'active',
-    collapseDepth: 3,
+    collapseDepth: {{ toc_depth }},
     scrollSmooth: false,
   });
 </script>

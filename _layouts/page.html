@@ -1,6 +1,16 @@
 ---
 layout: default
 ---
+{% assign toc_depth = page.toc_collapse_depth | default: site.toc_collapse_depth %}
+{% assign toc_min = page.toc_min_heading | default: site.toc_min_heading %}
+{% assign toc_max = page.toc_max_heading | default: site.toc_max_heading %}
+
+{% if toc_depth < toc_max %}
+  {% assign max_heading = toc_depth %}
+{% else %}
+  {% assign max_heading = toc_max %}
+{% endif %}
+
 {%- if site.under_construction -%}
   <p class="warning">
     This site is under construction. All dates and policies are tentative until this message goes away.
@@ -19,12 +29,12 @@ layout: default
 {% endcapture %}
 
 {%- if page.has_right_toc -%}
-<div class="content-container">
+  <div class="content-container">
     <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
-      {% include toc.html html=content sanitize=true item_class="nav-list-item" anchor_class="nav-list-link" h_min=1 h_max=3 %}
+      {% include toc.html html=content sanitize=true class="nav-list" submenu_class="nav-list" item_class="nav-list-item" anchor_class="nav-list-link" h_min=toc_min h_max=max_heading %}
     </nav>
-  <div class="content">{{ content }}</div>
-</div>
+    <div class="content">{{ content }}</div>
+  </div>
 {%- else -%}
-{{ content }}
+  {{ content }}
 {%- endif -%}

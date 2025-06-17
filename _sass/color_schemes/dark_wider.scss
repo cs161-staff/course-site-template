@@ -253,15 +253,25 @@ $grey-dk-000: #e6e1e8 !important;
 
 .story::before,
 .example::before,
-a,
+a:not(.nav-list-link):not(.site-title),
 .icon,
-.nav-list .nav-list-item .nav-list-expander,
 .main-content .anchor-heading svg,
 .search-input:focus + .search-label .search-icon,
 .search-result-doc .search-result-icon,
 a.skip-to-main:focus,
 a.skip-to-main:active {
   color: #a0cfee !important;
+}
+
+.content-nav > .nav-list > .nav-list-item > .nav-list-link,
+.content-nav > .nav-list > .nav-list-item > .nav-list-expander,
+.site-nav > .nav-list > .nav-list-item > .nav-list-link,
+.site-nav > .nav-list > .nav-list-item > .nav-list-expander {
+  color: #a0cfee !important;
+}
+
+.nav-list-link, .nav-list-expander {
+  color: $grey-lt-300 !important;
 }
 
 .story,

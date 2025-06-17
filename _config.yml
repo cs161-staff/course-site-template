@@ -143,6 +143,26 @@ callouts:
     title: Story
     color: blue
 
+#######################################################
+# Config for Right Table of Contents                  #
+#######################################################
+# These settings set the upper and lower bounds of the headings
+# that will be included in the right table of contents. (The 
+# numbers correspond to h1, h2, h3, etc.)
+toc_min_heading: 2
+toc_max_heading: 6
+
+# When using JS, this sets the depth of the table of contents
+# that will be shown when the page loads. When you scroll into 
+# a section that has a deeper heading, the table of contents will
+# automatically expand to show that section.
+#
+# In order to prevent layout creep, when JS is off, the table of contents
+# will display the minimum depth between toc_max_heading and toc_collapse_depth.
+# To show all headings, set this to 6.
+# Note: Setting this to 1 (showing only h1 headers) doesn't work and leads to
+# the same behavior as setting this to 2 (showing h1 and h2 headers).
+toc_collapse_depth: 3
 
 #######################################################
 # Config you will probably never need to change,      #
