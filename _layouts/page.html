@@ -62,11 +62,23 @@ layout: default
 {% endcapture %}
 
 {%- comment -%}
-  - If has_right_toc is true, then render a table of contents on the right.
-    The table of contents is generated from the page's headers, and has scrollspy enabled.
-  - If has_right_toc is any other value, do not render the table of contents.
+  - If hide_content is true (for the current page or ANY ancestor page), then override
+    any has_right_toc setting and do not render the table of contents.
+  - This ensures that if a page is not rendered, its table of contents isn't rendered.
+  - If hide_content is not true (for the current page and ALL ancestor pages),
+    then preserve the original has_right_toc setting of the current page.
 {%- endcomment -%}
-{%- if page.has_right_toc == true -%}
+{%- assign render_right_toc = page.has_right_toc -%}
+{%- if page.hide_content == true or ancestor_has_hide_content == true -%}
+  {%- assign render_right_toc = false -%}
+{%- endif -%}
+
+{%- comment -%}
+  - If render_right_toc is true, then render a table of contents on the right.
+    The table of contents is generated from the page's headers, and has scrollspy enabled.
+  - If render_right_toc is any other value, do not render the table of contents.
+{%- endcomment -%}
+{%- if render_right_toc == true -%}
 <div class="content-container">
     <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
       {% include toc.html html=content sanitize=true item_class="nav-list-item" anchor_class="nav-list-link" h_min=1 h_max=3 %}
