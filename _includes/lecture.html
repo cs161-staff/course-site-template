@@ -67,7 +67,7 @@
 {%- capture slides -%}
 {%- if include.element.slides and include.element.slides != empty -%}
   {%- assign render_slides = true -%}
-  <a href="{{ include.element.slides }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+  <a href="{{ include.element.slides | relative_url }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
 {%- elsif slides_exists -%}
   {%- assign render_slides = true -%}
   <a href="{{ slides_path | relative_url }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
@@ -81,7 +81,7 @@
   - Render video.
 {%- endcomment -%}
 {%- capture video -%}
-<a href="{{ include.element.video }}" aria-label="Video for Lecture {{ include.number }} ({{ include.element.title }})">Video</a>
+<a href="{{ include.element.video | relative_url }}" aria-label="Video for Lecture {{ include.number }} ({{ include.element.title }})">Video</a>
 {%- endcapture -%}
 {%- if include.element.video and include.element.video != empty -%}
   {% assign links_array = links_array | push: video %}
@@ -91,7 +91,7 @@
   - Render recording.
 {%- endcomment -%}
 {%- capture recording -%}
-<a href="{{ include.element.recording }}" aria-label="Recording for Lecture {{ include.number }} ({{ include.element.title }})">Recording</a>
+<a href="{{ include.element.recording | relative_url }}" aria-label="Recording for Lecture {{ include.number }} ({{ include.element.title }})">Recording</a>
 {%- endcapture -%}
 {%- if include.element.recording and include.element.recording != empty -%}
   {% assign links_array = links_array | push: recording %}
@@ -101,7 +101,7 @@
   - Render quiz.
 {%- endcomment -%}
 {%- capture quiz -%}
-<a href="{{ include.element.quiz }}" aria-label="Quiz for Lecture {{ include.number }} ({{ include.element.title }})">Quiz</a>
+<a href="{{ include.element.quiz | relative_url }}" aria-label="Quiz for Lecture {{ include.number }} ({{ include.element.title }})">Quiz</a>
 {%- endcapture -%}
 {%- if include.element.quiz and include.element.quiz != empty -%}
   {% assign links_array = links_array | push: quiz %}
@@ -133,7 +133,7 @@
     Here, it's a slash, but you can change it to a slash or something else.
 {%- endcomment -%}
 {%- for reading in include.element.readings -%}
-  <a href="{{ reading.link }}">{{ reading.name }}</a>
+  <a href="{{ reading.link | relative_url }}">{{ reading.name }}</a>
   {% if forloop.last == false %}
     {{}} / {{}}
   {% endif %}

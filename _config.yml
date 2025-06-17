@@ -34,6 +34,8 @@ description: "Course Name at School Name"
 #   then this should say "/~cs188/sp25"
 # - Example: If you build your site to sp25.cs161.org,
 #   then this should say "" since there is no subpath
+# - If not empty, the baseurl MUST start with a leading slash,
+#   and MUST NOT have a slash at the end. "/sp25" is good, "/sp25/" is bad
 baseurl: ""
 
 # - Jekyll default variable.

@@ -9,6 +9,11 @@
 # Each entry in the week_extra array corresponds to one week box on the grid.
 # If you want a week with no annotation, you must explicitly add a blank array entry.
 
+# If your link is an external link to a different website, it should start with http://
+# or https://. For example, "https://example.com" is good, "example.com" is bad.
+# If your link is an internal link to another page on this website, you should write a
+# relative filepath starting at the root of this repo, e.g. "/assets/images/logo.png".
+
 # If show_extra: true, then we follow these rendering rules:
 #   - If you leave both "name" and "link" blank, that week will have no extra text.
 #   - If you fill in "name" only, that week will have "name" as text.

@@ -78,7 +78,7 @@
 {%- endif -%}
 {%- for part in include.element.parts -%}
   {%- if include.element.show_links and part.link and part.link != empty -%}
-    <a href="{{ part.link }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
+    <a href="{{ part.link | relative_url }}" aria-label="{{ part.name }} for {{ assignment_title }}">{{ part.name }}</a>
   {%- else -%}
     {{ part.name }}
   {%- endif -%}
