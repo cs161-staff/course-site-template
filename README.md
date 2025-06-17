@@ -314,6 +314,7 @@ Just the Docs has many built-in front matter features you can use:
 - [Ordering Pages](https://just-the-docs.com/docs/navigation/main/order/)
 - [Excluding Pages](https://just-the-docs.com/docs/navigation/main/exclude/)
 - [Page Levels](https://just-the-docs.com/docs/navigation/main/levels/)
+- [Toggling a list of child pages at the bottom of the page](https://just-the-docs.com/docs/navigation/children)
 
 Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are relevant to this repo.
 
@@ -322,7 +323,7 @@ We also have some custom front matter variables in this template:
 **`has_right_toc`**:
 - When `has_right_toc: true`, we render a table of contents on the right side of the page which is automatically generated based on the headings in the markdown file, and has scrollspy enabled.
 - When `has_right_toc` is any other value, we don't render that table of contents.
-- The Right TOC does not look good with deeply nested headings, so try to avoid going beyond `###` or `####`.
+- The Right TOC does not look good with too many headings. The third-party scrollspy that we use doesn't work well if your Right TOC is too long. If you have too many headings, consider decreasing `toc_max_heading` to hide some of them from the right TOC (see below).
 
 **`toc_min_heading`**:
  - An optional parameter that determines the minimum depth heading to capture in the right TOC for that page
