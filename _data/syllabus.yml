@@ -32,6 +32,9 @@ class_days: ['2', '4']
 # For example, if you set starting_homework_number to 0, then the first homework
 # assignment you create is numbered HW0. If you set it to 1, then that same
 # assignment is numbered HW1 instead.
+# You may not need all of these. If your readings are external links and not
+# PDFs in the repo, then "starting_readings_number" is irrelevant.
+# If you don't have labs, then "starting_lab_number" is irrelevant.
 starting_lecture_number: '1'
 starting_readings_number: '1'
 starting_discussion_number: '0'
