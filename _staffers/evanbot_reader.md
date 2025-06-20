@@ -3,7 +3,7 @@ name: EvanBot
 pronouns: any/all
 role: Reader
 email: evanbot@berkeley.edu
-photo: evanbot.jpg
+photo: evanbot.webp
 spaaccess: False
 dspdata: False
 ---
