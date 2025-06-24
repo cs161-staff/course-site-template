@@ -133,7 +133,11 @@
     Here, it's a slash, but you can change it to a slash or something else.
 {%- endcomment -%}
 {%- for reading in include.element.readings -%}
-  <a href="{{ reading.link | relative_url }}">{{ reading.name }}</a>
+  {%- if reading.link and reading.link != empty -%}
+    <a href="{{ reading.link | relative_url }}">{{ reading.name }}</a>
+  {%- else -%}
+    {{ reading.name }}
+  {%- endif -%}
   {% if forloop.last == false %}
     {{}} / {{}}
   {% endif %}

@@ -65,6 +65,9 @@
 # - If your lecture slides are Google Slides links, ignore this.
 # - If your lecture slides are PDFs in this repo, update this.
 lecture_prefix: "/assets/lectures/cs101-sp25-lec"
+# - If your readings are PDFs in the repo, update this and readings.html.
+# - If your readings are external links, then ignore this.
+readings_prefix: "/assets/notes/cs101-sp25-note"
 
 lectures:
   - title: "Introduction and Security Principles"

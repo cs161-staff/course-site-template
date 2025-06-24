@@ -12,3 +12,6 @@ You can access attributes from `_data/proj1_assignment.yml` to add to these assi
 
 You can also add images like below!
 ![Stars to orbit!]({{ "/assets/projects/proj1/orbot.jpg" | relative_url }})
+
+{: .tip }
+> You can also add callouts like this. See the [Just the Docs documentation](https://just-the-docs.com/docs/ui-components/callouts/) for more details.
