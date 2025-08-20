@@ -80,7 +80,7 @@ homeworks:
         link: "https://www.gradescope.com/courses/942380/assignments/5689760"
       - name: "Part B"
         link: "https://www.gradescope.com/courses/942380/assignments/5689747"
-    rowspan: "1"
+    rowspan: "2"
   - title: "" # blank for auto-numbering as "HW2"
     link: ""
     show_links: true
@@ -101,5 +101,5 @@ homeworks:
         link: "https://www.gradescope.com/courses/942380/assignments/5788266"
       - name: "Part B"
         link: "https://www.gradescope.com/courses/942380/assignments/5788277"
-    rowspan: "3" # because this week has an extra row for the midterm
+    rowspan: "6" # because this week has an extra row for the midterm
   - nonumber: true # blank box in Week 5 (otherwise you get auto-numbered "HW4")

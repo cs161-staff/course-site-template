@@ -119,7 +119,7 @@ discussions:
     examprep_slides: ""
     extra: |
       [61C Review Video](https://www.youtube.com/watch?v=WVhKJqCqwyE)
-    rowspan: 1
+    rowspan: 2
   - title: "Security Principles and x86"
     show_worksheet: true
     show_sols: true
@@ -143,4 +143,4 @@ discussions:
     examprep_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8JTBNVlgRogrYsfHG7k6ql"
     regular_slides: ""
     examprep_slides: ""
-    rowspan: "3" # because this week has an extra row for the midterm
+    rowspan: "6" # because this week has an extra row for the midterm

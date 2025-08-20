@@ -167,6 +167,9 @@
           - In a given week, iterate through all the days in that week.
         {%- endcomment -%}
         {%- for day in week.items -%}
+          {%- assign first_day = forloop.first -%}
+          {%- assign start = 1 -%}
+          {%- for i in (start...site.data.syllabus.default_day_rowspan) -%}
           <tr>
             {%- comment -%}
               - Render the week number column.
@@ -182,9 +185,9 @@
                 the week number by using week_extra.yml.
               - week-cell is defined in custom.scss to center the text in the cell.
             {%- endcomment -%}
-            {%- if forloop.first -%}
+            {%- if first_day and forloop.first -%}
               {%- assign week_extra_element = site.data.week_extra.week_extra[week_extra_index] -%}
-              <td class="{{ is_even }} week-cell" rowspan="{{ week.size }}" id="week-{{ week.name }}">
+              <td class="{{ is_even }} week-cell" rowspan="{{ week.size | times: site.data.syllabus.default_day_rowspan }}" id="week-{{ week.name }}">
                 {{ week_number }}
                 {%- if week_extra_element.show_extra -%}
                   {%- if week_extra_element.link and week_extra_element.link != empty -%}
@@ -213,8 +216,11 @@
               and insists on clearing borders when td:first-of-type. This affects
               the date column only, and hopefully this hack doesn't require any
               touching to keep working (it just re-adds the border back).
+              - 
             {%- endcomment -%}
-            <td class="{{ is_even }} border-hack">{{ day | date: '%a<br>%b %d' }}</td>
+            {%- if forloop.first -%}
+              <td class="{{ is_even }} border-hack" rowspan="{{ site.data.syllabus.default_day_rowspan }}">{{ day | date: '%a<br>%b %d' }}</td>
+            {%- endif -%}
 
             {%- comment -%}
               - There are four chunks of code below this, for rendering the
@@ -389,6 +395,7 @@
               {%- assign project_rowspan = project_rowspan | plus: -1 -%}
             {%- endif -%}
           </tr>
+          {%- endfor -%}
         {%- endfor -%}
       {%- endfor -%}
     </tbody>
