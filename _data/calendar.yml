@@ -120,14 +120,6 @@ categories:
     darkTheme:
       --event-background: "#4D134D"
       --event-border-color: "#EBC8EB"
-  - name: "Exam"
-    match: "exam|quest|midterm|mt|final"
-    lightTheme:
-      --event-background: "#E2E2E2"
-      --event-border-color: "#A5A5A5"
-    darkTheme:
-      --event-background: "#363187"
-      --event-border-color: "#CAC8EB"
   - name: "Review Session"
     match: "review session"
     lightTheme:
@@ -136,3 +128,11 @@ categories:
     darkTheme:
       --event-background: "#4D134D"
       --event-border-color: "#EBC8EB"
+  - name: "Exam"
+    match: "exam|quest|midterm|mt|final"
+    lightTheme:
+      --event-background: "#E2E2E2"
+      --event-border-color: "#A5A5A5"
+    darkTheme:
+      --event-background: "#363187"
+      --event-border-color: "#CAC8EB"
