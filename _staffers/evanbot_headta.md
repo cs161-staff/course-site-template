@@ -3,7 +3,7 @@ name: EvanBot
 pronouns: any/all
 role: Head TA
 email: evanbot@berkeley.edu
-photo: evanbot.jpg
+photo: evanbot.webp
 spaaccess: True
 dspdata: False
 ---

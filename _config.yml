@@ -42,20 +42,25 @@ baseurl: ""
 # - The full URL of your homepage.
 url: "https://template.cs161.org"
 
-# - Used in _includes/title.html
-# - Path to an image to display in the sidebar (or top bar on mobile). Leave blank to omit.
-logo: '/assets/images/logo.png'
+# - Used in _includes/title.html and index.html
+# - Path to an image to display in two places:
+# - 1) The sidebar (or top bar on mobile)
+# - 2) At the top-right of the homepage
+# - Leave blank to omit a logo.
+# - If you want the homepage to have a different logo from the sidebar,
+#   then edit index.html.
+logo: "/assets/images/logo.png"
 
 # - Used in _includes/title.html
 # - Optional text that replaces site.title at the top of the sidebar when set.
 # - If logo is set and shorthand_text is left blank, the logo will take up 100% of the space.
-shorthand_text: 'Course Name'
+shorthand_text: "Course Name"
 
 # - Can be used throughout the website (e.g. project specs).
 # - Example: In the spec, write "Pull from the skeleton-{{ site.semester_slug }} repo."
 #   This will automatically update to "skeleton-fa24" or "skeleton-sp25" each semester.
-semester_slug: sp25
-semester_full: Spring 2025
+semester_slug: "sp25"
+semester_full: "Spring 2025"
 
 # - Updates the top line of the homepage, i.e. the one that says
 #   "Instructor: EvanBot / Lecture: TuTh, 12:30–2:00 PM, Wheeler 150 [Zoom, Playlist]"
@@ -108,13 +113,13 @@ latest_sem: "https://template.cs161.org"
 
 aux_links:
   Dark Mode:
-    - '#'
+    - "#"
   Ed:
-    - 'https://edstem.org'
+    - "https://edstem.org"
   OH Queue:
-    - 'https://oh.cs161.org'
+    - "https://oh.cs161.org"
   Source Code on GitHub:
-    - 'https://github.com/cs161-staff/course-site-template'
+    - "https://github.com/cs161-staff/course-site-template"
 
 
 #######################################################
@@ -197,11 +202,11 @@ collections:
 # https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
   - scope:
-      path: ''
+      path: ""
       type: staffers
     values:
       layout: staffer
-      subpath: '/assets/staff/'
+      subpath: "/assets/staff/"
 
 plugins:
   - jekyll-seo-tag
@@ -211,4 +216,4 @@ plugins:
 # and https://github.com/jekyll/jekyll/issues/9686
 sass:
   quiet_deps: true
-  silence_deprecations: ['import'] # https://github.com/just-the-docs/just-the-docs/issues/1607
+  silence_deprecations: ["import"] # https://github.com/just-the-docs/just-the-docs/issues/1607
