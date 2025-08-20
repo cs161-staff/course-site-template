@@ -123,8 +123,6 @@ discussions:
     examprep_slides: ""
   - title: "No Discussion"
     nonumber: true # skips assigning a number to this box
-    hide_worksheet: true
-    hide_sols: true
   - title: "Memory Safety"
     # Notice that solutions and videos aren't being linked, even though the solution PDFs
     # and video links exist, because the "hide" fields are set to true.

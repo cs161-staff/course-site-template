@@ -27,10 +27,15 @@
 
 {%- comment -%}
   - Build filenames automatically from the discussion number.
+    If this is a "nonumber" cell, assign filenumber to empty string.
   - First pad discussion number (2-->02), then create a base filepath.
 {%- endcomment -%}
 {%- assign bases = site.data.discussions.discussion_filename_bases -%}
-{%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+{%- unless include.number -%}
+  {%- assign filenumber = '' -%}
+{%- else -%}
+  {%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+{%- endunless -%}
 {%- assign filename_base = bases.path | append: '-' -%}
 
 {%- comment -%}
