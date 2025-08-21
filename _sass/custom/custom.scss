@@ -12,15 +12,21 @@ th {
   min-width: 0;
 }
 
-table {
-  td.border-hack {
-    border-left:1px solid $border-color;
-  }
+// Center "week" column, used in syllabus.html only
+table td.week-cell {
+  text-align: center; 
+  vertical-align: middle;
+}
 
-  // Center "week" column, used in syllabus.html only
-  td.week-cell {
-    text-align: center; 
-    vertical-align: middle;
+// Add a new table that overrides the default table styles
+// This is used in the syllabus.html file to allow for 
+// spanned cells that span multiple rows.
+// To use, add the class "spanned-table" to the table tag
+// and add the class "starting-row" to any row that 
+// touches the left side of the table.
+table.spanned-table tr:not(.starting-row) {
+  & th,td {
+    border-left: $border $border-color!important;
   }
 }
 

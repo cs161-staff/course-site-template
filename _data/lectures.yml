@@ -76,6 +76,7 @@ lectures:
     readings:
       - name: "Ch. 1"
         link: "https://textbook.cs161.org/principles/principles.html"
+  - title: "Intro Lecture pt2"
   - title: "x86 Assembly and Call Stack"
     slides: "" # example of lecture slides automatically linking to a PDF file instead of Google Slides
     recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_R0dlFGLnAxOEJtWXahfdN"
@@ -84,13 +85,7 @@ lectures:
         link: "https://textbook.cs161.org/memory-safety/x86.html"
       - name: "x86/GDB Cheat Sheet"
         link: "https://assets.cs161.org/proj1/cheatsheet.pdf"
-    rowspan: "2"
-  - title: "Memory Safety Vulnerabilities"
-    slides: "https://docs.google.com/presentation/d/1M_oyCC1OE5oZPh7Qiwp8X2IIlWa6AAvel3ST0ndFgts"
-    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9NcOVQ3z0tKo7_5uJpUajl"
-    readings:
-      - name: "Ch. 3"
-        link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+  - title: "Memory Safety Vulnerabilities Lecture pt2"
   - title: "Holiday (No Lecture)"
     nonumber: true # skips assigning a number to this box
   - title: "Memory Safety Vulnerabilities 2"

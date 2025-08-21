@@ -562,3 +562,11 @@ labs:
 **Change the way assignments are rendered?**
 - All the code for rendering a single assignment is in `_includes/homework.html`. For simplicity, the other assignment files (`_includes/project.html` and `_includes/lab.html`) are identical. You should only need to edit these files.
 - These files are already made to be fairly extensible (e.g. `parts` for rendering any list of links, and `extra` for any arbitrary Markdown), so you may be able to achieve the desired behavior without changing these HTML files.
+
+
+**Render multiple lectures/discussions/assignments on a single day?**
+- If you only need this once (e.g. there's only one day all semester with two lectures), the easiest solution is probably to use `extra_days` in `syllabus.yml`. The day will render twice in the "Date" column. This is much easier than the alternative below.
+- If you need this repeatedly (e.g. there's two lectures on every day), then change `day_rowspan` in `syllabus.yml`. Note that all the other rowspans must now be calculated relative to your updated `day_rowspan`.
+- Example of `day_rowspan` usage: Suppose you have two lectures on each of MWF, and two discussions per week. Then you want `day_rowspan: 2` and `default_lecture_rowspan: 1` so that two lectures get rendered per day. Since a week now spans 6 rows, you want `discussion_default_rowspan: 3` so that two discussions are rendered per week.
+- More generally, if you change `day_rowspan` to `n`, then you want to multiply every other `default_rowspan` by `n` to get the original table unchanged. But now you can get multiple rows per day by setting some rowspans to be less than `n`.
+- The `day_rowspan` feature can be confusing so we don't recommend using it unless you know what you're doing.

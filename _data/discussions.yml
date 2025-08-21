@@ -115,7 +115,7 @@ discussions:
     examprep_slides: ""
     extra: |
       [61C Review Video](https://www.youtube.com/watch?v=WVhKJqCqwyE)
-    rowspan: 1
+    rowspan: "1"
   - title: "Security Principles and x86"
     regular_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_ecmDFIpyrCBwaVD5oMiP5"
     examprep_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8BHDozB7T9J32Lf5T4a_G1"
