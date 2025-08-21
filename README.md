@@ -6,7 +6,7 @@
 
 A course website template used by various large upper-division CS courses at UC Berkeley, including: [CS 161](https://cs161.org), [CS 168](https://cs168.io), [CS 188](https://inst.eecs.berkeley.edu/~cs188), [CS 61B](https://datastructur.es), and others.
 
-The template is built on Just the Docs (https://just-the-docs.com), [ordering pages in the sidebar](https://just-the-docs.com/docs/navigation/main/order/), [Markdown syntax](https://just-the-docs.com/docs/index-test/), etc.
+The template is built on Just the Docs (https://just-the-docs.com), so check out their documentation for features such as [ordering pages in the sidebar](https://just-the-docs.com/docs/navigation/main/order/), [Markdown syntax](https://just-the-docs.com/docs/index-test/), etc.
 
 The tags at the top of this document represent information about the template version. **You should not change this unless you are maintaining the template.** The left tag represents the version of the template that you cloned, and the right tag represents the latest version of the template. If your repository version does not match the latest version, you should return to the template again next semester.
 
