@@ -27,10 +27,15 @@
 
 {%- comment -%}
   - Build filenames automatically from the discussion number.
+    If this is a "nonumber" cell, assign filenumber to empty string.
   - First pad discussion number (2-->02), then create a base filepath.
 {%- endcomment -%}
 {%- assign bases = site.data.discussions.discussion_filename_bases -%}
-{%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+{%- unless include.number -%}
+  {%- assign filenumber = '' -%}
+{%- else -%}
+  {%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+{%- endunless -%}
 {%- assign filename_base = bases.path | append: '-' -%}
 
 {%- comment -%}
@@ -94,9 +99,9 @@
 {%- assign bridge_links = "" | split: "/" -%}
 
 {%- comment -%}
-  - Worksheets show iff "show_worksheet: true" AND the filepath exists.
+  - Worksheets show iff hide_worksheet is false/unlisted AND the filepath exists.
 {%- endcomment -%}
-{%- if include.element.show_worksheet -%}
+{%- unless include.element.hide_worksheet -%}
   {%- if regular_exists -%}
     {%- capture regular_worksheet_link -%}
       <a href="{{ filename_regular | relative_url }}" aria-label="Worksheet for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Worksheet</a>
@@ -115,12 +120,12 @@
     {%- endcapture -%}
     {%- assign bridge_links = bridge_links | push: bridge_worksheet_link -%}
   {%- endif -%}
-{%- endif -%}
+{%- endunless -%}
 
 {%- comment -%}
-  - Solutions show iff "show_sols: true" AND the filepath exists.
+  - Solutions show iff hide_sols is false/unlisted AND the filepath exists.
 {%- endcomment -%}
-{%- if include.element.show_sols -%}
+{%- unless include.element.hide_sols -%}
   {%- if regular_sols_exists -%}
     {%- capture regular_sols_link -%}
       <a href="{{ filename_regular_sols | relative_url }}" aria-label="Solutions for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Solutions</a>
@@ -139,12 +144,12 @@
     {%- endcapture -%}
     {%- assign bridge_links = bridge_links | push: bridge_sols_link -%}
   {%- endif -%}
-{%- endif -%}
+{%- endunless -%}
 
 {%- comment -%}
-  - Videos show iff "show_videos: true" AND video link exists in discussions.yml.
+  - Videos show iff hide_videos is false/unlisted AND video link exists in discussions.yml.
 {%- endcomment -%}
-{%- if include.element.show_videos -%}
+{%- unless include.element.hide_videos -%}
   {%- if include.element.regular_video and include.element.regular_video != empty -%}
     {%- capture regular_video_link -%}
       <a href="{{ include.element.regular_video | relative_url }}" aria-label="Video for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Video</a>
@@ -163,12 +168,12 @@
     {%- endcapture -%}
     {%- assign bridge_links = bridge_links | push: bridge_video_link -%}
   {%- endif -%}
-{%- endif -%}
+{%- endunless -%}
 
 {%- comment -%}
-  - Slides show iff "show_slides: true" AND slide link exists in discussions.yml.
+  - Slides show iff hide_slides is false/unlisted AND slide link exists in discussions.yml.
 {%- endcomment -%}
-{%- if include.element.show_slides -%}
+{%- unless include.element.hide_slides -%}
   {%- if include.element.regular_slides and include.element.regular_slides != '' -%}
     {%- capture regular_slides_link -%}
       <a href="{{ include.element.regular_slides | relative_url }}" aria-label="Slides for {{ bases.regular_name }} {{ include.number }} ({{ include.element.title }})">Slides</a>
@@ -187,7 +192,7 @@
     {%- endcapture -%}
     {%- assign bridge_links = bridge_links | push: bridge_slides_link -%}
   {%- endif -%}
-{%- endif -%}
+{%- endunless -%}
 
 {%- comment -%}
   - Render regular links, split with slashes.

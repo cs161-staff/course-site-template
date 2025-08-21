@@ -5,8 +5,8 @@
 # To add an assignment to the website:
 # 1. Upload any necessary files (e.g. starter code) to the assets folder.
 # 2. Put the assignment spec in /labs or /projects or /homeworks (if not already there).
-# 3. In this file, set "show_links: true" and add a "link" attribute to
-#    display a link to the spec.
+# 3. In this file, add a "link" attribute to display a link to the spec.
+#    You can use "hide_links: true" to not render the link.
 
 
 #####################################
@@ -30,11 +30,11 @@
 #               or https://. For example, "https://example.com" is good, "example.com" is bad.
 #               If this is an internal link to another page on this website, you should write a
 #               relative filepath starting at the root of this repo, e.g. "/assets/images/logo.png".
-# - show_links: Whether to render links in the box.
-#               If false, the title and part links are NOT rendered.
-#               If true, all non-empty links for the title and parts are rendered.
-#               Your title links to your link iff "show_links: true" AND "link" is not blank.
-#               The parts link to your links iff "show_links: true" AND the "link"s are not blank.
+# - hide_links: Whether to render links in the box.
+#               If true, the title and part links are NOT rendered.
+#               If false (or not listed), all non-empty links for the title and parts are rendered.
+#               Your title links to your link iff hide_links is false/unlisted AND "link" is not blank.
+#               The parts link to your links iff hide_links is false/unlisted AND the "link"s are not blank.
 #               Note that if your "extra" has a link, it's rendered whether this is true or false.
 # - due:        If not blank, shows this date on the grid (regardless of release status).
 # - parts:      An array of names/links to parts. These appear below the main title/link,
@@ -58,7 +58,7 @@
 #
 # - title: "Lab 1: Deques"
 #   link: "/proj1/"
-#   show_links: true
+#   hide_links: false
 #   due: "09/06"
 #   parts:
 #     - name: "Slides"
@@ -71,7 +71,6 @@
 labs:
   - title: "Lab 1"
     link: "/proj1/"
-    show_links: true
     due: "09/06"
     parts:
       - name: "Part A"

@@ -14,15 +14,15 @@
 # If your link is an internal link to another page on this website, you should write a
 # relative filepath starting at the root of this repo, e.g. "/assets/images/logo.png".
 
-# If show_extra: true, then we follow these rendering rules:
+# If hide_extra: true, then nothing is rendered in that week's box.
+# If hide_extra: false (or not listed), then we follow these rendering rules:
 #   - If you leave both "name" and "link" blank, that week will have no extra text.
 #   - If you fill in "name" only, that week will have "name" as text.
 #   - If you fill in "name" and "link", that week will have "name" linking to "link".
 #   - Filling in "link" only is undefined (it'll just show nothing).
-# If show_extra: false, then nothing is rendered in that week's box.
 
 # If you don't want this feature, just leave every entry of the array blank,
-# and/or set show_extra: false in every entry.
+# and/or set hide_extra: true in every entry.
 
 # If you want more than a single name/link, you have to go modify syllabus.html.
 # Ctrl+F "week_extra_element" for the place to edit.
@@ -31,16 +31,12 @@
 week_extra:
   - name: ""
     link: ""
-    show_extra: true
   - name: "Survey"
     link: "https://forms.gle/FFTFQmv2UJqooukH7"
-    show_extra: true
   - name: ""
     link: ""
-    show_extra: true
   - name: "Survey"
     link: "https://forms.gle/LeAN3ud6sejxEy5z7"
-    show_extra: true
+    hide_extra: true
   - name: "Survey"
     link: "https://forms.gle/vMq7Qu8RGPQ2pDwj8"
-    show_extra: true
