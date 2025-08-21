@@ -169,30 +169,37 @@
           - In a given week, iterate through all the days in that week.
         {%- endcomment -%}
         {%- for day in week.items -%}
-          {% comment %}
+          {%- comment -%}
             - Hang on to the first day of the week, so we can render the week number
-            only once per week.
-          {% endcomment %}
+              only once per week.
+          {%- endcomment -%}
           {%- assign first_weekday = forloop.first -%}
+          {%- comment -%}
+            - This for loop allows us to render multiple rows for a single day.
+            - It is only relevant if day_rowspan is not the default (1).
+              Otherwise, the loop runs once and we render one row per day.
+          {%- endcomment -%}
           {%- for i in (1..day_rowspan) -%}
-            {% comment %}
+            {%- comment -%}
               - If we are rendering the week number, we want this row to have the
-              "starting-row" class, which is used in custom.scss to
-              re-add the border to the left side of the table. Otherwise, we just
-              want it to open a table row.
-            {% endcomment %}
-            {% if first_weekday and forloop.first %}
+                "starting-row" class, which is used in custom.scss to re-add
+                the border to the left side of the table. Otherwise, we just
+                want it to open a table row.
+            {%- endcomment -%}
+            {%- if first_weekday and forloop.first -%}
               {%- assign row_class = 'starting-row' -%}
-            {% else %}
+            {%- else -%}
               {%- assign row_class = '' -%}
-            {% endif %}
+            {%- endif -%}
             <tr class="{{ row_class }}">
               {%- comment -%}
                 - Open the table row and render the week number column.
-                - We use forloop.first to render the week number only once per week.
+                - We use forloop.first and first_weekday to render the week number
+                  only once per week.
                 - We use the "size" field of the week hash to see how many days we're
-                going to display in the week, which tells us how many rows the week
-                number needs to span.
+                  going to display in the week, which tells us how many rows the week
+                  number needs to span. We multiply by day_rowspan because that's the
+                  number of rows rendered per day.
                 - We use the "name" field of the week hash to give us a unique week
                 number (between 1 and 52), which gives each week number box a unique
                 id, and thus allows us to implement the "jump to current week"
@@ -229,6 +236,9 @@
 
               {%- comment -%}
                 - Render the date column.
+                - The if-condition ensures we only render the date column once per day.
+                  forloop.first is referencing the "1 to day_rowspan" loop, which renders
+                  potentially multiple columns per day.
                 - The percent formatters determine how the date is displayed.
                 See this link for what percent formatters are available:
                 https://shopify.github.io/liquid/filters/date/
