@@ -24,8 +24,10 @@ table td.week-cell {
 // To use, add the class "spanned-table" to the table tag
 // and add the class "starting-row" to any row that 
 // touches the left side of the table.
-table.spanned-table tr:not(.starting-row) th,td {
-  border-left: $border $border-color!important;
+table.spanned-table tr:not(.starting-row) {
+  & th,td {
+    border-left: $border $border-color!important;
+  }
 }
 
 // Button copying
