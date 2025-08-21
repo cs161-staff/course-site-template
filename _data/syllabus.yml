@@ -45,6 +45,12 @@ starting_project_number: '1'
 # starting at any other week number, so pick '0' or '1' here.
 starting_week_number: '1'
 
+# Change this if you want multiple lecture/discussion/etc boxes on the same day.
+# All the other rowspans must be relative to the day rowspan, e.g. a homework 
+# spanning 3 days on the calendar would need rowspan 3 * day_rowspan.
+# This should be 1 unless you know what you're doing.
+day_rowspan: '2'
+
 # How many rows should each assignment take up by default?
 # We have one lecture per row. Highly unlikely you'll need to change this.
 default_lecture_rowspan: '1'
@@ -61,11 +67,6 @@ default_lab_rowspan: '8'
 # Project rowspans are too variable, so we just set the default to 1 and
 # never use the default (always manually specifying the rowspan).
 default_project_rowspan: '1'
-# Change this if you want multiple lecture/discussion/etc boxes on the same day.
-# If this is changed, all the other rowspans must be relative to the day rowspan,
-# e.g. a homework spanning 3 days on the calendar would need rowspan 3 * default_day_rowspan.
-# This should be 1 unless you know what you're doing.
-default_day_rowspan: '2'
 
 # Do you want cells to automatically alternate colors each week?
 # Usually the answer is yes/true if the cell appears with a regular fixed
