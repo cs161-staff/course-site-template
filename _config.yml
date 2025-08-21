@@ -121,35 +121,6 @@ aux_links:
   Source Code on GitHub:
     - "https://github.com/cs161-staff/course-site-template"
 
-
-#######################################################
-# Config to show colored callout blocks on pages      #
-#######################################################
-
-# - See official JTD for documentation:
-# - https://just-the-docs.com/docs/ui-components/callouts/
-# - https://just-the-docs.com/docs/configuration/#callouts
-
-callouts:
-  warning:
-    title: Warning
-    color: yellow
-  info:
-    title: Info
-    color: purple
-  tip:
-    title: Tip
-    color: green
-  task:
-    title: Task
-    color: blue
-  danger: 
-    title: Danger
-    color: red
-  story: # CS 161 custom config for story
-    title: Story
-    color: blue
-
 #######################################################
 # Config for Right Table of Contents                  #
 #######################################################

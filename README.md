@@ -6,7 +6,7 @@
 
 A course website template used by various large upper-division CS courses at UC Berkeley, including: [CS 161](https://cs161.org), [CS 168](https://cs168.io), [CS 188](https://inst.eecs.berkeley.edu/~cs188), [CS 61B](https://datastructur.es), and others.
 
-The template is built on Just the Docs (https://just-the-docs.com), so check out their documentation for features such as [callouts](https://just-the-docs.com/docs/configuration/#callouts), [ordering pages in the sidebar](https://just-the-docs.com/docs/navigation/main/order/), [Markdown syntax](https://just-the-docs.com/docs/index-test/), etc.
+The template is built on Just the Docs (https://just-the-docs.com), [ordering pages in the sidebar](https://just-the-docs.com/docs/navigation/main/order/), [Markdown syntax](https://just-the-docs.com/docs/index-test/), etc.
 
 The tags at the top of this document represent information about the template version. **You should not change this unless you are maintaining the template.** The left tag represents the version of the template that you cloned, and the right tag represents the latest version of the template. If your repository version does not match the latest version, you should return to the template again next semester.
 
@@ -373,6 +373,29 @@ Just the Docs has many built-in front matter features you can use:
 - [Toggling a list of child pages at the bottom of the page](https://just-the-docs.com/docs/navigation/children)
 
 Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are relevant to this repo.
+
+### Additions on top of JTD
+
+Instead of the JTD Built-in Callouts, we have provided the Alerts implementation from [SensEdu](https://shiegechan.github.io/SensEdu/Contributing/docs/#calloutsalerts) with some additional configuration options. By default, you have access to the following Alerts: `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`, and an unlabeled alert (`ALERT`).
+
+To use Alerts, append `{: .NAME }` to the line above the message you'd like to place into an Alert. For example, to make a Tip Alert:
+
+```liquid
+{: .TIP }
+This is a Tip Alert!
+```
+
+If you need a multi-line Alert, you can wrap your content in a blockquote:
+```liquid
+{: .TIP }
+> This
+> 
+> is a multi-line Tip Alert!
+```
+
+If you are fine with the default colors (blue, green, purple, yellow, or red) but require a custom message, you can define a custom callout in `custom.scss` by using a mixin. The mixins available are `color-alert($name, $title)` (where `color` is replaced with a color from the list above).
+
+We also provide an `alert($name, $foreground-color, $title, $background-color)` if you require a custom color for any reason. To use this mixin, you should edit `wider.scss` and `dark-wider.scss` in order to make sure the colors are accessible in both light and dark mode.
 
 We also have some custom front matter variables in this template:
 

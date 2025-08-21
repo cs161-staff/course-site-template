@@ -1,9 +1,12 @@
 // Just the Class styles
 @import 'announcement';
 @import 'staffer';
+@import "alerts";
+
+// Example custom alert from CS161!
+@include blue-alert(STORY, "Story");
 
 // Begin UCB custom style
-
 td {
   min-width: 0;
 }
