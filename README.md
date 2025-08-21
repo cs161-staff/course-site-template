@@ -372,7 +372,7 @@ Just the Docs has many built-in front matter features you can use:
 - [Page Levels](https://just-the-docs.com/docs/navigation/main/levels/)
 - [Toggling a list of child pages at the bottom of the page](https://just-the-docs.com/docs/navigation/children)
 
-Note that we are on Just the Docs v0.10.2, so those "New (v0.10.0)" tags are relevant to this repo.
+Note that we are on Just the Docs v0.10.1, so those "New (v0.10.0)" tags are relevant to this repo.
 
 ### Additions on top of JTD
 
