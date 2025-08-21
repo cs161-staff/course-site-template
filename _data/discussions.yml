@@ -14,9 +14,9 @@
 # If you'd like a different filepath or prefix (in the example, it's
 # /assets/lectures/cs161-sp25-disc), change the filename bases below.
 
-# To show worksheets, set "show_worksheet: true"
-# To show solutions, set "show_sols: true"
-# To show videos, set "show_videos: true"
+# To hide worksheets, set "hide_worksheet: true"
+# To hide solutions, set "hide_sols: true"
+# To hide videos, set "hide_videos: true"
 
 # If you need to manually put something in the discussion cell
 # (e.g. links to multiple worksheets for exam review weeks), there's
@@ -28,9 +28,9 @@
 
 # Example showing various features:
 # - title: "Discussion Title"
-#   show_worksheet: true
-#   show_sols: true
-#   show_videos: true
+#   hide_worksheet: false
+#   hide_sols: true
+#   hide_videos: false
 #   slides: "https://www.example.com"
 #   extra: | 
 #     [Extra guide](https://www.google.com)
@@ -61,10 +61,10 @@
 # - Then, we add a discussion number, with increasing numbers per box
 #   on the syllabus. Numbering customization would be done in syllabus.html.
 #
-# - Worksheets show iff "show_worksheet: true" AND the filepath exists.
-#   Solutions show iff "show_sols: true" AND the filepath exists.
-#   Videos show iff "show_videos: true" AND video link exists in discussions.yml.
-#   Slides show iff "show_slides: true" AND slide link exists in discussions.yml.
+# - Worksheets show iff hide_worksheet is false/unlisted AND the filepath exists.
+#   Solutions show iff hide_sols is false/unlisted AND the filepath exists.
+#   Videos show iff hide_videos is false/unlisted AND video link exists in discussions.yml.
+#   Slides show iff hide_slides is false/unlisted AND slide link exists in discussions.yml.
 # - "classes" is an array passed to discussion.html to format the cell.
 #   We predefined colors like schedule-purple, schedule-green, etc. in 
 #   and you can add your own in _sass/custom/custom.scss if you want.
@@ -73,10 +73,10 @@
 #
 # - title: "Welcome"
 #   nonumber: false
-#   show_worksheet: true
-#   show_sols: true
-#   show_videos: true
-#   show_slides: true
+#   hide_worksheet: false
+#   hide_sols: true
+#   hide_videos: false
+#   hide_slides: false
 #   regular_video: "https://youtube.com/1"
 #   examprep_video: "https://youtube.com/2"
 #   bridge_video: "https://youtube.com/3"
@@ -109,10 +109,6 @@ discussion_filename_bases:
 
 discussions:
   - title: "Welcome"
-    show_worksheet: true
-    show_sols: true
-    show_videos: true
-    show_slides: true
     regular_video: "https://www.youtube.com/watch?v=FMLe4g8wGXE"
     examprep_video: ""
     regular_slides: "https://cs161.org"
@@ -121,10 +117,6 @@ discussions:
       [61C Review Video](https://www.youtube.com/watch?v=WVhKJqCqwyE)
     rowspan: 1
   - title: "Security Principles and x86"
-    show_worksheet: true
-    show_sols: true
-    show_videos: true
-    show_slides: true
     regular_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_ecmDFIpyrCBwaVD5oMiP5"
     examprep_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8BHDozB7T9J32Lf5T4a_G1"
     regular_slides: ""
@@ -133,12 +125,12 @@ discussions:
     nonumber: true # skips assigning a number to this box
   - title: "Memory Safety"
     # Notice that solutions and videos aren't being linked, even though the solution PDFs
-    # and video links exist, because the "show" fields are set to false.
-    # Also, show_slides is true but there are no slides linked, so nothing is linked.
-    show_worksheet: true
-    show_sols: false
-    show_videos: false
-    show_slides: true
+    # and video links exist, because the "hide" fields are set to true.
+    # Also, hide_slides is false but there are no slides linked, so nothing is linked.
+    hide_worksheet: false
+    hide_sols: true
+    hide_videos: true
+    hide_slides: false
     regular_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8JTBNVlgRogrYsfHG7k6ql"
     examprep_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8JTBNVlgRogrYsfHG7k6ql"
     regular_slides: ""

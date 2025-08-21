@@ -186,7 +186,7 @@
               {%- assign week_extra_element = site.data.week_extra.week_extra[week_extra_index] -%}
               <td class="{{ is_even }} week-cell" rowspan="{{ week.size }}" id="week-{{ week.name }}">
                 {{ week_number }}
-                {%- if week_extra_element.show_extra -%}
+                {%- unless week_extra_element.hide_extra -%}
                   {%- if week_extra_element.link and week_extra_element.link != empty -%}
                     <br>
                     <a
@@ -199,7 +199,7 @@
                     <br>
                     {{ week_extra_element.name }}
                   {%- endif -%}
-                {%- endif -%}
+                {%- endunless -%}
               </td>
               {%- assign week_extra_index = week_extra_index | plus: 1 -%}
             {%- endif -%}
@@ -259,7 +259,11 @@
               {%- else -%}
                 {%- assign new_rowspan = default_lecture_rowspan -%}
               {%- endif -%}
-              {%- include lecture.html element=lecture_element number=lecture_number rowspan=new_rowspan is_even=is_even -%}
+              {%- if lecture_element.nonumber -%}
+                {%- include lecture.html element=lecture_element rowspan=new_rowspan is_even=is_even -%}
+              {%- else -%}
+                {%- include lecture.html element=lecture_element number=lecture_number rowspan=new_rowspan is_even=is_even -%}
+              {%- endif -%}
               {%- assign lecture_rowspan = new_rowspan | plus: -1 -%}
               {%- assign lecture_index = lecture_index | plus: 1 -%}
               {%- unless lecture_element.nonumber -%}
@@ -286,7 +290,11 @@
                 {%- else -%}
                   {%- assign new_rowspan = default_readings_rowspan -%}
                 {%- endif -%}
-                {%- include readings.html element=readings_element number=readings_number rowspan=new_rowspan is_even=is_even  -%}
+                {%- if readings_element.nonumber -%}
+                  {%- include readings.html element=readings_element rowspan=new_rowspan is_even=is_even  -%}
+                {%- else -%}
+                  {%- include readings.html element=readings_element number=readings_number rowspan=new_rowspan is_even=is_even  -%}
+                {%- endif -%}
                 {%- assign readings_rowspan = new_rowspan | plus:-1 -%}
                 {%- assign readings_index = readings_index | plus:1 -%}
                 {%- unless readings_element.nonumber -%}
@@ -309,7 +317,11 @@
               {%- else -%}
                 {%- assign new_rowspan = default_discussion_rowspan -%}
               {%- endif -%}
-              {%- include discussion.html element=discussion_element number=discussion_number rowspan=new_rowspan is_even=is_even -%}
+              {%- if discussion_element.nonumber -%}
+                {%- include discussion.html element=discussion_element rowspan=new_rowspan is_even=is_even -%}
+              {%- else -%}
+                {%- include discussion.html element=discussion_element number=discussion_number rowspan=new_rowspan is_even=is_even -%}
+              {%- endif -%}
               {%- assign discussion_rowspan = new_rowspan | plus: -1 -%}
               {%- assign discussion_index = discussion_index | plus: 1 -%}
               {%- unless discussion_element.nonumber -%}
@@ -334,7 +346,11 @@
               {%- else -%}
               {%- assign new_rowspan = default_lab_rowspan -%}
               {%- endif -%}
-              {%- include lab.html element=lab_element number=lab_number rowspan=new_rowspan is_even=is_even  -%}
+              {%- if lab_element.nonumber -%}
+                {%- include lab.html element=lab_element rowspan=new_rowspan is_even=is_even  -%}
+              {%- else -%}
+                {%- include lab.html element=lab_element number=lab_number rowspan=new_rowspan is_even=is_even  -%}
+              {%- endif -%}
               {%- assign lab_rowspan = new_rowspan | plus:-1 -%}
               {%- assign lab_index = lab_index | plus:1 -%}
               {%- unless lab_element.nonumber -%}
@@ -357,7 +373,11 @@
               {%- else -%}
                 {%- assign new_rowspan = default_homework_rowspan -%}
               {%- endif -%}
-              {%- include homework.html element=homework_element number=homework_number rowspan=new_rowspan is_even=is_even -%}
+              {%- if homework_element.nonumber -%}
+                {%- include homework.html element=homework_element rowspan=new_rowspan is_even=is_even -%}
+              {%- else -%}
+                {%- include homework.html element=homework_element number=homework_number rowspan=new_rowspan is_even=is_even -%}
+              {%- endif -%}
               {%- assign homework_rowspan = new_rowspan | plus: -1 -%}
               {%- assign homework_index = homework_index | plus: 1 -%}
               {%- unless homework_element.nonumber -%}
@@ -379,7 +399,11 @@
               {%- else -%}
                 {%- assign new_rowspan = default_project_rowspan -%}
               {%- endif -%}
-              {%- include project.html element=project_element number=project_number rowspan=new_rowspan is_even=is_even -%}
+              {%- if project_element.nonumber -%}
+                {%- include project.html element=project_element rowspan=new_rowspan is_even=is_even -%}
+              {%- else -%}
+                {%- include project.html element=project_element number=project_number rowspan=new_rowspan is_even=is_even -%}
+              {%- endif -%}
               {%- assign project_rowspan = new_rowspan | plus: -1 -%}
               {%- assign project_index = project_index | plus: 1 -%}
               {%- unless project_element.nonumber -%}
