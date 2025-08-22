@@ -607,7 +607,8 @@ labs:
 
 
 **Render multiple lectures/discussions/assignments on a single day?**
-- If you only need this once (e.g. there's only one day all semester with two lectures), the easiest solution is probably to use `extra_days` in `syllabus.yml`. The day will render twice in the "Date" column. This is much easier than the alternative below.
+- If you only need this once (e.g. there's only one day all semester with two lectures), the easiest solution is probably to use `extra_days` in `syllabus.yml`. The day will render twice in the "Date" column. This is much easier than the `day_rowspan` alternative below.
+- If you only need this once, a solution is to use the `extra` field in `lectures.yml`. If the extra lecture has the same formatting (e.g. linking to Slides/Recording) as all the others, this is less recommended (see the note about aria-labels in the Accessibility section of this documentation). But if you want custom Markdown on your extra lecture, this could be a good option. This is also easier than the `day_rowspan` alternative below.
 - If you need this repeatedly (e.g. there's two lectures on every day), then change `day_rowspan` in `syllabus.yml`. Note that all the other rowspans must now be calculated relative to your updated `day_rowspan`.
 - Example of `day_rowspan` usage: Suppose you have two lectures on each of MWF, and two discussions per week. Then you want `day_rowspan: 2` and `default_lecture_rowspan: 1` so that two lectures get rendered per day. Since a week now spans 6 rows, you want `discussion_default_rowspan: 3` so that two discussions are rendered per week.
 - More generally, if you change `day_rowspan` to `n`, then you want to multiply every other `default_rowspan` by `n` to get the original table unchanged. But now you can get multiple rows per day by setting some rowspans to be less than `n`.

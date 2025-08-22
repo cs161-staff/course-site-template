@@ -33,6 +33,13 @@
 # If your link is an internal link to another page on this website, you should write a
 # relative filepath starting at the root of this repo, e.g. "/assets/images/logo.png".
 
+# You can use the "extra" field to write any arbitrary markdown in the box.
+# **Warning**: You should only use this sparingly for one-off links, e.g. an extra
+# PDF that only appears in one cell. **Do not** use this for recurring links like
+# adding "Slides" to every assignment - that should go in "parts" instead.
+# "parts" has built-in aria-label tags to help distinguish recurring links like
+# "Slides" in every cell, but "extra" does not have these tags, so each "extra"
+# that you add should be distinct from all the others.
 
 #####################################
 # Additional documentation          #
@@ -94,6 +101,7 @@ lectures:
     readings:
       - name: "Ch. 3"
         link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+    extra: "[Sample extra link](https://google.com)"
   - title: "Midterm (7–9pm)"
     nonumber: true # skips assigning a number to this box
   - title: "Optional Lecture"
