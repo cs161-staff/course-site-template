@@ -1,6 +1,6 @@
 # CS 161 Template Website
 
-![Your Repository's Version - 1.0](https://img.shields.io/badge/Version-1.0-blue?style=flat)
+![Your Repository's Version - v1.1](https://img.shields.io/badge/Version-v1.1-blue?style=flat)
 [![The Latest Version]](https://github.com/cs161-staff/course-site-template)
 
 
