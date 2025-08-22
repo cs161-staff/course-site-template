@@ -7,6 +7,7 @@
 
 # To upload PDF lecture slides to the website, just put the PDF
 # in assets/lectures using the filename convention below.
+# Change the "lecture_prefix" field to set the filename convention.
 #
 # The link to the slides will automatically appear once you
 # put the PDF with the right filename in the right folder.
@@ -27,6 +28,11 @@
 
 # Use the "video", "recording", "quiz" links to link videos/recordings/quizzes.
 
+# "readings" is an array, where each array element has a "name" and a "link".
+# All name/link elements in the array get rendered in that lecture box.
+# If you want a reading with no link, just include "name" without "link" for
+# that array element.
+
 # Rules for linking slides/videos/recordings/quizzes/readings:
 # If your link is an external link to a different website, it should start with http://
 # or https://. For example, "https://example.com" is good, "example.com" is bad.
@@ -40,6 +46,7 @@
 # "parts" has built-in aria-label tags to help distinguish recurring links like
 # "Slides" in every cell, but "extra" does not have these tags, so each "extra"
 # that you add should be distinct from all the others.
+
 
 #####################################
 # Additional documentation          #
