@@ -404,9 +404,17 @@ And do this to display an alert titled "Story":
 ```liquid
 {: .STORY }
 This is a custom blue alert!
-``` 
+```
 
-Not recommended unless you know what you're doing: We also provide an `alert($name, $foreground-color, $title, $background-color)` if you require a custom color for any reason. To use this mixin, you should edit `wider.scss` and `dark-wider.scss` in order to make sure the colors are accessible in both light and dark mode.
+Not recommended unless you know what you're doing: We also provide an `alert($name, $foreground-color, $background-color, $title)` if you require a custom color for any reason. To use this mixin, you should edit `wider.scss` and `dark-wider.scss` in order to make sure the colors are accessible in both light and dark mode.
+
+If you want to have an alert with a customizable title, you can leave the `$title` argument as `null`. This is done by default for the pre-defined `ALERT` option. In this case, the following syntax will allow you to set whatever title you want on a per-alert basis:
+```liquid
+{: ALERT }
+> Alert Title
+>
+> Alert Body
+```
 
 We also have some custom front matter variables in this template:
 

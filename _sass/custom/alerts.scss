@@ -1,8 +1,8 @@
 // Alerts
 
-// This mixin is copied from SensEdu.
+// This mixin is copied from SensEdu. The only change is that title is moved to the fourth argument.
 // https://github.com/ShiegeChan/SensEdu/blob/2d652bba53a90fca749ba2deb19e189c477d1a38/docs/_sass/support/mixins/_alerts.scss
-@mixin alert($name, $color, $title: null, $background-color: rgba($color, 0.1)) {
+@mixin alert($name, $color, $background-color: rgba($color, 0.1), $title: null) {
   blockquote.#{$name} {
     border-left: 4px solid $color;
     border-radius: 4px;
@@ -113,12 +113,12 @@ $alert-bg-color: rgba($alert-color, 0.1);
 // DEFAULT ALERTS
 // You can use these without modifying any configuration.
 // See Project 1 for an example of how to use these alerts in a project.
-@include alert(NOTE, $blue-alert-color, "Note", $blue-alert-bg-color);
-@include alert(TIP, $green-alert-color, "Tip", $green-alert-bg-color);
-@include alert(IMPORTANT, $purple-alert-color, "Important", $purple-alert-bg-color);
-@include alert(WARNING, $yellow-alert-color, "Warning", $yellow-alert-bg-color);
-@include alert(CAUTION, $red-alert-color, "Caution", $red-alert-bg-color);
-@include alert(ALERT, $alert-color, $background-color: $alert-bg-color);
+@include alert(NOTE, $blue-alert-color, $blue-alert-bg-color, "Note");
+@include alert(TIP, $green-alert-color, $green-alert-bg-color, "Tip");
+@include alert(IMPORTANT, $purple-alert-color, $purple-alert-bg-color, "Important");
+@include alert(WARNING, $yellow-alert-color, $yellow-alert-bg-color, "Warning");
+@include alert(CAUTION, $red-alert-color, $red-alert-bg-color, "Caution");
+@include alert(ALERT, $alert-color, $alert-bg-color);
 
 // FAST MIXINS
 // If you want to use a default color, with a different title, 
@@ -126,21 +126,21 @@ $alert-bg-color: rgba($alert-color, 0.1);
 // $name: the CSS class name for the alert
 // $title: the title of the alert, defaults to null (no title)
 @mixin blue-alert($name, $title: null) {
-  @include alert($name, $blue-alert-color, $title, $blue-alert-bg-color);
+  @include alert($name, $blue-alert-color, $blue-alert-bg-color, $title);
 }
 
 @mixin green-alert($name, $title: null) {
-  @include alert($name, $green-alert-color, $title, $green-alert-bg-color);
+  @include alert($name, $green-alert-color, $green-alert-bg-color, $title);
 }
 
 @mixin purple-alert($name, $title: null) {
-  @include alert($name, $purple-alert-color, $title, $purple-alert-bg-color);
+  @include alert($name, $purple-alert-color, $purple-alert-bg-color, $title);
 }
 
 @mixin yellow-alert($name, $title: null) {
-  @include alert($name, $yellow-alert-color, $title, $yellow-alert-bg-color);
+  @include alert($name, $yellow-alert-color, $yellow-alert-bg-color, $title);
 }
 
 @mixin red-alert($name, $title: null) {
-  @include alert($name, $red-alert-color, $title, $red-alert-bg-color);
+  @include alert($name, $red-alert-color, $red-alert-bg-color, $title);
 }
