@@ -393,9 +393,20 @@ If you need a multi-line Alert, you can wrap your content in a blockquote:
 > is a multi-line Tip Alert!
 ```
 
-If you are fine with the default colors (blue, green, purple, yellow, or red) but require a custom message, you can define a custom callout in `custom.scss` by using a mixin. The mixins available are `color-alert($name, $title)` (where `color` is replaced with a color from the list above).
+If you are fine with the default colors (blue, green, purple, yellow, or red) but require a custom message, you can define a custom callout in `_sass/custom/custom.scss` by using a mixin. The mixins available are `color-alert($name, $title)` (where `color` is replaced with a color from the list above).
 
-We also provide an `alert($name, $foreground-color, $title, $background-color)` if you require a custom color for any reason. To use this mixin, you should edit `wider.scss` and `dark-wider.scss` in order to make sure the colors are accessible in both light and dark mode.
+For example, if you want a blue alert titled "Story", put this in `_sass/custom/custom.scss`:
+```scss
+@include blue-alert(STORY, "Story");
+```
+
+And do this to display an alert titled "Story":
+```liquid
+{: .STORY }
+This is a custom blue alert!
+``` 
+
+Not recommended unless you know what you're doing: We also provide an `alert($name, $foreground-color, $title, $background-color)` if you require a custom color for any reason. To use this mixin, you should edit `wider.scss` and `dark-wider.scss` in order to make sure the colors are accessible in both light and dark mode.
 
 We also have some custom front matter variables in this template:
 
