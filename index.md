@@ -10,8 +10,6 @@ hide_right_toc: true
 {%- assign instructor_msg = "Instructors" -%}
 {%- endif -%}
 
-{{ site.title }}
-
 <img align="right" alt="{{ site.title }} logo" width="85px" src="{{ site.logo | relative_url }}">
 
 # {{ site.title }}
