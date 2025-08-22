@@ -10,7 +10,7 @@ hide_right_toc: true
 {% assign button_groups = site.data.calendar.categories | map: "name" | uniq %}
 
 {%- if site.discussions_under_construction -%}
-<p class="warning">
+<p class="WARNING">
 This schedule is tentative; additional times may be added later. The existing times shouldn’t change though (pending a couple of room bookings).
 </p>
 {%- endif -%}
