@@ -7,6 +7,7 @@
 
 # To upload PDF lecture slides to the website, just put the PDF
 # in assets/lectures using the filename convention below.
+# Change the "lecture_prefix" field to set the filename convention.
 #
 # The link to the slides will automatically appear once you
 # put the PDF with the right filename in the right folder.
@@ -27,12 +28,24 @@
 
 # Use the "video", "recording", "quiz" links to link videos/recordings/quizzes.
 
+# "readings" is an array, where each array element has a "name" and a "link".
+# All name/link elements in the array get rendered in that lecture box.
+# If you want a reading with no link, just include "name" without "link" for
+# that array element.
+
 # Rules for linking slides/videos/recordings/quizzes/readings:
 # If your link is an external link to a different website, it should start with http://
 # or https://. For example, "https://example.com" is good, "example.com" is bad.
 # If your link is an internal link to another page on this website, you should write a
 # relative filepath starting at the root of this repo, e.g. "/assets/images/logo.png".
 
+# You can use the "extra" field to write any arbitrary markdown in the box.
+# **Warning**: You should only use this sparingly for one-off links, e.g. an extra
+# PDF that only appears in one cell. **Do not** use this for recurring links like
+# adding "Slides" to every assignment - that should go in "parts" instead.
+# "parts" has built-in aria-label tags to help distinguish recurring links like
+# "Slides" in every cell, but "extra" does not have these tags, so each "extra"
+# that you add should be distinct from all the others.
 
 #####################################
 # Additional documentation          #
@@ -76,16 +89,21 @@ lectures:
     readings:
       - name: "Ch. 1"
         link: "https://textbook.cs161.org/principles/principles.html"
-  - title: "Intro Lecture pt2"
   - title: "x86 Assembly and Call Stack"
     slides: "" # example of lecture slides automatically linking to a PDF file instead of Google Slides
     recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_R0dlFGLnAxOEJtWXahfdN"
+    rowspan: 2
     readings:
       - name: "Ch. 2"
         link: "https://textbook.cs161.org/memory-safety/x86.html"
       - name: "x86/GDB Cheat Sheet"
         link: "https://assets.cs161.org/proj1/cheatsheet.pdf"
-  - title: "Memory Safety Vulnerabilities Lecture pt2"
+  - title: "Memory Safety Vulnerabilities"
+    slides: "https://docs.google.com/presentation/d/1M_oyCC1OE5oZPh7Qiwp8X2IIlWa6AAvel3ST0ndFgts"
+    recording: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX9NcOVQ3z0tKo7_5uJpUajl"
+    readings:
+      - name: "Ch. 3"
+        link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
   - title: "Holiday (No Lecture)"
     nonumber: true # skips assigning a number to this box
   - title: "Memory Safety Vulnerabilities 2"
@@ -94,6 +112,7 @@ lectures:
     readings:
       - name: "Ch. 3"
         link: "https://textbook.cs161.org/memory-safety/vulnerabilities.html"
+    extra: "[Sample extra link](https://google.com)"
   - title: "Midterm (7–9pm)"
     nonumber: true # skips assigning a number to this box
   - title: "Optional Lecture"
