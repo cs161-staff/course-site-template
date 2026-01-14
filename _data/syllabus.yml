@@ -3,17 +3,11 @@
 #######################################################
 
 # The first and last day of class, respectively.
-# Due to time zone issues, these might not show up exactly on the calendar,
-# so some fiddling is necessary. If you're struggling with time zone issues,
-# try setting your system time to GMT when building the website.
 start_date: 2025-01-23
 end_date: 2025-02-21
 
 # Any other days you want to appear on the calendar (e.g. for one-time events
 # like exams or bonus lectures) can be listed here.
-# Due to time zone issues, these might not show up exactly on the calendar,
-# so some fiddling is necessary. If you're struggling with time zone issues,
-# try setting your system time to GMT when building the website.
 extra_days:
  - date: 2025-02-12
 
@@ -46,7 +40,7 @@ starting_project_number: '1'
 starting_week_number: '1'
 
 # Change this if you want multiple lecture/discussion/etc boxes on the same day.
-# All the other rowspans must be relative to the day rowspan, e.g. a homework 
+# All the other rowspans must be relative to the day rowspan, e.g. a homework
 # spanning 3 days on the calendar would need rowspan 3 * day_rowspan.
 # This should be 1 unless you know what you're doing.
 day_rowspan: '1'

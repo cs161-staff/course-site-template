@@ -188,3 +188,7 @@ plugins:
 sass:
   quiet_deps: true
   silence_deprecations: ["import"] # https://github.com/just-the-docs/just-the-docs/issues/1607
+
+# This ensures that Jekyll always assumes dates are in UTC, which is
+# important for making sure that the calendar renders dates correctly.
+timezone: UTC
